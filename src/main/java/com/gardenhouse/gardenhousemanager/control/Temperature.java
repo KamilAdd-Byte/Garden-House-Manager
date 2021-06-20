@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.model;
+package com.gardenhouse.gardenhousemanager.control;
 
 public enum Temperature {
     TOOCOOLD(14),
