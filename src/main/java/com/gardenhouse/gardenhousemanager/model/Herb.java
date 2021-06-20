@@ -29,9 +29,9 @@ public class Herb extends Plant{
    public Herb() {
    }
 
-   public Herb(String name,String description, Temperature temperature,
+   public Herb(String name, String image, String description, Temperature temperature,
                Light light, WaterConsumption waterConsumption, LiveService liveService) {
-      super(name);
+      super(name, image);
       this.description = description;
       this.temperature = temperature;
       this.light = light;
@@ -96,6 +96,7 @@ public class Herb extends Plant{
 
    private String getString(String result) {
       result += " Opis: " + description;
+      result += " Zdjęcie: " + getImage();
       result += " Temperatura do rozwoju: " + temperature;
       result += " Światło: " + light;
       result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;

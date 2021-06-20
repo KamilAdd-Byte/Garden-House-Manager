@@ -4,12 +4,12 @@ public class Plant {
 
     private String name;
 
+    private String image;
+
     public Plant() {
     }
 
-    public Plant(String name) {
-        this.name = name;
-
+    public Plant(String name, String image) {
     }
 
     public String getName() {
@@ -20,10 +20,19 @@ public class Plant {
         this.name = name;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Plant{" +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }
