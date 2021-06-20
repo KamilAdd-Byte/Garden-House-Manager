@@ -4,7 +4,6 @@ import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.Temperature;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.live.LiveService;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +25,6 @@ public class Herb extends Plant{
    private WaterConsumption waterConsumption;
 
    private LiveService liveService;
-
-   private Long id;
 
    public Herb() {
    }
@@ -92,12 +89,17 @@ public class Herb extends Plant{
 
    @Override
    public String toString() {
-      return "Herb{" +
-              "description='" + description + '\'' +
-              ", temperature=" + temperature +
-              ", light=" + light +
-              ", waterConsumption=" + waterConsumption +
-              ", liveService=" + liveService +
-              "} " + super.toString();
+      String result = "Nazwa: " + getName();
+      result = getString(result);
+      return result;
+   }
+
+   private String getString(String result) {
+      result += " Opis: " + description;
+      result += " Temperatura do rozwoju: " + temperature;
+      result += " Światło: " + light;
+      result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;
+      result += " Cykl życia: " + liveService;
+      return result;
    }
 }

@@ -8,7 +8,6 @@ public enum WaterConsumption {
     private final double scope;
 
     /**
-     *
      * @param scope Milliliters per day
      */
     WaterConsumption(double scope) {

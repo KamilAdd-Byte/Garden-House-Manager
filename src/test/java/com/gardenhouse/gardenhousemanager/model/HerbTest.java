@@ -13,6 +13,7 @@ class HerbTest {
     void shouldCreateFirstHerb(){
         Herb herb = new Herb();
         herb.setName("Liść laurowy");
+        herb.setDescription("Zioła wytrzymałe na ciepłe dni");
         herb.setTemperature(Temperature.OPTIMUM);
         herb.setWaterConsumption(WaterConsumption.LITTLE);
         herb.setLight(Light.MEDIUM);
