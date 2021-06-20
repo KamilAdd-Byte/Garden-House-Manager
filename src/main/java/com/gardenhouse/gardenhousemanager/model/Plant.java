@@ -1,24 +1,15 @@
 package com.gardenhouse.gardenhousemanager.model;
 
 public class Plant {
-    private int plantId;
-    private String name;
 
+    private String name;
 
     public Plant() {
     }
 
-    public Plant(String name, int plantId) {
+    public Plant(String name) {
         this.name = name;
-        this.plantId = plantId;
-    }
 
-    public int getPlantId() {
-        return plantId;
-    }
-
-    public void setPlantId(int plantId) {
-        this.plantId = plantId;
     }
 
     public String getName() {
@@ -32,7 +23,6 @@ public class Plant {
     @Override
     public String toString() {
         return "Plant{" +
-                "plantId=" + plantId +
                 ", name='" + name + '\'' +
                 '}';
     }

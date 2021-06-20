@@ -32,9 +32,9 @@ public class Herb extends Plant{
    public Herb() {
    }
 
-   public Herb(String name, int plantId, String description, Temperature temperature,
+   public Herb(String name,String description, Temperature temperature,
                Light light, WaterConsumption waterConsumption, LiveService liveService) {
-      super(name, plantId);
+      super(name);
       this.description = description;
       this.temperature = temperature;
       this.light = light;
