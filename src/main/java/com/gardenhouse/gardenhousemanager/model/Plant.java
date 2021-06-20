@@ -5,6 +5,9 @@ public class Plant {
     private String name;
 
 
+    public Plant() {
+    }
+
     public Plant(String name, int plantId) {
         this.name = name;
         this.plantId = plantId;
