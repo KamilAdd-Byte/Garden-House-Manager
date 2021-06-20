@@ -1,4 +1,4 @@
 package com.gardenhouse.gardenhousemanager.control;
 
-public interface WaterConsumption {
+public enum WaterConsumption {
 }
