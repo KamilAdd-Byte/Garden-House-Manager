@@ -80,10 +80,10 @@ public class Herb extends Plant{
    }
 
    public LiveService getLiveService() {
+      liveService = LiveService.PREPARATION;
       return liveService;
    }
-
-   public void setLiveService(LiveService liveService) {
+   private void setLiveService(LiveService liveService) {
       this.liveService = liveService;
    }
 
