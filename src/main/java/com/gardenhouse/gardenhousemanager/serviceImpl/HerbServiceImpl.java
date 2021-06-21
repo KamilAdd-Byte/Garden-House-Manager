@@ -14,7 +14,8 @@ public class HerbServiceImpl implements HerbService {
     @Autowired
     private final HerbRepository herbRepository;
 
-    public HerbServiceImpl(HerbRepository herbRepository) {
+    @Autowired
+    public HerbServiceImpl(final HerbRepository herbRepository) {
         this.herbRepository = herbRepository;
     }
 
