@@ -14,13 +14,14 @@ module Garden.House.Manager {
     requires spring.data.jpa;
     requires com.h2database;
 
+
     opens com.gardenhouse.gardenhousemanager.repository;
     opens com.gardenhouse.gardenhousemanager.model;
     opens com.gardenhouse.gardenhousemanager.rest;
     opens com.gardenhouse.gardenhousemanager.service;
     opens com.gardenhouse.gardenhousemanager.serviceImpl;
     opens com.gardenhouse.gardenhousemanager.control;
-
+    opens com.gardenhouse.gardenhousemanager;
 
     exports com.gardenhouse.gardenhousemanager;
     exports com.gardenhouse.gardenhousemanager.rest;
