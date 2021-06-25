@@ -6,8 +6,6 @@ import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.live.LiveService;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 

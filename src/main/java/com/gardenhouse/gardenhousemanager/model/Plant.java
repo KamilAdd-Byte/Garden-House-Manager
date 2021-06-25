@@ -1,7 +1,6 @@
 package com.gardenhouse.gardenhousemanager.model;
 
 import lombok.NoArgsConstructor;
-import javax.persistence.Id;
 
 @NoArgsConstructor
 public class Plant {
@@ -9,7 +8,6 @@ public class Plant {
     private String name;
 
     private String image;
-
 
     public Plant(String name, String image) {
     }
