@@ -10,9 +10,10 @@ import java.util.List;
 @Service
 public class HerbServiceImpl implements HerbService {
 
-    @Autowired
+
     private final HerbRepository herbRepository;
 
+    @Autowired
     public HerbServiceImpl(HerbRepository herbRepository) {
         this.herbRepository = herbRepository;
     }
@@ -29,12 +30,18 @@ public class HerbServiceImpl implements HerbService {
 
     @Override
     public Herb findById(int id) {
-        return this.herbRepository.getById(id);
+        return herbRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 
     @Override
     public void deleteHerb(int id) {
         Herb remove = this.herbRepository.getById(id);
         herbRepository.delete(remove);
+    }
+
+    @Override
+    public Herb updateHerb(Herb herb) {
+       Herb update = herbRepository.findById(herb.getHerbId()).orElseThrow(IllegalArgumentException::new);
+       return herbRepository.saveAndFlush(update);
     }
 }

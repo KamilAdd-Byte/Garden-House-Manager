@@ -12,4 +12,6 @@ public interface HerbService {
     Herb findById(int id);
 
     void deleteHerb(int id);
+
+    Herb updateHerb(Herb herb);
 }

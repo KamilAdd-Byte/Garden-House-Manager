@@ -25,7 +25,15 @@ public class HerbRestController {
         return ResponseEntity.ok().body(getHerb);
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = "/herb/{id}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Herb> updateHerb(@PathVariable("id") int id) {
+            Herb herb = herbService.findById(id);
+            herbService.updateHerb(herb);
+
+            return ResponseEntity.ok().body(herb);
+    }
+
+    @PostMapping("/herb/add")
     public ResponseEntity<Herb> addHerbs(@RequestBody Herb herb) {
         Herb addHerb = herbService.addHerb(herb);
         return ResponseEntity.ok().body(addHerb);

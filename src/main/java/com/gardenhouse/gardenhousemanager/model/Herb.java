@@ -8,6 +8,7 @@ import com.gardenhouse.gardenhousemanager.live.LiveService;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
@@ -126,6 +127,19 @@ public class Herb extends Plant{
       result += " Wilgotność: " + wetness;
       result += " Cykl życia: " + liveService;
       return result;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (!(o instanceof Herb)) return false;
+      Herb herb = (Herb) o;
+      return herbId == herb.herbId && Objects.equals(description, herb.description) && Objects.equals(temperature, herb.temperature) && light == herb.light && waterConsumption == herb.waterConsumption && liveService == herb.liveService && wetness == herb.wetness;
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(herbId, description, temperature, light, waterConsumption, liveService, wetness);
    }
 
    public static class HerbBuilder {
