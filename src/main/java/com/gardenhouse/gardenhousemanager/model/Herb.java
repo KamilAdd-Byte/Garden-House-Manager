@@ -6,10 +6,13 @@ import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.live.LiveService;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
+@ToString
 @NoArgsConstructor
 public class Herb extends Plant{
 
@@ -18,6 +21,7 @@ public class Herb extends Plant{
    private int herbId;
 
    @Column(name = "description")
+   @Size(min = 2,max = 300)
    private String description;
 
    @OneToOne(cascade = CascadeType.PERSIST)
@@ -108,21 +112,22 @@ public class Herb extends Plant{
       this.wetness = wetness;
    }
 
-   @Override
-   public String toString() {
-      String result = "Nazwa: " + getName();
-      result = getString(result);
-      return result;
-   }
-
-   private String getString(String result) {
-      result += " Opis: " + description;
-      result += " Zdjęcie: " + getImage();
-      result += " Temperatura do rozwoju: " + temperature;
-      result += " Światło: " + light;
-      result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;
-      result += " Wilgotność: " + wetness;
-      result += " Cykl życia: " + liveService;
-      return result;
-   }
+//   @Override
+//   public String toString() {
+//      String result = "Nazwa: " + super.getName();
+//      result = getString(result);
+//      return result;
+//   }
+//
+//   private String getString(String result) {
+//      result += "url " + super.getImage();
+//      result += " Opis: " + description;
+//      result += " Zdjęcie: " + getImage();
+//      result += " Temperatura do rozwoju: " + temperature;
+//      result += " Światło: " + light;
+//      result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;
+//      result += " Wilgotność: " + wetness;
+//      result += " Cykl życia: " + liveService;
+//      return result;
+//   }
 }
