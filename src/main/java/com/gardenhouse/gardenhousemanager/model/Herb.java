@@ -12,7 +12,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@ToString
 @NoArgsConstructor
 public class Herb extends Plant{
 
@@ -45,7 +44,7 @@ public class Herb extends Plant{
    private Wetness wetness;
 
 
-   public Herb(String name, String image, String description, PlantTemperature temperature,
+   private Herb(String name, String image, String description, PlantTemperature temperature,
                Light light, WaterConsumption waterConsumption, LiveService liveService,Wetness wetness) {
       super(name, image);
       this.description = description;
@@ -112,22 +111,77 @@ public class Herb extends Plant{
       this.wetness = wetness;
    }
 
-//   @Override
-//   public String toString() {
-//      String result = "Nazwa: " + super.getName();
-//      result = getString(result);
-//      return result;
-//   }
-//
-//   private String getString(String result) {
-//      result += "url " + super.getImage();
-//      result += " Opis: " + description;
-//      result += " Zdjęcie: " + getImage();
-//      result += " Temperatura do rozwoju: " + temperature;
-//      result += " Światło: " + light;
-//      result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;
-//      result += " Wilgotność: " + wetness;
-//      result += " Cykl życia: " + liveService;
-//      return result;
-//   }
+   @Override
+   public String toString() {
+      String result = "Nazwa: " + super.getName();
+      result = getString(result);
+      return result;
+   }
+
+   private String getString(String result) {
+      result += "url " + super.getImage();
+      result += " Opis: " + description;
+      result += " Zdjęcie: " + getImage();
+      result += " Temperatura do rozwoju: " + temperature;
+      result += " Światło: " + light;
+      result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;
+      result += " Wilgotność: " + wetness;
+      result += " Cykl życia: " + liveService;
+      return result;
+   }
+
+   public static class HerbBuilder {
+      private String name;
+      private String image;
+      private String description;
+      private PlantTemperature temperature;
+      private Light light;
+      private WaterConsumption waterConsumption;
+      private LiveService liveService;
+      private Wetness wetness;
+
+      public HerbBuilder setName(String name) {
+         this.name = name;
+         return this;
+      }
+
+      public HerbBuilder setImage(String image) {
+         this.image = image;
+         return this;
+      }
+
+      public HerbBuilder setDescription(String description) {
+         this.description = description;
+         return this;
+      }
+
+      public HerbBuilder setTemperature(PlantTemperature temperature) {
+         this.temperature = temperature;
+         return this;
+      }
+
+      public HerbBuilder setLight(Light light) {
+         this.light = light;
+         return this;
+      }
+
+      public HerbBuilder setWaterConsumption(WaterConsumption waterConsumption) {
+         this.waterConsumption = waterConsumption;
+         return this;
+      }
+
+      public HerbBuilder setLiveService(LiveService liveService) {
+         this.liveService = liveService;
+         return this;
+      }
+
+      public HerbBuilder setWetness(Wetness wetness) {
+         this.wetness = wetness;
+         return this;
+      }
+
+      public Herb createHerb() {
+         return new Herb(name, image, description, temperature, light, waterConsumption, liveService, wetness);
+      }
+   }
 }

@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class HerbTest {
     @Test
     void shouldCreateFirstHerb(){
-        Herb herb = new Herb();
+        Herb herb = new Herb.HerbBuilder().createHerb();
         herb.setName("Liść laurowy");
         herb.setDescription("Zioła wytrzymałe na ciepłe dni");
 //        herb.setTemperature(Temperature.OPTIMUM);
