@@ -1,42 +1,55 @@
 package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
-import com.gardenhouse.gardenhousemanager.control.Temperature;
+import com.gardenhouse.gardenhousemanager.control.PlantTemperature;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
+import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.live.LiveService;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
 public class Herb extends Plant{
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int herbId;
 
+   @Column(name = "description")
    private String description;
 
-   private Temperature temperature;
+   @OneToOne(cascade = CascadeType.PERSIST)
+   @JoinColumn(name = "temp_id")
+   private PlantTemperature temperature;
 
+   @Column(name = "light")
+   @Enumerated(EnumType.ORDINAL)
    private Light light;
 
+   @Column(name = "waterConsumption")
+   @Enumerated(EnumType.ORDINAL)
    private WaterConsumption waterConsumption;
 
+   @Column(name = "liveService")
+   @Enumerated(EnumType.ORDINAL)
    private LiveService liveService;
 
-   public Herb() {
-   }
+   @Column(name = "wetness")
+   @Enumerated(EnumType.ORDINAL)
+   private Wetness wetness;
 
-   public Herb(String name, String image, String description, Temperature temperature,
-               Light light, WaterConsumption waterConsumption, LiveService liveService) {
+
+   public Herb(String name, String image, String description, PlantTemperature temperature,
+               Light light, WaterConsumption waterConsumption, LiveService liveService,Wetness wetness) {
       super(name, image);
       this.description = description;
       this.temperature = temperature;
       this.light = light;
       this.waterConsumption = waterConsumption;
       this.liveService = liveService;
+      this.wetness = wetness;
    }
 
    public int getHerbId() {
@@ -55,11 +68,11 @@ public class Herb extends Plant{
       this.description = description;
    }
 
-   public Temperature getTemperature() {
+   public PlantTemperature getTemperature() {
       return temperature;
    }
 
-   public void setTemperature(Temperature temperature) {
+   public void setTemperature(PlantTemperature temperature) {
       this.temperature = temperature;
    }
 
@@ -87,6 +100,14 @@ public class Herb extends Plant{
       this.liveService = liveService;
    }
 
+   public Wetness getWetness() {
+      return wetness;
+   }
+
+   public void setWetness(Wetness wetness) {
+      this.wetness = wetness;
+   }
+
    @Override
    public String toString() {
       String result = "Nazwa: " + getName();
@@ -100,6 +121,7 @@ public class Herb extends Plant{
       result += " Temperatura do rozwoju: " + temperature;
       result += " Światło: " + light;
       result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;
+      result += " Wilgotność: " + wetness;
       result += " Cykl życia: " + liveService;
       return result;
    }
