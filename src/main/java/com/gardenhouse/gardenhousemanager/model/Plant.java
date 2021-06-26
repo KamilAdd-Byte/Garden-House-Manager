@@ -1,15 +1,23 @@
 package com.gardenhouse.gardenhousemanager.model;
 
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Id;
 
 @NoArgsConstructor
+@ToString
 public class Plant {
 
-    private String name;
+    public String name;
 
-    private String image;
+    public String image;
 
     public Plant(String name, String image) {
+        this.name = name;
+        this.image = image;
     }
 
     public String getName() {
@@ -27,5 +35,4 @@ public class Plant {
     public void setImage(String image) {
         this.image = image;
     }
-
 }

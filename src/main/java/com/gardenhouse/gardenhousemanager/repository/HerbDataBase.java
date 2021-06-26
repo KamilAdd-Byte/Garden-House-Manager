@@ -21,7 +21,7 @@ public class HerbDataBase{
                 "który jest niezbędny do przygotowywania dań na ciepło – zup, sosów czy gulaszy. " +
                 "Najczęściej decydujemy się na gotową suszoną postać przyprawy dostępną na sklepowych półkach." +
                 " Liście laurowe możemy również uprawiać na parapecie. ")
-                .setTemperature(new PlantTemperature(1, -15.80, 25.06, 5.5)).setLight(Light.LITTLE).setWaterConsumption(WaterConsumption.LITTLE).setLiveService(LiveService.PREPARATION).setWetness(Wetness.MINIMUM).createHerb());
+                .setTemperature(new PlantTemperature(-15.80, 25.06, 5.5)).setLight(Light.LITTLE).setWaterConsumption(WaterConsumption.LITTLE).setLiveService(LiveService.PREPARATION).setWetness(Wetness.MINIMUM).createHerb());
 
         allHerbs.add(new Herb.HerbBuilder().setName("Bazylia").setImage("something url")
                 .setDescription("Bazylię należy posadzić do większej doniczki z " +
@@ -31,7 +31,7 @@ public class HerbDataBase{
                         "regularnie sprawdzać poziom nawodnienia i uzupełniać wodę. Praktycznym rozwiązaniem jest " +
                         "zakup specjalnej doniczki do uprawy bazylii z inteligentnym systemem samonawadniającym, " +
                         "który wyręcza nas z obowiązku systematycznego podlewania.")
-                .setTemperature(new PlantTemperature(2, 15.80, 25.06, 5.5))
+                .setTemperature(new PlantTemperature(15.80, 25.06, 5.5))
                 .setLight(Light.MEDIUM).setWaterConsumption(WaterConsumption.MEDIUM)
                 .setLiveService(LiveService.PREPARATION)
                 .setWetness(Wetness.OPTIMUM).createHerb());

@@ -30,8 +30,7 @@ public class PlantTemperature {
     private double actual;
 
 
-    public PlantTemperature(int temperaturePlantId, double minimum, double maximum, double actual) {
-        this.temperaturePlantId = temperaturePlantId;
+    public PlantTemperature(double minimum, double maximum, double actual) {
         this.minimum = minimum;
         this.maximum = maximum;
         this.actual = actual;

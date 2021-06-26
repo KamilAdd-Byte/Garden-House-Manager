@@ -8,6 +8,7 @@ import com.gardenhouse.gardenhousemanager.live.LiveService;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
@@ -16,6 +17,10 @@ public class Herb extends Plant{
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int herbId;
+
+   public String name;
+
+    public String image;
 
    @Column(name = "description")
    @Size(min = 2,max = 300)
@@ -42,8 +47,8 @@ public class Herb extends Plant{
    private Wetness wetness;
 
 
-   private Herb(String name, String image, String description, PlantTemperature temperature,
-               Light light, WaterConsumption waterConsumption, LiveService liveService,Wetness wetness) {
+   public Herb(String name, String image, String description, PlantTemperature temperature,
+                Light light, WaterConsumption waterConsumption, LiveService liveService, Wetness wetness) {
       super(name, image);
       this.description = description;
       this.temperature = temperature;
@@ -59,6 +64,26 @@ public class Herb extends Plant{
 
    private void setHerbId(int herbId) {
       this.herbId = herbId;
+   }
+
+   @Override
+   public String getName() {
+      return name;
+   }
+
+   @Override
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   @Override
+   public String getImage() {
+      return image;
+   }
+
+   @Override
+   public void setImage(String image) {
+      this.image = image;
    }
 
    public String getDescription() {
@@ -111,21 +136,33 @@ public class Herb extends Plant{
 
    @Override
    public String toString() {
-      String result = "Nazwa: " + super.getName();
+      String result = "Nazwa: " + getName();
       result = getString(result);
       return result;
    }
 
-   private String getString(String result) {
+   public String getString(String result) {
       result += "url " + super.getImage();
       result += " Opis: " + description;
-      result += " Zdjęcie: " + getImage();
       result += " Temperatura do rozwoju: " + temperature;
       result += " Światło: " + light;
       result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;
       result += " Wilgotność: " + wetness;
       result += " Cykl życia: " + liveService;
       return result;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (!(o instanceof Herb)) return false;
+      Herb herb = (Herb) o;
+      return herbId == herb.herbId && Objects.equals(description, herb.description) && Objects.equals(temperature, herb.temperature) && light == herb.light && waterConsumption == herb.waterConsumption && liveService == herb.liveService && wetness == herb.wetness;
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(herbId, description, temperature, light, waterConsumption, liveService, wetness);
    }
 
    public static class HerbBuilder {

@@ -1,7 +1,9 @@
 package com.gardenhouse.gardenhousemanager.serviceImpl;
 
+import com.gardenhouse.gardenhousemanager.control.PlantTemperature;
 import com.gardenhouse.gardenhousemanager.model.Herb;
 import com.gardenhouse.gardenhousemanager.repository.HerbRepository;
+import com.gardenhouse.gardenhousemanager.repository.PlantTemperatureRepository;
 import com.gardenhouse.gardenhousemanager.service.HerbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +12,14 @@ import java.util.List;
 @Service
 public class HerbServiceImpl implements HerbService {
 
-    @Autowired
-    private final HerbRepository herbRepository;
 
-    public HerbServiceImpl(HerbRepository herbRepository) {
+    private final HerbRepository herbRepository;
+    private PlantTemperatureRepository temperatureRepository;
+
+    @Autowired
+    public HerbServiceImpl(HerbRepository herbRepository, PlantTemperatureRepository temperatureRepository) {
         this.herbRepository = herbRepository;
+        this.temperatureRepository = temperatureRepository;
     }
 
     @Override
@@ -29,12 +34,22 @@ public class HerbServiceImpl implements HerbService {
 
     @Override
     public Herb findById(int id) {
-        return this.herbRepository.getById(id);
+        return herbRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 
     @Override
     public void deleteHerb(int id) {
-        Herb remove = this.herbRepository.getById(id);
-        herbRepository.delete(remove);
+        try {
+            Herb remove = this.herbRepository.getById(id);
+            herbRepository.delete(remove);
+        }catch (IllegalArgumentException e){
+            e.getStackTrace();
+        }
+    }
+
+    @Override
+    public Herb updateHerb(int id) {
+       Herb update = herbRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+       return herbRepository.save(update);
     }
 }
