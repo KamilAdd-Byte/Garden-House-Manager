@@ -1,7 +1,9 @@
 package com.gardenhouse.gardenhousemanager.serviceImpl;
 
+import com.gardenhouse.gardenhousemanager.control.PlantTemperature;
 import com.gardenhouse.gardenhousemanager.model.Herb;
 import com.gardenhouse.gardenhousemanager.repository.HerbRepository;
+import com.gardenhouse.gardenhousemanager.repository.PlantTemperatureRepository;
 import com.gardenhouse.gardenhousemanager.service.HerbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +14,12 @@ public class HerbServiceImpl implements HerbService {
 
 
     private final HerbRepository herbRepository;
+    private PlantTemperatureRepository temperatureRepository;
 
     @Autowired
-    public HerbServiceImpl(HerbRepository herbRepository) {
+    public HerbServiceImpl(HerbRepository herbRepository, PlantTemperatureRepository temperatureRepository) {
         this.herbRepository = herbRepository;
+        this.temperatureRepository = temperatureRepository;
     }
 
     @Override
@@ -44,8 +48,8 @@ public class HerbServiceImpl implements HerbService {
     }
 
     @Override
-    public Herb updateHerb(Herb herb) {
-       Herb update = herbRepository.findById(herb.getHerbId()).orElseThrow(IllegalArgumentException::new);
-       return herbRepository.saveAndFlush(update);
+    public Herb updateHerb(int id) {
+       Herb update = herbRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+       return herbRepository.save(update);
     }
 }
