@@ -18,6 +18,10 @@ public class Herb extends Plant{
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int herbId;
 
+   public String name;
+
+    public String image;
+
    @Column(name = "description")
    @Size(min = 2,max = 300)
    private String description;
@@ -43,8 +47,8 @@ public class Herb extends Plant{
    private Wetness wetness;
 
 
-   private Herb(String name, String image, String description, PlantTemperature temperature,
-               Light light, WaterConsumption waterConsumption, LiveService liveService,Wetness wetness) {
+   public Herb(String name, String image, String description, PlantTemperature temperature,
+                Light light, WaterConsumption waterConsumption, LiveService liveService, Wetness wetness) {
       super(name, image);
       this.description = description;
       this.temperature = temperature;
@@ -60,6 +64,26 @@ public class Herb extends Plant{
 
    private void setHerbId(int herbId) {
       this.herbId = herbId;
+   }
+
+   @Override
+   public String getName() {
+      return name;
+   }
+
+   @Override
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   @Override
+   public String getImage() {
+      return image;
+   }
+
+   @Override
+   public void setImage(String image) {
+      this.image = image;
    }
 
    public String getDescription() {
@@ -112,15 +136,14 @@ public class Herb extends Plant{
 
    @Override
    public String toString() {
-      String result = "Nazwa: " + super.getName();
+      String result = "Nazwa: " + getName();
       result = getString(result);
       return result;
    }
 
-   private String getString(String result) {
+   public String getString(String result) {
       result += "url " + super.getImage();
       result += " Opis: " + description;
-      result += " Zdjęcie: " + getImage();
       result += " Temperatura do rozwoju: " + temperature;
       result += " Światło: " + light;
       result += " Dzienne zapotrzebowanie na wodę: " + waterConsumption;

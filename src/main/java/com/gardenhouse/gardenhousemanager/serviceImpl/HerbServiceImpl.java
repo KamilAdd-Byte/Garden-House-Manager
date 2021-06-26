@@ -35,8 +35,12 @@ public class HerbServiceImpl implements HerbService {
 
     @Override
     public void deleteHerb(int id) {
-        Herb remove = this.herbRepository.getById(id);
-        herbRepository.delete(remove);
+        try {
+            Herb remove = this.herbRepository.getById(id);
+            herbRepository.delete(remove);
+        }catch (IllegalArgumentException e){
+            e.getStackTrace();
+        }
     }
 
     @Override

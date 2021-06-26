@@ -25,7 +25,7 @@ public class HerbRestController {
         return ResponseEntity.ok().body(getHerb);
     }
 
-    @PostMapping(value = "/herb/{id}", consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "/herb/{id}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Herb> updateHerb(@PathVariable("id") int id) {
             Herb herb = herbService.findById(id);
             herbService.updateHerb(herb);
@@ -40,7 +40,8 @@ public class HerbRestController {
     }
 
     @DeleteMapping("/herb/{id}")
-    public void deleteHerb(@PathVariable("id") int id) {
+    public ResponseEntity<Herb> deleteHerb(@PathVariable("id") int id) {
         herbService.deleteHerb(id);
+        return ResponseEntity.noContent().build();
     }
 }
