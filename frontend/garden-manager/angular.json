@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "3579fb1c-3f8f-4d3a-a980-b8eb89e35966"
+    "analytics": "a4346275-2b0e-4bb9-8a9e-3da3d8603c8f"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -9,6 +9,9 @@
     "garden-manager": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -31,8 +34,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -95,8 +98,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "src/styles.scss"
             ],
             "scripts": []
           }
