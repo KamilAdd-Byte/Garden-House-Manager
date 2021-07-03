@@ -1,38 +1,25 @@
 package com.gardenhouse.gardenhousemanager.control;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-
-@Entity
-@NoArgsConstructor
-@Getter
-@Setter
 @ToString
-@Table(name = "temperature")
-public class PlantTemperature {
+public enum PlantTemperature {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "temp_id")
-    private int temperaturePlantId;
+   TEMPERATUREBASIL(22,25);
 
-    @Column(name = "temp_min")
-    private double minimum;
+    private final double min;
+    private final double max;
 
-    @Column(name = "temp_max")
-    private double maximum;
+    PlantTemperature(double min, double max) {
+        this.min = min;
+        this.max = max;
+    }
 
-    @Column(name = "temp_actual")
-    private double actual;
+    public double getMin() {
+        return min;
+    }
 
-
-    public PlantTemperature(double minimum, double maximum, double actual) {
-        this.minimum = minimum;
-        this.maximum = maximum;
-        this.actual = actual;
+    public double getMax() {
+        return max;
     }
 }

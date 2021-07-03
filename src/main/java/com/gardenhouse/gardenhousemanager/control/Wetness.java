@@ -8,6 +8,11 @@ public enum Wetness {
     public int minWetness;
     public int maxWetness;
 
+    /**
+     *
+     * @param minWetness TODO !
+     * @param maxWetness TODO !
+     */
     Wetness(int minWetness, int maxWetness) {
         this.minWetness = minWetness;
         this.maxWetness = maxWetness;
