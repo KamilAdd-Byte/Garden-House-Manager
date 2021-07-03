@@ -32,7 +32,7 @@ public class Basil extends Plant {
 
 
     @Column(name = "temperature")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private PlantTemperature temperature;
 
     @Column(name = "light")
@@ -83,7 +83,8 @@ public class Basil extends Plant {
         return description;
     }
 
-    private PlantTemperature getTemperature() {
+    public PlantTemperature getTemperature() {
+        temperature = PlantTemperature.TEMPERATUREBASIL;
         return temperature;
     }
 
@@ -91,7 +92,8 @@ public class Basil extends Plant {
         this.temperature = temperature;
     }
 
-    private Light getLight() {
+    public Light getLight() {
+        light = Light.MEDIUM;
         return light;
     }
 
@@ -99,7 +101,8 @@ public class Basil extends Plant {
         this.light = light;
     }
 
-    private WaterConsumption getWaterConsumption() {
+    public WaterConsumption getWaterConsumption() {
+        waterConsumption = WaterConsumption.MEDIUM;
         return waterConsumption;
     }
 
@@ -107,7 +110,7 @@ public class Basil extends Plant {
         this.waterConsumption = waterConsumption;
     }
 
-    private LiveService getLiveService() {
+    public LiveService getLiveService() {
         return liveService;
     }
 
@@ -115,7 +118,8 @@ public class Basil extends Plant {
         this.liveService = liveService;
     }
 
-    private Wetness getWetness() {
+    public Wetness getWetness() {
+        wetness = Wetness.OPTIMUM;
         return wetness;
     }
 

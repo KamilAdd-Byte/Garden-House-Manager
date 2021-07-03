@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BasilService} from "../../service/basil.service";
 
 @Component({
   selector: 'app-basil',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasilComponent implements OnInit {
 
-  constructor() { }
+  constructor(basilService: BasilService) { }
 
   ngOnInit(): void {
   }
+
 
 }
