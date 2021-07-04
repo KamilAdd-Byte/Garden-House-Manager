@@ -6,4 +6,5 @@ public interface BasilLogicLiveService {
     void sow();
     Basil showParameters();
     void waterHerbs();
+    void choiceMethodOfPlanting();
 }

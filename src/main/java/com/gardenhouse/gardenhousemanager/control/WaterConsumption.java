@@ -8,7 +8,7 @@ public enum WaterConsumption {
     public final double scope;
 
     /**
-     * @param scope Milliliters for plant per day
+     * @param scope Milliliters for plant per day to Basil
      */
     WaterConsumption(double scope) {
         this.scope = scope;

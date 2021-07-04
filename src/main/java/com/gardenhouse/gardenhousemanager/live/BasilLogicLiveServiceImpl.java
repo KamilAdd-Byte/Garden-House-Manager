@@ -1,5 +1,6 @@
 package com.gardenhouse.gardenhousemanager.live;
 
+import com.gardenhouse.gardenhousemanager.control.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.model.basil.Basil;
 import com.gardenhouse.gardenhousemanager.service.BasilService;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,10 @@ public class BasilLogicLiveServiceImpl implements BasilLogicLiveService{
     @Override
     public void waterHerbs() {
 
+    }
+
+    @Override
+    public void choiceMethodOfPlanting() {
+       //TODO implementation method planting Basil!
     }
 }

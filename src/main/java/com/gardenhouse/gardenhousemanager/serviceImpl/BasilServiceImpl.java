@@ -1,9 +1,6 @@
 package com.gardenhouse.gardenhousemanager.serviceImpl;
 
-import com.gardenhouse.gardenhousemanager.control.Light;
-import com.gardenhouse.gardenhousemanager.control.PlantTemperature;
-import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
-import com.gardenhouse.gardenhousemanager.control.Wetness;
+import com.gardenhouse.gardenhousemanager.control.*;
 import com.gardenhouse.gardenhousemanager.model.basil.Basil;
 import com.gardenhouse.gardenhousemanager.repository.BasilRepository;
 import com.gardenhouse.gardenhousemanager.service.BasilService;
@@ -59,5 +56,11 @@ public class BasilServiceImpl implements BasilService {
     public Light getLight() {
         Basil basil = new Basil();
         return basil.getLight();
+    }
+
+    @Override
+    public MethodOfPlanting choice() {
+        //TODO Create choice method planting Basil
+        return null;
     }
 }

@@ -3,6 +3,7 @@ package com.gardenhouse.gardenhousemanager.rest;
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.PlantTemperature;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
+import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.live.BasilLogicLiveService;
 import com.gardenhouse.gardenhousemanager.live.BasilLogicLiveServiceImpl;
 import com.gardenhouse.gardenhousemanager.model.basil.Basil;
@@ -53,6 +54,13 @@ public class BasilRestController {
         WaterConsumption consumption = basilService.getWaterConsumption();
         return ResponseEntity.ok().body(consumption);
     }
+    @GetMapping("/basil/wetness")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<Wetness> getWetness(){
+        Wetness wetness = basilService.getWetness();
+        return ResponseEntity.ok().body(wetness);
+    }
+
     @GetMapping("/basil/parameters")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Basil> getParameters(){

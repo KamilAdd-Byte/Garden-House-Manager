@@ -10,8 +10,8 @@ public enum Wetness {
 
     /**
      *
-     * @param minWetness TODO !
-     * @param maxWetness TODO !
+     * @param minWetness of growth to Basil
+     * @param maxWetness of growth to Basil
      */
     Wetness(int minWetness, int maxWetness) {
         this.minWetness = minWetness;

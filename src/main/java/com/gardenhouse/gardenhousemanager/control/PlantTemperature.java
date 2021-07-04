@@ -10,6 +10,11 @@ public enum PlantTemperature {
     private final double min;
     private final double max;
 
+    /**
+     *
+     * @param min temperature of growth to Basil
+     * @param max temperature of growth to Basil
+     */
     PlantTemperature(double min, double max) {
         this.min = min;
         this.max = max;
