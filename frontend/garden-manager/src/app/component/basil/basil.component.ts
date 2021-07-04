@@ -8,10 +8,16 @@ import {BasilService} from "../../service/basil.service";
 })
 export class BasilComponent implements OnInit {
 
-  constructor(basilService: BasilService) { }
+  constructor(public basil: BasilService) { }
+
+  get() {
+    this.basil.getName().subscribe();
+  };
 
   ngOnInit(): void {
+    this.basil.getName().subscribe();
   }
+
 
 
 }
