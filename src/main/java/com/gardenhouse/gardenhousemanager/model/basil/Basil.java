@@ -1,9 +1,6 @@
 package com.gardenhouse.gardenhousemanager.model.basil;
 
-import com.gardenhouse.gardenhousemanager.control.Light;
-import com.gardenhouse.gardenhousemanager.control.PlantTemperature;
-import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
-import com.gardenhouse.gardenhousemanager.control.Wetness;
+import com.gardenhouse.gardenhousemanager.control.*;
 import com.gardenhouse.gardenhousemanager.live.LiveService;
 import com.gardenhouse.gardenhousemanager.model.Plant;
 import lombok.NoArgsConstructor;
@@ -51,14 +48,19 @@ public class Basil extends Plant {
     @Enumerated(EnumType.STRING)
     private Wetness wetness;
 
+    @Column(name = "method")
+    @Enumerated(EnumType.STRING)
+    private MethodOfPlanting methodOfPlanting;
+
     public Basil(String name, String image, String description, PlantTemperature temperature,
                  Light light, WaterConsumption waterConsumption, LiveService liveService,
-                 Wetness wetness) {
+                 Wetness wetness, MethodOfPlanting methodOfPlanting) {
         this.temperature = PlantTemperature.TEMPERATUREBASIL;
         this.wetness = Wetness.MINIMUM;
         this.light = Light.MEDIUM;
         this.waterConsumption = WaterConsumption.MEDIUM;
         this.liveService = liveService;
+        this.methodOfPlanting = methodOfPlanting;
     }
 
     private int getId() {
@@ -127,6 +129,14 @@ public class Basil extends Plant {
         this.wetness = wetness;
     }
 
+    public MethodOfPlanting getMethodOfPlanting() {
+        return methodOfPlanting;
+    }
+
+    public void setMethodOfPlanting(MethodOfPlanting methodOfPlanting) {
+        this.methodOfPlanting = methodOfPlanting;
+    }
+
     public static class BasilBuilder {
         private String name;
         private String image;
@@ -136,6 +146,7 @@ public class Basil extends Plant {
         private WaterConsumption waterConsumption;
         private LiveService liveService;
         private Wetness wetness;
+        private MethodOfPlanting methodOfPlanting;
 
         public BasilBuilder setName(String name) {
             this.name = name;
@@ -177,9 +188,13 @@ public class Basil extends Plant {
             return this;
         }
 
+        public BasilBuilder setMethodOfPlanting(MethodOfPlanting methodOfPlanting){
+            this.methodOfPlanting = methodOfPlanting;
+            return this;
+        }
         public Basil createBasil() {
             return new Basil(name, image, description, temperature, light, waterConsumption,
-                    liveService, wetness);
+                    liveService, wetness,methodOfPlanting);
         }
     }
 }
