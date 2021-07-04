@@ -113,6 +113,7 @@ public class Basil extends Plant {
     }
 
     public LiveService getLiveService() {
+        liveService = LiveService.PREPARATION;
         return liveService;
     }
 
