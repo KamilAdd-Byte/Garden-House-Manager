@@ -36,19 +36,19 @@ public class Basil extends Plant {
     private PlantTemperature temperature;
 
     @Column(name = "light")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Light light;
 
     @Column(name = "waterConsumption")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private WaterConsumption waterConsumption;
 
     @Column(name = "liveService")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private LiveService liveService;
 
     @Column(name = "wetness")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Wetness wetness;
 
     public Basil(String name, String image, String description, PlantTemperature temperature,
