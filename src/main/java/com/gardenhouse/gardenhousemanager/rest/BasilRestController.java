@@ -3,6 +3,9 @@ package com.gardenhouse.gardenhousemanager.rest;
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.PlantTemperature;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
+import com.gardenhouse.gardenhousemanager.live.BasilLogicLiveService;
+import com.gardenhouse.gardenhousemanager.live.BasilLogicLiveServiceImpl;
+import com.gardenhouse.gardenhousemanager.model.basil.Basil;
 import com.gardenhouse.gardenhousemanager.service.BasilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,9 @@ public class BasilRestController {
 
     @Autowired
     private BasilService basilService;
+
+    @Autowired
+    private BasilLogicLiveService logicLiveService;
 
     @GetMapping("/basil/name")
     @CrossOrigin(origins = "http://localhost:4200")
@@ -46,6 +52,12 @@ public class BasilRestController {
     public ResponseEntity<WaterConsumption> getWaterConsumption(){
         WaterConsumption consumption = basilService.getWaterConsumption();
         return ResponseEntity.ok().body(consumption);
+    }
+    @GetMapping("/basil/parameters")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<Basil> getParameters(){
+        Basil show =  logicLiveService.showParameters();
+        return ResponseEntity.ok().body(show);
     }
 
 }
