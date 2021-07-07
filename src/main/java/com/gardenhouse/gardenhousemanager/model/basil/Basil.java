@@ -37,8 +37,7 @@ public class Basil extends Plant {
     private Light light;
 
     @Column(name = "waterConsumption")
-    @Enumerated(EnumType.STRING)
-    private WaterConsumption waterConsumption;
+    private double waterConsumption;
 
     @Column(name = "liveService")
     @Enumerated(EnumType.STRING)
@@ -53,12 +52,12 @@ public class Basil extends Plant {
     private MethodOfPlanting methodOfPlanting;
 
     public Basil(String name, String image, String description, PlantTemperature temperature,
-                 Light light, WaterConsumption waterConsumption, LiveService liveService,
+                 Light light, double waterConsumption, LiveService liveService,
                  Wetness wetness, MethodOfPlanting methodOfPlanting) {
         this.temperature = PlantTemperature.TEMPERATUREBASIL;
         this.wetness = Wetness.MINIMUM;
         this.light = Light.MEDIUM;
-        this.waterConsumption = WaterConsumption.MEDIUM;
+        this.waterConsumption = waterConsumption;
         this.liveService = liveService;
         this.methodOfPlanting = methodOfPlanting;
     }
@@ -103,12 +102,12 @@ public class Basil extends Plant {
         this.light = light;
     }
 
-    public WaterConsumption getWaterConsumption() {
-        waterConsumption = WaterConsumption.MEDIUM;
+    public double getWaterConsumption() {
+        waterConsumption = 0.0;
         return waterConsumption;
     }
 
-    private void setWaterConsumption(WaterConsumption waterConsumption) {
+    public void setWaterConsumption(double waterConsumption) {
         this.waterConsumption = waterConsumption;
     }
 
@@ -144,7 +143,7 @@ public class Basil extends Plant {
         private String description;
         private PlantTemperature temperature;
         private Light light;
-        private WaterConsumption waterConsumption;
+        private double waterConsumption;
         private LiveService liveService;
         private Wetness wetness;
         private MethodOfPlanting methodOfPlanting;
@@ -174,7 +173,7 @@ public class Basil extends Plant {
             return this;
         }
 
-        public BasilBuilder setWaterConsumption(WaterConsumption waterConsumption) {
+        public BasilBuilder setWaterConsumption(double waterConsumption) {
             this.waterConsumption = waterConsumption;
             return this;
         }

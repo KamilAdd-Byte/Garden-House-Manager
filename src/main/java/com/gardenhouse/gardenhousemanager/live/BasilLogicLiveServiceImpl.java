@@ -1,14 +1,13 @@
 package com.gardenhouse.gardenhousemanager.live;
 
-import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.model.basil.Basil;
-import com.gardenhouse.gardenhousemanager.service.BasilService;
+import com.gardenhouse.gardenhousemanager.service.BasilInfoService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BasilLogicLiveServiceImpl implements BasilLogicLiveService{
 
-    private BasilService basilService;
+    private BasilInfoService basilInfoService;
     private LiveService liveService;
     private Basil basil;
 
@@ -23,12 +22,16 @@ public class BasilLogicLiveServiceImpl implements BasilLogicLiveService{
     }
 
     @Override
-    public WaterConsumption waterIt(double water) {
-        return WaterConsumption.MEDIUM;
+    public void choiceMethodOfPlanting() {
+       //TODO implementation method planting Basil!
     }
 
     @Override
-    public void choiceMethodOfPlanting() {
-       //TODO implementation method planting Basil!
+    public Basil waterIt(double waterConsumption) {
+        Basil basil = new Basil();
+        double conditionOfWater = basil.getWaterConsumption();
+        double wa = conditionOfWater + waterConsumption;
+        basil.setWaterConsumption(wa);
+        return basil;
     }
 }
