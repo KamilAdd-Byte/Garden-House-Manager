@@ -3,17 +3,17 @@ package com.gardenhouse.gardenhousemanager.serviceImpl;
 import com.gardenhouse.gardenhousemanager.control.*;
 import com.gardenhouse.gardenhousemanager.model.basil.Basil;
 import com.gardenhouse.gardenhousemanager.repository.BasilRepository;
-import com.gardenhouse.gardenhousemanager.service.BasilService;
+import com.gardenhouse.gardenhousemanager.service.BasilInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BasilServiceImpl implements BasilService {
+public class BasilInfoServiceImpl implements BasilInfoService {
 
     private final BasilRepository repository;
 
     @Autowired
-    public BasilServiceImpl(final BasilRepository repository) {
+    public BasilInfoServiceImpl(final BasilRepository repository) {
         this.repository = repository;
     }
 
@@ -44,12 +44,6 @@ public class BasilServiceImpl implements BasilService {
     public Wetness getWetness() {
         Basil basil = new Basil();
         return basil.getWetness();
-    }
-
-    @Override
-    public WaterConsumption getWaterConsumption() {
-        Basil basil = new Basil();
-        return basil.getWaterConsumption();
     }
 
     @Override
