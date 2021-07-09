@@ -22,10 +22,11 @@ public class BasilRestController {
     @Autowired
     private BasilLogicLiveService logicLiveService;
 
-    @GetMapping("/basil/name")
+    @GetMapping("/basil/names")
     @CrossOrigin(origins = "http://localhost:4200")
-    public String getName (){
-        return basilInfoService.getName();
+    public ResponseEntity<String> getName (){
+        String name = basilInfoService.getName();
+        return ResponseEntity.ok().body(name);
     }
 
     @GetMapping("/basil/description")
@@ -40,7 +41,7 @@ public class BasilRestController {
         PlantTemperature temp = basilInfoService.getTemperature();
         return ResponseEntity.ok().body(temp);
     }
-    @GetMapping("/basil/light")
+    @GetMapping(value = "/basil/light")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Light> getLight(){
         Light light = basilInfoService.getLight();
@@ -65,5 +66,4 @@ public class BasilRestController {
         Basil show =  logicLiveService.showParameters();
         return ResponseEntity.ok().body(show);
     }
-
 }
