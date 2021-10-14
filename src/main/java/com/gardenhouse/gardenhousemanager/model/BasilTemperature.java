@@ -1,21 +1,21 @@
-package com.gardenhouse.gardenhousemanager.control;
+package com.gardenhouse.gardenhousemanager.model;
 
 import lombok.ToString;
 
 @ToString
-public enum PlantTemperature {
+public enum BasilTemperature {
 
    TEMPERATUREBASIL(22,25);
 
-    private final double min;
-    private final double max;
+    private final float min;
+    private final float max;
 
     /**
      *
      * @param min temperature of growth to Basil
      * @param max temperature of growth to Basil
      */
-    PlantTemperature(double min, double max) {
+    BasilTemperature(float min, float max) {
         this.min = min;
         this.max = max;
     }

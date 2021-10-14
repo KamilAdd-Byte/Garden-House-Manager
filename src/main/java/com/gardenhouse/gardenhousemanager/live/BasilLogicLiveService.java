@@ -1,6 +1,6 @@
 package com.gardenhouse.gardenhousemanager.live;
 
-import com.gardenhouse.gardenhousemanager.model.basil.Basil;
+import com.gardenhouse.gardenhousemanager.model.Basil;
 
 public interface BasilLogicLiveService {
     void sow();
