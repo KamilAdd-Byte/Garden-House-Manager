@@ -34,7 +34,7 @@ public class Basil extends Herb {
     private Light light;
 
     @Column(name = "waterConsumption")
-    private double waterConsumption;
+    private double waterForBasil;
 
     @Column(name = "liveHerbState")
     @Enumerated(EnumType.STRING)
@@ -48,27 +48,20 @@ public class Basil extends Herb {
     @Enumerated(EnumType.STRING)
     private MethodOfPlanting methodOfPlanting;
 
-    /**
-     * @param name it's final name - Basil
-     * @param basilImage
-     * @param basilLight
-     * @param basilWaterConsumption
-     * @param basilLiveHerbState
-     * @param id basil id
-     * @param temperature
-     * @param basilWetness
-     * @param basilMethodOfPlanting
-     */
-    public Basil(String name, String basilImage, Light basilLight, double basilWaterConsumption, LiveHerbState basilLiveHerbState,
-                 int id, BasilTemperature temperature, Wetness basilWetness, MethodOfPlanting basilMethodOfPlanting) {
-        super(name, basilImage, basilLight, basilWaterConsumption, basilLiveHerbState, basilWetness, basilMethodOfPlanting);
-        this.id = id;
+    @Column(name = "waterConsumptionPerDay")
+    @Enumerated(EnumType.STRING)
+    private final WaterConsumption waterConsumptionPerDay = WaterConsumption.MEDIUM;
+
+    public Basil(String name, String image, Light light, double waterFoHerb, LiveHerbState liveHerbState, WaterConsumption waterConsumptionPerDay, BasilTemperature temperature, double waterForBasil,
+                  Wetness wetness, MethodOfPlanting methodOfPlanting) {
+        super(name, image, light, waterFoHerb, liveHerbState, wetness, methodOfPlanting, waterConsumptionPerDay);
         this.temperature = temperature;
-        this.light = basilLight;
-        this.waterConsumption = basilWaterConsumption;
-        this.liveHerbState = LiveHerbState.PREPARATION;
-        this.wetness = basilWetness;
-        this.methodOfPlanting = basilMethodOfPlanting;
+        this.light = light;
+        this.waterForBasil = waterForBasil;
+        this.liveHerbState = liveHerbState;
+        this.wetness = wetness;
+        this.methodOfPlanting = methodOfPlanting;
+
     }
 
     public int getId() {
@@ -101,14 +94,16 @@ public class Basil extends Herb {
         super.setLight(light);
     }
 
-    @Override
-    public double getWaterConsumption() {
-        return super.getWaterConsumption();
+    public double getWaterForBasil() {
+        return waterForBasil;
     }
 
-    @Override
-    public void setWaterConsumption(double waterConsumption) {
-        super.setWaterConsumption(waterConsumption);
+    public void setWaterForBasil(double waterForBasil) {
+        this.waterForBasil = waterForBasil;
+    }
+
+    public WaterConsumption getWaterConsumptionPerDay() {
+        return waterConsumptionPerDay;
     }
 
     @Override
