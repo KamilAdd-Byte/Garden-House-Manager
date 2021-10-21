@@ -11,7 +11,6 @@ public enum BasilTemperature {
     private final float max;
 
     /**
-     *
      * @param min temperature of growth to Basil
      * @param max temperature of growth to Basil
      */

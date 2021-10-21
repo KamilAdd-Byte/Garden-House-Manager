@@ -21,7 +21,7 @@ public abstract class Herb extends Plant {
         super(name, image);
         this.light = light;
         this.waterConsumption = waterConsumption;
-        this.liveService = liveService;
+        this.liveService = LiveService.PREPARATION;
         this.wetness = wetness;
         this.methodOfPlanting = methodOfPlanting;
     }
@@ -47,7 +47,7 @@ public abstract class Herb extends Plant {
     }
 
     protected void setLiveService(LiveService liveService) {
-        this.liveService = liveService;
+        this.liveService = LiveService.PREPARATION;
     }
 
     protected Wetness getWetness() {

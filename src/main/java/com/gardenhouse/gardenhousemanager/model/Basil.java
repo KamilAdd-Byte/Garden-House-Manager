@@ -36,7 +36,7 @@ public class Basil extends Herb {
 
     @Column(name = "liveService")
     @Enumerated(EnumType.STRING)
-    private LiveService liveService;
+    private LiveService liveService = LiveService.PREPARATION;
 
     @Column(name = "wetness")
     @Enumerated(EnumType.STRING)
@@ -64,7 +64,7 @@ public class Basil extends Herb {
         this.temperature = temperature;
         this.light = basilLight;
         this.waterConsumption = basilWaterConsumption;
-        this.liveService = basilLiveService;
+        this.liveService = LiveService.PREPARATION;
         this.wetness = basilWetness;
         this.methodOfPlanting = basilMethodOfPlanting;
     }
@@ -85,7 +85,7 @@ public class Basil extends Herb {
         return temperature;
     }
 
-    private void setTemperature(BasilTemperature temperature) {
+    public void setTemperature(BasilTemperature temperature) {
         this.temperature = temperature;
     }
 
@@ -95,47 +95,47 @@ public class Basil extends Herb {
     }
 
     @Override
-    protected void setLight(Light light) {
+    public void setLight(Light light) {
         super.setLight(light);
     }
 
     @Override
-    protected double getWaterConsumption() {
+    public double getWaterConsumption() {
         return super.getWaterConsumption();
     }
 
     @Override
-    protected void setWaterConsumption(double waterConsumption) {
+    public void setWaterConsumption(double waterConsumption) {
         super.setWaterConsumption(waterConsumption);
     }
 
     @Override
-    protected LiveService getLiveService() {
+    public LiveService getLiveService() {
         return super.getLiveService();
     }
 
     @Override
-    protected void setLiveService(LiveService liveService) {
+    public void setLiveService(LiveService liveService) {
         super.setLiveService(liveService);
     }
 
     @Override
-    protected Wetness getWetness() {
+    public Wetness getWetness() {
         return super.getWetness();
     }
 
     @Override
-    protected void setWetness(Wetness wetness) {
+    public void setWetness(Wetness wetness) {
         super.setWetness(wetness);
     }
 
     @Override
-    protected MethodOfPlanting getMethodOfPlanting() {
+    public MethodOfPlanting getMethodOfPlanting() {
         return super.getMethodOfPlanting();
     }
 
     @Override
-    protected void setMethodOfPlanting(MethodOfPlanting methodOfPlanting) {
+    public void setMethodOfPlanting(MethodOfPlanting methodOfPlanting) {
         super.setMethodOfPlanting(methodOfPlanting);
     }
 
