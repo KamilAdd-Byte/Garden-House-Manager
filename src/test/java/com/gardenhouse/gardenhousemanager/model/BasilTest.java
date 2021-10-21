@@ -1,6 +1,7 @@
 package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
+import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
 import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
@@ -29,7 +30,7 @@ class BasilTest {
     @Test
     @DisplayName("should set for basil the live herb state")
     void setLiveServiceOnPreparation() {
-        Basil basil = new Basil();
+        Basil basil = createBasil();
 
         LiveHerbState liveHerbState = basil.getLiveHerbState();
 
@@ -45,11 +46,26 @@ class BasilTest {
         basil.setImage("image.png");
         basil.setLiveHerbState(LiveHerbState.PREPARATION);
         basil.setWaterConsumption(0.34);
-        System.out.println(basil);
+        basil.setMethodOfPlanting(MethodOfPlanting.SEEDLING);
         return basil;
     }
 
     @Test
-    void getName() {
+    @DisplayName("should set control fields for basil")
+    void shouldSetControlFieldsForBasil() {
+       //given
+       Basil basil = createBasil();
+
+       //when
+       basil.setLight(Light.LITTLE);
+       basil.setLiveHerbState(LiveHerbState.PLANTING);
+
+        LiveHerbState changeLiveHerbState = basil.getLiveHerbState();
+
+        basil.setLight(Light.HARD);
+        //then
+        assertNotNull(basil);
+        assertThat(basil.getLiveHerbState()).isEqualTo(changeLiveHerbState);
+        assertThat(basil.getLight()).isEqualTo(Light.HARD);
     }
 }

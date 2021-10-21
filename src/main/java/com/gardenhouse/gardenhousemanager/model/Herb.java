@@ -1,7 +1,7 @@
 package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
-import com.gardenhouse.gardenhousemanager.control.MethodOfPlanting;
+import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
 import lombok.NoArgsConstructor;

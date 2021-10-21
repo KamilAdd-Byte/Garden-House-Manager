@@ -2,6 +2,7 @@ package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.*;
 import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
+import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -92,7 +93,7 @@ public class Basil extends Herb {
 
     @Override
     protected Light getLight() {
-        return Light.MEDIUM;
+        return super.getLight();
     }
 
     @Override

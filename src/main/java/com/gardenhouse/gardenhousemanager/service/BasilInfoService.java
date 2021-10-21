@@ -2,6 +2,7 @@ package com.gardenhouse.gardenhousemanager.service;
 
 import com.gardenhouse.gardenhousemanager.control.*;
 import com.gardenhouse.gardenhousemanager.model.Basil;
+import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 
 public interface BasilInfoService {
