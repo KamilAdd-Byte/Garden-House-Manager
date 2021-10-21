@@ -1,8 +1,7 @@
-package com.gardenhouse.gardenhousemanager.serviceImpl;
+package com.gardenhouse.gardenhousemanager.weather.service;
 
-import com.gardenhouse.gardenhousemanager.model.WeatherDto;
-import com.gardenhouse.gardenhousemanager.service.WeatherService;
-import com.gardenhouse.gardenhousemanager.webclient.weather.WeatherClient;
+import com.gardenhouse.gardenhousemanager.weather.dto.WeatherDto;
+import com.gardenhouse.gardenhousemanager.weather.webclient.WeatherClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

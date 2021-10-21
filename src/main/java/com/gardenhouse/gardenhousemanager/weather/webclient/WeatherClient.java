@@ -1,7 +1,7 @@
-package com.gardenhouse.gardenhousemanager.webclient.weather;
+package com.gardenhouse.gardenhousemanager.weather.webclient;
 
-import com.gardenhouse.gardenhousemanager.dto.OpenWeatherWeatherDto;
-import com.gardenhouse.gardenhousemanager.model.WeatherDto;
+import com.gardenhouse.gardenhousemanager.weather.dto.model.OpenWeatherWeatherDto;
+import com.gardenhouse.gardenhousemanager.weather.dto.WeatherDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 

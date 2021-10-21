@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.dto;
+package com.gardenhouse.gardenhousemanager.weather.dto.model;
 
 import lombok.Getter;
 

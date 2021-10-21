@@ -1,7 +1,8 @@
 package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.*;
-import com.gardenhouse.gardenhousemanager.live.LiveService;
+import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
+import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import javax.persistence.*;
@@ -34,9 +35,9 @@ public class Basil extends Herb {
     @Column(name = "waterConsumption")
     private double waterConsumption;
 
-    @Column(name = "liveService")
+    @Column(name = "liveHerbState")
     @Enumerated(EnumType.STRING)
-    private LiveService liveService = LiveService.PREPARATION;
+    private LiveHerbState liveHerbState = LiveHerbState.PREPARATION;
 
     @Column(name = "wetness")
     @Enumerated(EnumType.STRING)
@@ -51,20 +52,20 @@ public class Basil extends Herb {
      * @param basilImage
      * @param basilLight
      * @param basilWaterConsumption
-     * @param basilLiveService
+     * @param basilLiveHerbState
      * @param id basil id
      * @param temperature
      * @param basilWetness
      * @param basilMethodOfPlanting
      */
-    public Basil(String name, String basilImage, Light basilLight, double basilWaterConsumption, LiveService basilLiveService,
+    public Basil(String name, String basilImage, Light basilLight, double basilWaterConsumption, LiveHerbState basilLiveHerbState,
                  int id, BasilTemperature temperature, Wetness basilWetness, MethodOfPlanting basilMethodOfPlanting) {
-        super(name, basilImage, basilLight, basilWaterConsumption, basilLiveService, basilWetness, basilMethodOfPlanting);
+        super(name, basilImage, basilLight, basilWaterConsumption, basilLiveHerbState, basilWetness, basilMethodOfPlanting);
         this.id = id;
         this.temperature = temperature;
         this.light = basilLight;
         this.waterConsumption = basilWaterConsumption;
-        this.liveService = LiveService.PREPARATION;
+        this.liveHerbState = LiveHerbState.PREPARATION;
         this.wetness = basilWetness;
         this.methodOfPlanting = basilMethodOfPlanting;
     }
@@ -110,13 +111,13 @@ public class Basil extends Herb {
     }
 
     @Override
-    public LiveService getLiveService() {
-        return super.getLiveService();
+    public LiveHerbState getLiveHerbState() {
+        return super.getLiveHerbState();
     }
 
     @Override
-    public void setLiveService(LiveService liveService) {
-        super.setLiveService(liveService);
+    public void setLiveHerbState(LiveHerbState liveHerbState) {
+        super.setLiveHerbState(liveHerbState);
     }
 
     @Override

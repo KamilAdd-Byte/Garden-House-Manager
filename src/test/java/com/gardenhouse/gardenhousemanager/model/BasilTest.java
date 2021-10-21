@@ -2,7 +2,8 @@ package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
-import com.gardenhouse.gardenhousemanager.live.LiveService;
+import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
+import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,12 +27,13 @@ class BasilTest {
     }
 
     @Test
+    @DisplayName("should set for basil the live herb state")
     void setLiveServiceOnPreparation() {
         Basil basil = new Basil();
-        basil.setLiveService(LiveService.PREPARATION);
-        LiveService liveService = basil.getLiveService();
 
-        assertThat(liveService).as("Create object set Live to PREPARATION").isEqualTo(LiveService.PREPARATION);
+        LiveHerbState liveHerbState = basil.getLiveHerbState();
+
+        assertThat(liveHerbState).as("Create object set Live to PREPARATION").isEqualTo(LiveHerbState.PREPARATION);
     }
 
     private Basil createBasil() {
@@ -41,10 +43,11 @@ class BasilTest {
         basil.setName("My basil");
         basil.setLight(Light.MEDIUM);
         basil.setImage("image.png");
+        basil.setLiveHerbState(LiveHerbState.PREPARATION);
+        basil.setWaterConsumption(0.34);
+        System.out.println(basil);
         return basil;
     }
-
-
 
     @Test
     void getName() {

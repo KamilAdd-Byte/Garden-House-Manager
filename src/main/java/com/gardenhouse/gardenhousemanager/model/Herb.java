@@ -3,7 +3,7 @@ package com.gardenhouse.gardenhousemanager.model;
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
-import com.gardenhouse.gardenhousemanager.live.LiveService;
+import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -13,15 +13,15 @@ public abstract class Herb extends Plant {
 
     private Light light;
     private double waterConsumption;
-    private LiveService liveService;
+    private LiveHerbState liveHerbState;
     private Wetness wetness;
     private MethodOfPlanting methodOfPlanting;
 
-    protected Herb(String name, String image, Light light, double waterConsumption, LiveService liveService, Wetness wetness, MethodOfPlanting methodOfPlanting) {
+    protected Herb(String name, String image, Light light, double waterConsumption, LiveHerbState liveHerbState, Wetness wetness, MethodOfPlanting methodOfPlanting) {
         super(name, image);
         this.light = light;
         this.waterConsumption = waterConsumption;
-        this.liveService = LiveService.PREPARATION;
+        this.liveHerbState = LiveHerbState.PREPARATION;
         this.wetness = wetness;
         this.methodOfPlanting = methodOfPlanting;
     }
@@ -42,12 +42,12 @@ public abstract class Herb extends Plant {
         this.waterConsumption = waterConsumption;
     }
 
-    protected LiveService getLiveService() {
-        return liveService;
+    protected LiveHerbState getLiveHerbState() {
+        return liveHerbState;
     }
 
-    protected void setLiveService(LiveService liveService) {
-        this.liveService = LiveService.PREPARATION;
+    protected void setLiveHerbState(LiveHerbState liveHerbState) {
+        this.liveHerbState = LiveHerbState.PREPARATION;
     }
 
     protected Wetness getWetness() {

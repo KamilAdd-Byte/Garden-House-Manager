@@ -2,7 +2,7 @@
 //
 //import com.gardenhouse.gardenhousemanager.control.*;
 //import com.gardenhouse.gardenhousemanager.model.Basil;
-//import com.gardenhouse.gardenhousemanager.model.BasilTemperature;
+//import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 //import com.gardenhouse.gardenhousemanager.repository.BasilRepository;
 //import com.gardenhouse.gardenhousemanager.service.BasilInfoService;
 //import org.springframework.beans.factory.annotation.Autowired;

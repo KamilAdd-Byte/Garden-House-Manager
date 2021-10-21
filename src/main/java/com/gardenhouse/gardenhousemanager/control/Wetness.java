@@ -9,7 +9,6 @@ public enum Wetness {
     public int maxWetness;
 
     /**
-     *
      * @param minWetness of growth to Basil
      * @param maxWetness of growth to Basil
      */
