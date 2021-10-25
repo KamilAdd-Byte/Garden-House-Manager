@@ -50,10 +50,10 @@ public class Basil extends Herb {
 
     @Column(name = "waterConsumptionPerDay")
     @Enumerated(EnumType.STRING)
-    private final WaterConsumption waterConsumptionPerDay = WaterConsumption.MEDIUM;
+    private WaterConsumption waterConsumptionPerDay;
 
     public Basil(String name, String image, Light light, double waterFoHerb, LiveHerbState liveHerbState, WaterConsumption waterConsumptionPerDay, BasilTemperature temperature, double waterForBasil,
-                  Wetness wetness, MethodOfPlanting methodOfPlanting) {
+                 Wetness wetness, MethodOfPlanting methodOfPlanting, WaterConsumption waterConsumptionPerDay1) {
         super(name, image, light, waterFoHerb, liveHerbState, wetness, methodOfPlanting, waterConsumptionPerDay);
         this.temperature = temperature;
         this.light = light;
@@ -61,7 +61,7 @@ public class Basil extends Herb {
         this.liveHerbState = liveHerbState;
         this.wetness = wetness;
         this.methodOfPlanting = methodOfPlanting;
-
+        this.waterConsumptionPerDay = WaterConsumption.MEDIUM;
     }
 
     public int getId() {
@@ -96,6 +96,10 @@ public class Basil extends Herb {
 
     public double getWaterForBasil() {
         return waterForBasil;
+    }
+
+    public void setWaterConsumptionPerDay(WaterConsumption waterConsumptionPerDay) {
+        this.waterConsumptionPerDay = waterConsumptionPerDay;
     }
 
     public void setWaterForBasil(double waterForBasil) {
