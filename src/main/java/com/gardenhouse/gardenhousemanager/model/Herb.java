@@ -1,6 +1,7 @@
 package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
+import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
@@ -12,15 +13,17 @@ import lombok.ToString;
 public abstract class Herb extends Plant {
 
     private Light light;
-    private double waterConsumption;
+    private double waterForHerb;
     private LiveHerbState liveHerbState;
     private Wetness wetness;
     private MethodOfPlanting methodOfPlanting;
+    private WaterConsumption waterConsumptionPerDay;
 
-    protected Herb(String name, String image, Light light, double waterConsumption, LiveHerbState liveHerbState, Wetness wetness, MethodOfPlanting methodOfPlanting) {
+    protected Herb(String name, String image, Light light, double waterFoHerb, LiveHerbState liveHerbState, Wetness wetness, MethodOfPlanting methodOfPlanting, WaterConsumption waterConsumptionPerDay) {
         super(name, image);
         this.light = light;
-        this.waterConsumption = waterConsumption;
+        this.waterForHerb = waterFoHerb;
+        this.waterConsumptionPerDay = waterConsumptionPerDay;
         this.liveHerbState = LiveHerbState.PREPARATION;
         this.wetness = wetness;
         this.methodOfPlanting = methodOfPlanting;
@@ -34,12 +37,12 @@ public abstract class Herb extends Plant {
         this.light = light;
     }
 
-    protected double getWaterConsumption() {
-        return waterConsumption;
+    public double getWaterConsumption() {
+        return waterForHerb;
     }
 
-    protected void setWaterConsumption(double waterConsumption) {
-        this.waterConsumption = waterConsumption;
+    public void setWaterConsumption(double waterConsumption) {
+        this.waterForHerb = waterConsumption;
     }
 
     protected LiveHerbState getLiveHerbState() {
