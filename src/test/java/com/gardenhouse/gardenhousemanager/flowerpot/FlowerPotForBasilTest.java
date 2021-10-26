@@ -25,8 +25,12 @@ class FlowerPotForBasilTest {
         pot.setColor(Color.BLUE);
         pot.setMaterial(Material.PLASTIC);
 
-        double q = pot.amountOfKindOfSoil(PotSize.MEDIUM);
-        System.out.println("Cm 3 ziemi w doniczce: " + q);
+        double q = pot.amountOfSubsoil(PotSize.EXTRA_SMALL);
+        System.out.println("Litrów ziemi w doniczce: " + q);
+        double v = pot.amountOfSubsoilWithUserParameters(30, 20, 10);
+        System.out.println(v + " parameters");
+        float i = pot.convertCmToDm(20);
+        System.out.println(i);
 
     }
 

@@ -12,7 +12,7 @@ public enum PotSize {
 
     /**
      * @param diameter 'średnica doniczki' - it's diameter of flowerpot.
-     * @param depth 'głębokość doniczki' - it's depth of flowerpot.
+     * @param depth 'głębokość/wysokość doniczki' - it's depth of flowerpot.
      */
     PotSize(int diameter, int depth) {
         this.diameter = diameter;
