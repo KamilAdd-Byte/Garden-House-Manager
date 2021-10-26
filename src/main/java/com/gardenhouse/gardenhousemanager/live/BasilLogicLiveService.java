@@ -4,7 +4,7 @@ import com.gardenhouse.gardenhousemanager.model.Basil;
 
 public interface BasilLogicLiveService {
     void sow();
-    Basil showParameters();
+    void showParameters();
     Basil waterIt(double waterConsumption);
     void choiceMethodOfPlanting();
 }
