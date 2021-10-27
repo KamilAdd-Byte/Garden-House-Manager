@@ -29,7 +29,7 @@ class FlowerPotForBasilTest {
         System.out.println("Litrów ziemi w doniczce: " + q);
         double v = pot.amountOfSubsoilWithUserParameters(30, 20, 10);
         System.out.println(v + " parameters");
-        float i = pot.convertCmToDm(20);
+        double i = pot.amountOfSubsoilWithUserParameters(30,30,20);
         System.out.println(i);
 
     }

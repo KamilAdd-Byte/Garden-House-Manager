@@ -39,14 +39,14 @@ public class FlowerPotForBasil extends FlowerPot {
     }
 
     /**
-     * @param depth
-     * @param upDiameter
-     * @param downDiameter
-     * @return
+     * @param depth głębokość doniczki
+     * @param upDiameter średnica górnego otworu doniczki
+     * @param downDiameter średnica dna doniczki
+     * @return zwraca przybliżona wartość ilości ziemi, które mieszcza się w danej doniczce (wynik w litrach)
      */
     public double amountOfSubsoilWithUserParameters (double depth,double upDiameter, double downDiameter) {
         double arithmeticAverage = (upDiameter + downDiameter) / 2;
-        return (Math.PI * Math.pow(arithmeticAverage,2) * depth);
+        return (Math.PI * Math.pow(arithmeticAverage/10,2) * depth/10) / 10;
     }
 
     /**
