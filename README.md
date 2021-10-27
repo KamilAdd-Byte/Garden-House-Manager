@@ -24,13 +24,13 @@ Sianie bazyli
 - system nawodnienia (ilość wody w ml na dzień)
 - termin siania (optymalny czas wzrostu dla Bazyli)
 
-## Backend i Frontend
+## Technologia projektu
 
 Backend: Java 11, Spring boot, Maven, Lombok
 Frontend: Angular
 Testy: AssertJ, JUnit5
 
-## Source of knowledge
+## żródła wiedzy
 
 https://zielonyogrodek.pl/dom-i-balkon/rosliny-na-balkon/4092-uprawa-bazylii-w-doniczce
 
