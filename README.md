@@ -30,7 +30,7 @@ Backend: Java 11, Spring boot, Maven, Lombok
 Frontend: Angular
 Testy: AssertJ, JUnit5
 
-## żródła wiedzy
+## Źródła wiedzy
 
 https://zielonyogrodek.pl/dom-i-balkon/rosliny-na-balkon/4092-uprawa-bazylii-w-doniczce
 
