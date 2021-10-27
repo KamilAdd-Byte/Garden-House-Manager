@@ -1,11 +1,11 @@
 package com.gardenhouse.gardenhousemanager.service;
 
-import com.gardenhouse.gardenhousemanager.model.Herbs;
-import org.springframework.stereotype.Service;
+import com.gardenhouse.gardenhousemanager.model.HerbDetail;
+
 import java.util.List;
 
 
 public interface HerbsService {
-    List<Herbs> allHerbs();
-    Herbs addHerbs(Herbs herbs);
+    List<HerbDetail> allHerbs();
+    HerbDetail addHerbs(HerbDetail herbDetail);
 }

@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Herbs extends Plant{
+public class HerbDetail extends Plant{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHerb;

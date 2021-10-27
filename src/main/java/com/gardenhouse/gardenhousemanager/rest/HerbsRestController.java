@@ -1,6 +1,6 @@
 package com.gardenhouse.gardenhousemanager.rest;
 
-import com.gardenhouse.gardenhousemanager.model.Herbs;
+import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 import com.gardenhouse.gardenhousemanager.service.HerbsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +15,14 @@ public class HerbsRestController {
     HerbsService service;
 
     @GetMapping("/herbs")
-    public ResponseEntity<List<Herbs>> getAllHerbs () {
-        List<Herbs> herbs = service.allHerbs();
+    public ResponseEntity<List<HerbDetail>> getAllHerbs () {
+        List<HerbDetail> herbs = service.allHerbs();
         return ResponseEntity.ok().body(herbs);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Herbs> addHerbs(@RequestBody Herbs herbs){
-        Herbs save = service.addHerbs(herbs);
+    public ResponseEntity<HerbDetail> addHerbs(@RequestBody HerbDetail herbDetail){
+        HerbDetail save = service.addHerbs(herbDetail);
         return ResponseEntity.ok().body(save);
     }
 
