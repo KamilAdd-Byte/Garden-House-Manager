@@ -8,9 +8,7 @@ import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.awt.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest

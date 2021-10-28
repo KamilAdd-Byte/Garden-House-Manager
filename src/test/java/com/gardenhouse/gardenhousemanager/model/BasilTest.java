@@ -8,6 +8,12 @@ import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,6 +53,7 @@ class BasilTest {
         basil.setLiveHerbState(LiveHerbState.PREPARATION);
         basil.setWaterConsumption(0.34);
         basil.setMethodOfPlanting(MethodOfPlanting.SEEDLING);
+        System.out.println(basil);
         return basil;
     }
 
@@ -67,5 +74,18 @@ class BasilTest {
         assertNotNull(basil);
         assertThat(basil.getLiveHerbState()).isEqualTo(changeLiveHerbState);
         assertThat(basil.getLight()).isEqualTo(Light.HARD);
+    }
+
+    @Test
+    @DisplayName("should set control fields for basil")
+    void shouldBasilChangeDaysOfLifeWhenTheDaysGoBy() {
+        //given
+        Basil basil = createBasil();
+        Date date = new Date();
+        int date1 = date.getDate();
+        System.out.println(date1);
+        //then
+        assertNotNull(basil);
+        assertThat(basil.getLight()).isEqualTo(Light.MEDIUM);
     }
 }

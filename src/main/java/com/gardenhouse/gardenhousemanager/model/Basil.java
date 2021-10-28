@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 /**
  * @author kamillodzinski
@@ -20,6 +21,9 @@ public class Basil extends Herb {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "daysOfLife")
+    private int daysOfLife;
 
     @Column(name = "description")
     @Size(min = 2,max = 400)
@@ -53,7 +57,7 @@ public class Basil extends Herb {
     private WaterConsumption waterConsumptionPerDay;
 
     public Basil(String name, String image, Light light, double waterFoHerb, LiveHerbState liveHerbState, WaterConsumption waterConsumptionPerDay, BasilTemperature temperature, double waterForBasil,
-                 Wetness wetness, MethodOfPlanting methodOfPlanting, WaterConsumption waterConsumptionPerDay1) {
+                 Wetness wetness, MethodOfPlanting methodOfPlanting, WaterConsumption waterConsumptionPerDay1, int daysOfLife) {
         super(name, image, light, waterFoHerb, liveHerbState, wetness, methodOfPlanting, waterConsumptionPerDay);
         this.temperature = temperature;
         this.light = light;
@@ -61,7 +65,13 @@ public class Basil extends Herb {
         this.liveHerbState = liveHerbState;
         this.wetness = wetness;
         this.methodOfPlanting = methodOfPlanting;
+        this.daysOfLife = daysOfLife++;
         this.waterConsumptionPerDay = WaterConsumption.MEDIUM;
+        int value = LocalDateTime.now().getDayOfWeek().getValue();
+        while (value!=0){
+            value=daysOfLife;
+            daysOfLife++;
+        }
     }
 
     public int getId() {
@@ -70,6 +80,14 @@ public class Basil extends Herb {
 
     private void setId(int id) {
         this.id = id;
+    }
+
+    public int getDaysOfLife() {
+        return daysOfLife;
+    }
+
+    public void setDaysOfLife(int daysOfLife) {
+        this.daysOfLife = daysOfLife;
     }
 
     public String getDescription() {
