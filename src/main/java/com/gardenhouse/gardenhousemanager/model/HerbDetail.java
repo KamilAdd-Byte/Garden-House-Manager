@@ -45,10 +45,13 @@ public class HerbDetail extends Plant {
 
     private boolean growthUp;
 
+    private String monthToSow;
+
     private Date dateOfSow = new Date();
 
     public HerbDetail(String name, String image, int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
-                       Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp) {
+                       Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp,
+                      String monthToSow) {
         super(name, image);
         this.dayLife = dayLife;
         this.waterConsumptionPerDay = waterConsumptionPerDay;
@@ -58,19 +61,54 @@ public class HerbDetail extends Plant {
         this.minTemperature = minTemperature;
         this.maxTemperature = maxTemperature;
         this.growthUp = growthUp;
+        this.monthToSow = monthToSow;
+        this.dateOfSow = new Date();
+    }
+
+    public String getMonthToSow() {
+        return monthToSow;
+    }
+
+    public void setMonthToSow(String monthToSow) {
+        this.monthToSow = monthToSow;
+    }
+
+    public Date getDateOfSow() {
+        if (growthUp==true){
+            return dateOfSow;
+        }else
+            System.out.println("Zioło nie jest posadzone");
+        return null;
+    }
+
+    public void setDateOfSow(Date dateOfSow) {
+        this.dateOfSow = dateOfSow;
     }
 
     @Override
     public String toString() {
-       String result = getName() + " img: " + getImage() + "\n";
-        result+= "id zioła: "+ idHerb + "\n";
-        result+= "dni życia: "+ dayLife + "\n";
+        String result = getName() + " img: " + getImage() + "\n";
+        result = getWaterConsumptionForDay(result);
+        return result;
+    }
+
+    private String getWaterConsumptionForDay(String result) {
         result+= "zapotrzebowanie dzienne na wodę: "+ waterConsumptionPerDay.scope + " litra dziennie"+ "\n";
         result+= "preferowane światło: "+light.getDescription() + "\n";
         result+= "wilgotność MIN i MAX: "+ wetness.minWetness + " min " + wetness.maxWetness+ " max "+"\n";
         result+= "opis: "+ description + "\n";
         result+= "minimalna temperatura dla: "  + minTemperature + "\n";
         result+= "maksymalna temperatura dla: " + maxTemperature + "\n";
+        result+= "preferowany miesiąc wysiewu: " + monthToSow + "\n";
+        return result;
+    }
+
+    public String toStringSowHerb() {
+       String result = getName() + " img: " + getImage() + "\n";
+        result+= "id zioła: "+ idHerb + "\n";
+        result+= "dni życia: "+ dayLife + "\n";
+        result = getWaterConsumptionForDay(result);
+        result+= "data zasadzenia: " + getDateOfSow() + "\n";
         result+= "------------------------------------------------------------------------------------------";
         return result;
     }

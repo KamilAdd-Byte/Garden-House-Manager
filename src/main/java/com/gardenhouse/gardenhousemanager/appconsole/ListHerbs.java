@@ -29,10 +29,14 @@ public class ListHerbs implements List<HerbDetail> {
         }
         herbDetails.add(new HerbDetail("Bazylia","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
                 0, WaterConsumption.MEDIUM, Light.MEDIUM, Wetness.OPTIMUM,"Porządne zioło",
-                22.5,25.5,false));
+                22.5,25.5,false,"Maj"));
         herbDetails.add(new HerbDetail("Liść laurowy","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
-                0, WaterConsumption.LITTLE, Light.LITTLE, Wetness.MINIMUM,"Przyprawa do zup a szczególnie rosołu",
-                16,25,false));
+                0, WaterConsumption.LITTLE, Light.LITTLE, Wetness.OPTIMUM,"Przyprawa do zup a szczególnie rosołu.Świeże liście laurowe – obrywa się na bieżąco (zimą mniej), w miarę potrzeb. Najbardziej aromatyczne są młode liście.",
+                20,25,false,"Marzec,Kwiecień"));
+        herbDetails.add(new HerbDetail("Tymianek","https://img.shmbk.pl/rimgsph/1102383_f6256a52-656a-49e4-8b4d-4466c1537b41_crop_1250_750_zdjecie.jpg",
+                0, WaterConsumption.LITTLE, Light.HARD, Wetness.MINIMUM," Ma on postać małej krzewinki o drobnych listkach, ale tkwi w nim wielka moc. Potrawom mięsnym, rybnym i warzywnym nadaje dymnego, pikantnego posmaku – " +
+                "można go także stosować jako dodatek do omletów, sosów, zapiekanek i potraw z makaronu.",
+                10,15,false,"Marzec1"));
         return herbDetails;
     }
 
