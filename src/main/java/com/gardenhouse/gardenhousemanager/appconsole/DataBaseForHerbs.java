@@ -19,7 +19,7 @@ import java.util.*;
 @Setter
 @ToString
 @NoArgsConstructor
-public class ListHerbs implements List<HerbDetail> {
+public class DataBaseForHerbs implements List<HerbDetail> {
 
     private List<HerbDetail> herbDetails;
 
@@ -83,8 +83,6 @@ public class ListHerbs implements List<HerbDetail> {
         for (HerbDetail herbDetail : herbDetails) {
             if (herbDetail.getName().contains(name)){
                 return herbDetail;
-            }else{
-                System.err.println("nie znaleziono zioła po nazwie");
             }
         }
         return null;

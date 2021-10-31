@@ -13,9 +13,8 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.function.BiConsumer;
 
 /**
  * This is list herbs for angular and console java APP.
@@ -54,6 +53,7 @@ public class HerbDetail extends Plant implements SowHerb {
 
     private Date dateOfSow;
 
+
     public HerbDetail(String name, String image, int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
                        Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp,
                       String monthToSow) {
@@ -90,6 +90,7 @@ public class HerbDetail extends Plant implements SowHerb {
         this.dateOfSow = dateOfSow;
     }
 
+
     @Override
     public String toString() {
         String result = getName() + " img: " + getImage() + "\n";
@@ -118,14 +119,12 @@ public class HerbDetail extends Plant implements SowHerb {
         return result;
     }
 
+
     @Override
-    public void sow(HerbDetail herb) {
+    public void sow(int id,HerbDetail herb) {
         herb.setGrowthUp(true);
         herb.setDateOfSow(new Date());
-        if (MyHerbs.sowHerbs==null){
-            MyHerbs.sowHerbs = new ArrayList<>();
-        }
-        MyHerbs.sowHerbs.add(herb);
+        herb.setIdHerb(id);
     }
 
     @Override
@@ -142,16 +141,5 @@ public class HerbDetail extends Plant implements SowHerb {
         int result = dayOfMonth - dateOfSowDay;
         herb.setIdHerb(result);
         return result;
-    }
-
-    public static class MyHerbs {
-        private static List<HerbDetail> sowHerbs;
-
-        public List<HerbDetail> getSowHerbs() {
-            return sowHerbs;
-        }
-        public void setSowHerbs(List<HerbDetail> sowHerbs) {
-            this.sowHerbs = sowHerbs;
-        }
     }
 }
