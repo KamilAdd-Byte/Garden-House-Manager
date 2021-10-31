@@ -13,20 +13,20 @@ import java.awt.*;
 @Getter
 @Setter
 @ToString
-public abstract class FlowerPot {
+public class FlowerPot {
     private PotSize potSize;
     private Color color;
     private Material material;
 
 
-    protected FlowerPot(PotSize potSize, Color color, Material material) {
+    public FlowerPot(PotSize potSize, Color color, Material material) {
         this.potSize = potSize;
         this.color = color;
         this.material = material;
 
     }
 
-    protected FlowerPot(PotSize potSize, Material material) {
+    public FlowerPot(PotSize potSize, Material material) {
         this.potSize = potSize;
         this.material = material;
     }

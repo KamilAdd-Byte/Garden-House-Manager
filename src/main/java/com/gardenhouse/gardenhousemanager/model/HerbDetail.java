@@ -3,6 +3,7 @@ package com.gardenhouse.gardenhousemanager.model;
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
+import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.SowHerb;
 import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import lombok.Getter;
@@ -53,9 +54,23 @@ public class HerbDetail extends Plant implements SowHerb {
 
     private Date dateOfSow;
 
+    private FlowerPot pot;
 
+    /**It's constructor for no sow herbs
+     * @param name nazwa zioła
+     * @param image miejsce na zdjęcie dla zioła
+     * @param dayLife gdy 'growthUp=true' dni życia naliczaja się
+     * @param waterConsumptionPerDay przybliżona wartość spozywania wody przez dane zioło w skali dnia
+     * @param light przybliżona wartość nasłonecznienia dla prawidłowego rozwoju zioła
+     * @param wetness przybliżona wartość poziomu wilgotności dla prawidłowego rozwoju zioła
+     * @param description opis zioła
+     * @param minTemperature min temperatura dla prawidłowego wzrostu zioła
+     * @param maxTemperature max temperatura dla prawidłowego wzrostu zioła
+     * @param growthUp wartość tru, gdy zasiejemy zioło
+     * @param monthToSow preferowany miesiąc zasiania zioła
+     */
     public HerbDetail(String name, String image, int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
-                       Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp,
+                      Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp,
                       String monthToSow) {
         super(name, image);
         this.dayLife = dayLife;
@@ -68,6 +83,39 @@ public class HerbDetail extends Plant implements SowHerb {
         this.growthUp = growthUp;
         this.monthToSow = monthToSow;
         this.dateOfSow = new Date();
+
+    }
+    //
+
+    /**It's constructor for SOW herbs
+     * @param name nazwa zioła
+     * @param image miejsce na zdjęcie dla zioła
+     * @param dayLife gdy growthUp=true dni życia naliczaja się
+     * @param waterConsumptionPerDay przybliżona wartość spozywania wody przez dane zioło w skali dnia
+     * @param light przybliżona wartość nasłonecznienia dla prawidłowego rozwoju zioła
+     * @param wetness przybliżona wartość poziomu wilgotności dla prawidłowego rozwoju zioła
+     * @param description opis zioła
+     * @param minTemperature min temperatura dla prawidłowego wzrostu zioła
+     * @param maxTemperature max temperatura dla prawidłowego wzrostu zioła
+     * @param growthUp wartość tru, gdy zasiejemy zioło
+     * @param monthToSow preferowany miesiąc zasiania zioła
+     * @param pot parametry doniczki, w której zasiane jest zioło
+     */
+    public HerbDetail(String name, String image, int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
+                       Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp,
+                      String monthToSow,FlowerPot pot) {
+        super(name, image);
+        this.dayLife = dayLife;
+        this.waterConsumptionPerDay = waterConsumptionPerDay;
+        this.light = light;
+        this.wetness = wetness;
+        this.description = description;
+        this.minTemperature = minTemperature;
+        this.maxTemperature = maxTemperature;
+        this.growthUp = growthUp;
+        this.monthToSow = monthToSow;
+        this.dateOfSow = new Date();
+        this.pot = pot;
     }
 
     public String getMonthToSow() {

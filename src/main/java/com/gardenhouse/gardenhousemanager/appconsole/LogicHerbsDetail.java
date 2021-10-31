@@ -56,10 +56,10 @@ public class LogicHerbsDetail implements Runnable{
                                 System.out.println("Nadaj swojemu ziołu id w postaci liczby");
                                 int idHerb = scanner.nextInt();
                                 scanner.nextLine();
-                                System.out.println("Jakiego rodzju masz oświetlenie w kuchni?"+"\n"+"nasłoneczniony parapet = Wysokie");
+                                System.out.println("Jakiego rodzju masz oświetlenie w kuchni?");
                                 Light[] values = Light.values();
                                 for (Light value : values) {
-                                    System.out.println(value.getDescription());
+                                    System.out.println("* "+ value.getDescription());
                                 }
                                 String setLight = scanner.nextLine();
                                 HerbDetail herb = new HerbDetail();

@@ -11,6 +11,8 @@ import java.util.Map;
 public class User {
     private String name;
     private Map<Integer, HerbDetail> myHerbs;
+    private UserKitchenParameters myKitchen;
+
 
     public User(String name) {
         this.name = name;
