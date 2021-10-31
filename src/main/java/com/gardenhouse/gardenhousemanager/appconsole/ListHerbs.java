@@ -59,12 +59,12 @@ public class ListHerbs implements List<HerbDetail> {
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        return this.herbDetails.contains(o);
     }
 
     @Override
     public Iterator<HerbDetail> iterator() {
-        return null;
+        return this.herbDetails.iterator();
     }
 
     @Override
@@ -77,6 +77,19 @@ public class ListHerbs implements List<HerbDetail> {
         // TODO: 31.10.2021
         return null;
     }
+
+    public HerbDetail search(String name){
+        List<HerbDetail> herbDetails = allHerbs();
+        for (HerbDetail herbDetail : herbDetails) {
+            if (herbDetail.getName().contains(name)){
+                return herbDetail;
+            }else{
+                System.err.println("nie znaleziono zioła po nazwie");
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public boolean add(HerbDetail herbDetail) {
@@ -158,7 +171,7 @@ public class ListHerbs implements List<HerbDetail> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        return herbDetails.indexOf(o);
     }
 
     @Override

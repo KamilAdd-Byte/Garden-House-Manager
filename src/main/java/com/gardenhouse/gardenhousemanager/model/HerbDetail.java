@@ -13,12 +13,13 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * This is list herbs for angular and console java APP.
  */
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -121,6 +122,10 @@ public class HerbDetail extends Plant implements SowHerb {
     public void sow(HerbDetail herb) {
         herb.setGrowthUp(true);
         herb.setDateOfSow(new Date());
+        if (MyHerbs.sowHerbs==null){
+            MyHerbs.sowHerbs = new ArrayList<>();
+        }
+        MyHerbs.sowHerbs.add(herb);
     }
 
     @Override
@@ -137,5 +142,16 @@ public class HerbDetail extends Plant implements SowHerb {
         int result = dayOfMonth - dateOfSowDay;
         herb.setIdHerb(result);
         return result;
+    }
+
+    public static class MyHerbs {
+        private static List<HerbDetail> sowHerbs;
+
+        public List<HerbDetail> getSowHerbs() {
+            return sowHerbs;
+        }
+        public void setSowHerbs(List<HerbDetail> sowHerbs) {
+            this.sowHerbs = sowHerbs;
+        }
     }
 }
