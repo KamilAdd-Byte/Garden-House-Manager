@@ -29,14 +29,21 @@ public class ListHerbs implements List<HerbDetail> {
         }
         herbDetails.add(new HerbDetail("Bazylia","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
                 0, WaterConsumption.MEDIUM, Light.MEDIUM, Wetness.OPTIMUM,"Porządne zioło",
-                22.5,25.5,false,"Maj"));
+                22.5,25.5,false,"Kwiecień"));
         herbDetails.add(new HerbDetail("Liść laurowy","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
-                0, WaterConsumption.LITTLE, Light.LITTLE, Wetness.OPTIMUM,"Przyprawa do zup a szczególnie rosołu.Świeże liście laurowe – obrywa się na bieżąco (zimą mniej), w miarę potrzeb. Najbardziej aromatyczne są młode liście.",
+                0, WaterConsumption.LITTLE, Light.LITTLE, Wetness.OPTIMUM,"Liść laurowy wraz z zielem angielskim tworzy duet, który jest niezbędny do przygotowywania dań na ciepło – zup, sosów czy gulaszy. Najczęściej decydujemy się na gotową suszoną postać przyprawy dostępną na sklepowych półkach. " +
+                "Liście laurowe możemy również uprawiać na parapecie..Świeże liście laurowe – obrywa się na bieżąco (zimą mniej), " +
+                "w miarę potrzeb. Najbardziej aromatyczne są młode liście.",
                 20,25,false,"Marzec,Kwiecień"));
         herbDetails.add(new HerbDetail("Tymianek","https://img.shmbk.pl/rimgsph/1102383_f6256a52-656a-49e4-8b4d-4466c1537b41_crop_1250_750_zdjecie.jpg",
-                0, WaterConsumption.LITTLE, Light.HARD, Wetness.MINIMUM," Ma on postać małej krzewinki o drobnych listkach, ale tkwi w nim wielka moc. Potrawom mięsnym, rybnym i warzywnym nadaje dymnego, pikantnego posmaku – " +
-                "można go także stosować jako dodatek do omletów, sosów, zapiekanek i potraw z makaronu.",
-                10,15,false,"Marzec1"));
+                0, WaterConsumption.LITTLE, Light.HARD, Wetness.MINIMUM," Wykorzystuje się go do potraw kuchni francuskiej oraz śródziemnomorskiej. Idealnie pasuje do mięsnych potraw (w szczególności z jagnięciną), potrawek na bazie strączków, a także do serów (zwłaszcza kozich), jajecznych przekąsek i kanapek.",
+                10,15,false,"Przełom Maj - Czerwiec"));
+        herbDetails.add(new HerbDetail("Mięta","https://histografy.pl/wp-content/uploads/2020/09/mieta-pieprzowa.jpg",
+                0, WaterConsumption.MEDIUM, Light.MEDIUM, Wetness.OPTIMUM,"Lekka, orzeźwiająca i soczyście zielona mięta sprawdzi się zarówno do dań słodkich, jak i wytrawnych. Doskonale pasuje do zimnych napojów i " +
+                "drinków z dodatkiem cytryny lub limonki (np. lemoniady czy mojito), a także do sałatek owocowych czy warzywnych.", 18,23,false,"Przełom Maj - Czerwiec"));
+        herbDetails.add(new HerbDetail("Szczypiorek","https://www.diki.pl/images-common/words400/chives.jpg",
+                0, WaterConsumption.MEDIUM, Light.MEDIUM, Wetness.OPTIMUM,"Długie łodygi szczypiorku przypominające zielone rurki idealnie współgrają z jajecznymi potrawami, nadając im ostrości i świeżego aromatu. Świetnie pasują również do sałatek, mięsnych " +
+                "dań czy potraw zapiekanych w piekarniku, a także jako dekoracyjne wykończenie przekąsek (np. kanapek czy przystawek).", 20,25,false,"Przełom Marzec - Kwiecień"));
         return herbDetails;
     }
 
@@ -67,6 +74,7 @@ public class ListHerbs implements List<HerbDetail> {
 
     @Override
     public <T> T[] toArray(T[] ts) {
+        // TODO: 31.10.2021
         return null;
     }
 

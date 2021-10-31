@@ -3,6 +3,7 @@ package com.gardenhouse.gardenhousemanager.model;
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
+import com.gardenhouse.gardenhousemanager.flowerpot.sow.SowHerb;
 import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -20,7 +22,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class HerbDetail extends Plant {
+public class HerbDetail extends Plant implements SowHerb {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHerb;
@@ -29,6 +31,8 @@ public class HerbDetail extends Plant {
 
     @Enumerated(EnumType.STRING)
     private WaterConsumption waterConsumptionPerDay;
+
+    private double water;
 
     @Enumerated(EnumType.STRING)
     private Light light;
@@ -47,7 +51,7 @@ public class HerbDetail extends Plant {
 
     private String monthToSow;
 
-    private Date dateOfSow = new Date();
+    private Date dateOfSow;
 
     public HerbDetail(String name, String image, int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
                        Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp,
@@ -110,6 +114,28 @@ public class HerbDetail extends Plant {
         result = getWaterConsumptionForDay(result);
         result+= "data zasadzenia: " + getDateOfSow() + "\n";
         result+= "------------------------------------------------------------------------------------------";
+        return result;
+    }
+
+    @Override
+    public void sow(HerbDetail herb) {
+        herb.setGrowthUp(true);
+        herb.setDateOfSow(new Date());
+    }
+
+    @Override
+    public void water(HerbDetail herb,double waterMl) {
+        herb.setWater(waterMl);
+    }
+
+    @Override
+    public int getDayOfLife(HerbDetail herb) {
+        Date dateOfSow = herb.getDateOfSow();
+        int dateOfSowDay = dateOfSow.getDay();
+        LocalDate now = LocalDate.now();
+        int dayOfMonth = now.getDayOfMonth();
+        int result = dayOfMonth - dateOfSowDay;
+        herb.setIdHerb(result);
         return result;
     }
 }
