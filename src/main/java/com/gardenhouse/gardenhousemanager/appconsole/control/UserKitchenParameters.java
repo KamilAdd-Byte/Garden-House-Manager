@@ -1,6 +1,5 @@
 package com.gardenhouse.gardenhousemanager.appconsole.control;
 
-import com.gardenhouse.gardenhousemanager.control.Wetness;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,5 +16,6 @@ public class UserKitchenParameters {
     public UserKitchenParameters(LightForKitchen light, WetnessForKitchen wetness) {
         this.light = light;
         this.wetness = wetness;
+
     }
 }

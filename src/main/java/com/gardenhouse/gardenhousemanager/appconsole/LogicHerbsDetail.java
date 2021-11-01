@@ -71,24 +71,34 @@ public class LogicHerbsDetail implements Runnable{
                                     System.out.println("* skala natężenia: "+ value.ordinal() + " charakterystyka: " + value.getDescription());
                                 }
                                 int setLight = scanner.nextInt();
+
                                 LightForKitchen[] kitchenLight = LightForKitchen.values();
                                 for (LightForKitchen lightForKitchen : kitchenLight) {
                                     if (setLight==lightForKitchen.ordinal()){
                                         kitchenUser.setLight(lightForKitchen);
                                     }
                                 }
+
                                 System.out.println("( 2 krok ) Spróbuj określić przybliżoną wartość wilgotności jaka panuje w Twojej kuchni? ");
                                 System.out.println("0 - Bardzo mała wilgotność \n1 - Wilgotność optymalna \n2 - Wysoka wilgotność, szybkie pojawianie sie pleśni w pomieszczeniu)");
                                 int userWetnessChoice = scanner.nextInt();
                                 WetnessForKitchen[] wetnessForKitchens = WetnessForKitchen.values();
                                 for (WetnessForKitchen wetnessForKitchen : wetnessForKitchens) {
-                                    if (userWetnessChoice==wetnessForKitchen.ordinal()){
+                                    if (userWetnessChoice == wetnessForKitchen.ordinal()) {
                                         kitchenUser.setWetness(wetnessForKitchen);
                                     }
                                 }
-                                System.out.println("Parametry kuchni "+ userName + " - >\n"
-                                        + kitchenUser.getLight().getDescription() +"\n" + kitchenUser.getWetness().getDescription());
+                                System.out.println("Parametry kuchni " + userName + " - >\n"
+                                        + kitchenUser.getLight().getDescription() + "\n" + kitchenUser.getWetness().getDescription());
                                 scanner.nextLine();
+                                System.out.println("( 2 krok ) Spróbuj określić przybliżoną wartość wilgotności jaka panuje w Twojej kuchni? (0,1 lub 2)");
+                                Wetness[] wetnesses = Wetness.values();
+                                for (Wetness wetness : wetnesses) {
+                                    System.out.println(wetness);
+                                }
+                                // TODO: 01.11.2021 Wetness - znaleźć sposób na doprecyzowanie tego parametru!
+                                System.out.println("Parametry kuchni " + userName + " - >\n" +
+                                        kitchenUser.getWetness().getDescription() + "\n" + kitchenUser.getLight().getDescription());
                                 System.out.println("Czy na pewno chcesz zasadzić zioło? ");
                                 String userAnswer = scanner.nextLine().toUpperCase();
                                 if (userAnswer.equals("TAK")) {
