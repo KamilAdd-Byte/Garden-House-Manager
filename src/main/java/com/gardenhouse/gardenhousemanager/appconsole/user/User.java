@@ -1,5 +1,6 @@
-package com.gardenhouse.gardenhousemanager.appconsole;
+package com.gardenhouse.gardenhousemanager.appconsole.user;
 
+import com.gardenhouse.gardenhousemanager.appconsole.control.UserKitchenParameters;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 
 import java.util.HashMap;
@@ -10,7 +11,7 @@ import java.util.Map;
  */
 public class User {
     private String name;
-    private Map<Integer, HerbDetail> myHerbs;
+    private static Map<Integer, HerbDetail> myHerbs;
     private UserKitchenParameters myKitchen;
 
 
@@ -26,12 +27,12 @@ public class User {
         this.name = name;
     }
 
-    public Map<Integer, HerbDetail> getMyHerbs() {
-        return myHerbs;
+    public static Map<Integer, HerbDetail> getMyHerbs() {
+        return User.myHerbs;
     }
 
-    public void setMyHerbs(Map<Integer, HerbDetail> myHerbs) {
-        this.myHerbs = myHerbs;
+    public static void setMyHerbs(Map<Integer, HerbDetail> myHerbs) {
+        User.myHerbs = myHerbs;
     }
 
     @Override
@@ -41,15 +42,11 @@ public class User {
                 ", myHerbs=" + myHerbs +
                 '}';
     }
-    public void addMyHerb(int idHerb,HerbDetail herb){
+    public static void addMyHerb(int idHerb, HerbDetail herb){
         if (myHerbs==null){
             myHerbs = new HashMap<>();
         }
-        if (herb!=null){
-            myHerbs.put(idHerb,herb);
-            System.out.println("Dodano zioło do Twojej listy");
-        }else {
-            System.err.println("Dodanie nie powiodło się");
-        }
+        myHerbs.put(idHerb,herb);
+        System.out.println("Dodano zioło do Twojej listy");
     }
 }

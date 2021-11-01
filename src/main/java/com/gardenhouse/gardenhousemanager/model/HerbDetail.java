@@ -141,7 +141,7 @@ public class HerbDetail extends Plant implements SowHerb {
 
     @Override
     public String toString() {
-        String result = getName() + " img: " + getImage() + "\n";
+        String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
         result = getWaterConsumptionForDay(result);
         return result;
     }
@@ -151,14 +151,14 @@ public class HerbDetail extends Plant implements SowHerb {
         result+= "preferowane światło: "+light.getDescription() + "\n";
         result+= "wilgotność MIN i MAX: "+ wetness.minWetness + " min " + wetness.maxWetness+ " max "+"\n";
         result+= "opis: "+ description + "\n";
-        result+= "minimalna temperatura dla: "  + minTemperature + "\n";
-        result+= "maksymalna temperatura dla: " + maxTemperature + "\n";
+        result+= "minimalna temperatura dla: " + getName() + minTemperature + "\n";
+        result+= "maksymalna temperatura dla: " + getName() + maxTemperature + "\n";
         result+= "preferowany miesiąc wysiewu: " + monthToSow + "\n";
         return result;
     }
 
     public String toStringSowHerb() {
-       String result = getName() + " img: " + getImage() + "\n";
+        String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
         result+= "id zioła: "+ idHerb + "\n";
         result+= "dni życia: "+ dayLife + "\n";
         result = getWaterConsumptionForDay(result);

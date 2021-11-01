@@ -4,7 +4,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @NoArgsConstructor
-@ToString
 public abstract class Plant {
 
     private String name;
@@ -30,5 +29,10 @@ public abstract class Plant {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "** " + name + " ** " + "zdjęcie: " + image;
     }
 }

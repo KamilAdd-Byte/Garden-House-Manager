@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.appconsole;
+package com.gardenhouse.gardenhousemanager.appconsole.message;
 
 public class MassageForHerb {
     private String message;

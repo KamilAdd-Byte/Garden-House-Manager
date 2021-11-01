@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.appconsole;
+package com.gardenhouse.gardenhousemanager.appconsole.database;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;

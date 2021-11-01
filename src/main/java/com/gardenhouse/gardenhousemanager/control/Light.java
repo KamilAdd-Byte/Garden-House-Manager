@@ -17,6 +17,10 @@ public enum Light {
         return description;
     }
 
+    public int getLightScale() {
+        return lightScale;
+    }
+
     public void setLightScale(int lightScale) {
         this.lightScale = lightScale;
     }
