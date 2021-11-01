@@ -1,6 +1,7 @@
 package com.gardenhouse.gardenhousemanager.appconsole;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
+import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 
 import java.util.*;
@@ -51,20 +52,35 @@ public class LogicHerbsDetail implements Runnable{
                             if (answer.equals("NIE")){
                                 System.out.println("Może następnym razem sie zdecydujesz : ) ");
                             }else {
-                                System.out.println("Zatem do dzieła: Nazwij zioło (preferowana nazwa zbiżona do oryginalnej, pomoże to w przeprowadzeniu Cię krok po kroku w jego zasianiu.)");
+
+                                System.out.println("Zatem do dzieła: Nazwij zioło (preferowana nazwa zbliżona do oryginalnej, pomoże to w przeprowadzeniu Cię krok po kroku w jego zasianiu.)");
                                 String nameUserHerb = scanner.nextLine();
                                 System.out.println("Nadaj swojemu ziołu id w postaci liczby");
                                 int idHerb = scanner.nextInt();
                                 scanner.nextLine();
-                                System.out.println("Jakiego rodzju masz oświetlenie w kuchni?");
+                                UserKitchenParameters kitchenUser = new UserKitchenParameters();
+                                System.out.println("Zaczynamy ustawiać warunki w Twojej kuchni niezbedne do prawidłowego wzrostu ziół \n " +
+                                        " ( 1 krok )Jakiego rodzaju masz oświetlenie w kuchni? (0,1 lub 2)");
                                 Light[] values = Light.values();
                                 for (Light value : values) {
-                                    System.out.println("* "+ value.getDescription());
+                                    System.out.println("* skala natężenia: "+ value.ordinal() + " charakterystyka: " + value.getDescription());
                                 }
-                                String setLight = scanner.nextLine();
+                                int setLight = scanner.nextInt();
                                 HerbDetail herb = new HerbDetail();
 
-
+                                LightForKitchen[] kitchenLight = LightForKitchen.values();
+                                for (LightForKitchen lightForKitchen : kitchenLight) {
+                                    if (setLight==lightForKitchen.ordinal()){
+                                        kitchenUser.setLight(lightForKitchen);
+                                    }
+                                }
+                                System.out.println("( 2 krok ) Spróbuj określić przybliżoną wartość wilgotności jaka panuje w Twojej kuchni? (0,1 lub 2)");
+                                Wetness[] wetnesses = Wetness.values();
+                                for (Wetness wetness : wetnesses) {
+                                    System.out.println(wetness);
+                                }
+                                // TODO: 01.11.2021 Wetness - znaleźć sposób na doprecyzowanie tego parametru!
+                                System.out.println("Parametry kuchni "+ userName + " - >\n" + kitchenUser);
 
 
                                 System.out.println("Czy na pewno chcesz zasadzić zioło? ");

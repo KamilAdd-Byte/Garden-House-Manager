@@ -12,10 +12,10 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class UserKitchenParameters {
-    private Light light;
+    private LightForKitchen light;
     private Wetness wetness;
 
-    public UserKitchenParameters(Light light, Wetness wetness) {
+    public UserKitchenParameters(LightForKitchen light, Wetness wetness) {
         this.light = light;
         this.wetness = wetness;
     }

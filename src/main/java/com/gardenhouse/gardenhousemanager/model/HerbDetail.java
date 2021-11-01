@@ -141,7 +141,7 @@ public class HerbDetail extends Plant implements SowHerb {
 
     @Override
     public String toString() {
-        String result = getName() + " img: " + getImage() + "\n";
+        String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
         result = getWaterConsumptionForDay(result);
         return result;
     }
@@ -158,7 +158,7 @@ public class HerbDetail extends Plant implements SowHerb {
     }
 
     public String toStringSowHerb() {
-       String result = getName() + " img: " + getImage() + "\n";
+        String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
         result+= "id zioła: "+ idHerb + "\n";
         result+= "dni życia: "+ dayLife + "\n";
         result = getWaterConsumptionForDay(result);
