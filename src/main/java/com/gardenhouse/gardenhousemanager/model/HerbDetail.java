@@ -149,8 +149,8 @@ public class HerbDetail extends Plant implements SowHerb {
         result+= "preferowane światło: "+light.getDescription() + "\n";
         result+= "wilgotność MIN i MAX: "+ wetness.minWetness + " min " + wetness.maxWetness+ " max "+"\n";
         result+= "opis: "+ description + "\n";
-        result+= "minimalna temperatura dla: " + getName() + minTemperature + "\n";
-        result+= "maksymalna temperatura dla: " + getName() + maxTemperature + "\n";
+        result+= "minimalna temperatura dla: " + getName() + " " + minTemperature + "\n";
+        result+= "maksymalna temperatura dla: " + getName() + " " + maxTemperature + "\n";
         result+= "preferowany miesiąc wysiewu: " + monthToSow + "\n";
         return result;
     }

@@ -66,9 +66,9 @@ public class LogicHerbsDetail implements Runnable{
                                 UserKitchenParameters kitchenUser = new UserKitchenParameters();
                                 System.out.println("Zaczynamy ustawiać warunki w Twojej kuchni niezbedne do prawidłowego wzrostu ziół \n " +
                                         " ( 1 krok )Jakiego rodzaju masz oświetlenie w kuchni? (0,1 lub 2)");
-                                Light[] values = Light.values();
-                                for (Light value : values) {
-                                    System.out.println("* skala natężenia: "+ value.ordinal() + " charakterystyka: " + value.getDescription());
+                                LightForKitchen[] lightForKitchens = LightForKitchen.values();
+                                for (LightForKitchen lightForKitchen : lightForKitchens) {
+                                    System.out.println(lightForKitchen.getDescription());
                                 }
                                 int setLight = scanner.nextInt();
 
@@ -91,14 +91,6 @@ public class LogicHerbsDetail implements Runnable{
                                 System.out.println("Parametry kuchni " + userName + " - >\n"
                                         + kitchenUser.getLight().getDescription() + "\n" + kitchenUser.getWetness().getDescription());
                                 scanner.nextLine();
-                                System.out.println("( 2 krok ) Spróbuj określić przybliżoną wartość wilgotności jaka panuje w Twojej kuchni? (0,1 lub 2)");
-                                Wetness[] wetnesses = Wetness.values();
-                                for (Wetness wetness : wetnesses) {
-                                    System.out.println(wetness);
-                                }
-                                // TODO: 01.11.2021 Wetness - znaleźć sposób na doprecyzowanie tego parametru!
-                                System.out.println("Parametry kuchni " + userName + " - >\n" +
-                                        kitchenUser.getWetness().getDescription() + "\n" + kitchenUser.getLight().getDescription());
                                 System.out.println("Czy na pewno chcesz zasadzić zioło? ");
                                 String userAnswer = scanner.nextLine().toUpperCase();
                                 if (userAnswer.equals("TAK")) {
