@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class User {
     private String name;
-    private static Map<Integer, HerbDetail> myHerbs;
+    private static Map<String, HerbDetail> myHerbs;
     private UserKitchenParameters myKitchen;
 
 
@@ -27,11 +27,11 @@ public class User {
         this.name = name;
     }
 
-    public static Map<Integer, HerbDetail> getMyHerbs() {
+    public static Map<String, HerbDetail> getMyHerbs() {
         return User.myHerbs;
     }
 
-    public static void setMyHerbs(Map<Integer, HerbDetail> myHerbs) {
+    public static void setMyHerbs(Map<String, HerbDetail> myHerbs) {
         User.myHerbs = myHerbs;
     }
 
@@ -42,7 +42,7 @@ public class User {
                 ", myHerbs=" + myHerbs +
                 '}';
     }
-    public static void addMyHerb(int idHerb, HerbDetail herb){
+    public static void addMyHerb(String idHerb, HerbDetail herb){
         if (myHerbs==null){
             myHerbs = new HashMap<>();
         }

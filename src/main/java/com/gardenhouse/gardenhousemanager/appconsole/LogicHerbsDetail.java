@@ -5,10 +5,7 @@ import com.gardenhouse.gardenhousemanager.appconsole.control.UserKitchenParamete
 import com.gardenhouse.gardenhousemanager.appconsole.control.WetnessForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.database.DataBaseForHerbs;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
-import com.gardenhouse.gardenhousemanager.control.Light;
-import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
-
 import java.util.*;
 
 public class LogicHerbsDetail implements Runnable{
@@ -95,18 +92,19 @@ public class LogicHerbsDetail implements Runnable{
                                 String userAnswer = scanner.nextLine().toUpperCase();
                                 if (userAnswer.equals("TAK")) {
                                     search.sow(idHerb, search);
-                                    User.addMyHerb(idHerb, search);
+                                    User.addMyHerb(nameUserHerb, search);
                                     System.out.println("Właśnie zasadziłeś zioło: " + search.toStringSowHerb());
                                 } else if (userAnswer.equals("NIE")) {
-                                    System.out.println("Rozumiem!");
+                                    User.addMyHerb(nameUserHerb, search);
+                                    System.out.println("Rozumiem! Zioło zostało dodane do Twojego panelu. Możesz rozpocząć hodowle w dowolnym momencie");
                                 }
                             }
                             break;
                         case MY_HERB:
                             System.out.println("Twoje zasadzone zioła i ich paramatry");
-                            Map<Integer, HerbDetail> myHerbs = User.getMyHerbs();
-                            Set<Map.Entry<Integer, HerbDetail>> entries = myHerbs.entrySet();
-                            for (Map.Entry<Integer, HerbDetail> next : entries) {
+                            Map<String, HerbDetail> myHerbs = User.getMyHerbs();
+                            Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
+                            for (Map.Entry<String, HerbDetail> next : entries) {
                                 System.out.println(next.getKey());
                                 System.out.println(next.getValue().toStringSowHerb());
                             }
