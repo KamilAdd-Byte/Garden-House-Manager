@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class User {
     private String name;
-    private static Map<String, HerbDetail> myHerbs;
+    private Map<String, HerbDetail> myHerbs;
     private UserKitchenParameters myKitchen;
 
 
@@ -20,33 +20,39 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public static Map<String, HerbDetail> getMyHerbs() {
-        return User.myHerbs;
+    public Map<String, HerbDetail> getMyHerbs() {
+        return this.myHerbs;
     }
 
-    public static void setMyHerbs(Map<String, HerbDetail> myHerbs) {
-        User.myHerbs = myHerbs;
+    public void setMyHerbs(Map<String, HerbDetail> myHerbs) {
+        this.myHerbs = myHerbs;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", myHerbs=" + myHerbs +
-                '}';
+    public UserKitchenParameters getMyKitchen() {
+        return this.myKitchen;
     }
-    public static void addMyHerb(String idHerb, HerbDetail herb){
+
+    public void setMyKitchen(UserKitchenParameters myKitchen) {
+        this.myKitchen = myKitchen;
+    }
+
+    public void addMyHerb(String idHerb, HerbDetail herb){
         if (myHerbs==null){
             myHerbs = new HashMap<>();
         }
         myHerbs.put(idHerb,herb);
-        System.out.println("Dodano zioło do Twojej listy");
+        System.out.println("INFO: Dodano zioło do Twojej listy");
+    }
+
+    @Override
+    public String toString() {
+        return "Użytkownik: " + name + "\n" + myKitchen.toString();
     }
 }

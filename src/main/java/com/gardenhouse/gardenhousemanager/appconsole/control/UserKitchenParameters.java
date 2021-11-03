@@ -3,11 +3,9 @@ package com.gardenhouse.gardenhousemanager.appconsole.control;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class UserKitchenParameters {
     private LightForKitchen light;
@@ -17,5 +15,12 @@ public class UserKitchenParameters {
         this.light = light;
         this.wetness = wetness;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Parametry kuchni: " + "\n" +
+                "oświetlenie: " + light.getDescription() + "\n" +
+                "wilgotność: " + wetness.getDescription();
     }
 }

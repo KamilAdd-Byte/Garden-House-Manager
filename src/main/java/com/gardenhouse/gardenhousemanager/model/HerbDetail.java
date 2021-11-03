@@ -4,6 +4,8 @@ import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
 import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
+import com.gardenhouse.gardenhousemanager.flowerpot.Material;
+import com.gardenhouse.gardenhousemanager.flowerpot.PotSize;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.SowHerb;
 import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import lombok.Getter;
@@ -11,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -22,6 +25,58 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 public class HerbDetail extends Plant implements SowHerb {
+
+    public static class FlowerPot {
+        private PotSize potSize;
+        private Color color;
+        private Material material;
+        private HerbDetail herb;
+
+        public FlowerPot(PotSize potSize, Color color, Material material, HerbDetail herb) {
+            this.potSize = potSize;
+            this.color = color;
+            this.material = material;
+            this.herb = herb;
+        }
+        public FlowerPot(PotSize potSize, Material material, HerbDetail herb) {
+            this.potSize = potSize;
+            this.material = material;
+            this.herb = herb;
+        }
+
+        public PotSize getPotSize() {
+            return potSize;
+        }
+
+        public void setPotSize(PotSize potSize) {
+            this.potSize = potSize;
+        }
+
+        public Color getColor() {
+            return color;
+        }
+
+        public void setColor(Color color) {
+            this.color = color;
+        }
+
+        public Material getMaterial() {
+            return material;
+        }
+
+        public void setMaterial(Material material) {
+            this.material = material;
+        }
+
+        public HerbDetail getHerb() {
+            return herb;
+        }
+
+        public void setHerb(HerbDetail herb) {
+            this.herb = herb;
+        }
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHerb;
@@ -83,7 +138,6 @@ public class HerbDetail extends Plant implements SowHerb {
         this.dateOfSow = new Date();
 
     }
-    //
 
     /**It's constructor for SOW herbs
      * @param name nazwa zioła
@@ -128,7 +182,7 @@ public class HerbDetail extends Plant implements SowHerb {
         if (growthUp==true){
             return dateOfSow;
         }else
-            System.out.println("Zioło nie jest posadzone");
+            System.out.println("INFO: Zioło nie jest posadzone");
         return null;
     }
 
@@ -137,33 +191,7 @@ public class HerbDetail extends Plant implements SowHerb {
     }
 
 
-    @Override
-    public String toString() {
-        String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
-        result = getWaterConsumptionForDay(result);
-        return result;
-    }
 
-    private String getWaterConsumptionForDay(String result) {
-        result+= "zapotrzebowanie dzienne na wodę: "+ waterConsumptionPerDay.scope + " litra dziennie"+ "\n";
-        result+= "preferowane światło: "+light.getDescription() + "\n";
-        result+= "wilgotność MIN i MAX: "+ wetness.minWetness + " min " + wetness.maxWetness+ " max "+"\n";
-        result+= "opis: "+ description + "\n";
-        result+= "minimalna temperatura dla: " + getName() + " " + minTemperature + "\n";
-        result+= "maksymalna temperatura dla: " + getName() + " " + maxTemperature + "\n";
-        result+= "preferowany miesiąc wysiewu: " + monthToSow + "\n";
-        return result;
-    }
-
-    public String toStringSowHerb() {
-        String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
-        result+= "id zioła: "+ idHerb + "\n";
-        result+= "dni życia: "+ dayLife + "\n";
-        result = getWaterConsumptionForDay(result);
-        result+= "data zasadzenia: " + getDateOfSow() + "\n";
-        result+= "------------------------------------------------------------------------------------------";
-        return result;
-    }
 
 
     @Override
@@ -175,7 +203,13 @@ public class HerbDetail extends Plant implements SowHerb {
 
     @Override
     public void water(HerbDetail herb,double waterMl) {
-        herb.setWater(waterMl);
+        PotSize potSize = this.pot.getPotSize();
+        if (waterMl<=potSize.getMl()){
+            System.out.println("Roślina podlana: " + waterMl);
+            herb.setWater(waterMl);
+        }else if (waterMl>=potSize.getMl()){
+            System.out.println("Nie mozna podlać wartością: " + waterMl +". Grozi przelaniem rośliny");
+        }
     }
 
     @Override
@@ -186,6 +220,37 @@ public class HerbDetail extends Plant implements SowHerb {
         int dayOfMonth = now.getDayOfMonth();
         int result = dayOfMonth - dateOfSowDay;
         herb.setIdHerb(result);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
+        result+= "stan nawodnienia: " + water;
+        result = getWaterConsumptionForDay(result);
+        return result;
+    }
+
+    private String getWaterConsumptionForDay(String result) {
+        result+= "zapotrzebowanie dzienne na wodę: "+ waterConsumptionPerDay.scope + " litra dziennie"+ "\n";
+        result+= "stan nawodnienia: " + water + "\n";
+        result+= "preferowane światło: "+ light.getDescription() + "\n";
+        result+= "wilgotność MIN i MAX: "+ wetness.minWetness + " min " + wetness.maxWetness+ " max "+"\n";
+        result+= "opis: "+ description + "\n";
+        result+= "minimalna temperatura dla: " + getName() + " " + minTemperature + "\n";
+        result+= "maksymalna temperatura dla: " + getName() + " " + maxTemperature + "\n";
+        result+= "preferowany miesiąc wysiewu: " + monthToSow + "\n";
+        return result;
+    }
+
+    public String toStringSowHerb() {
+        String result = "------------------------------------------------------------------------------------------";
+        result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
+        result+= "id zioła: "+ idHerb + "\n";
+        result+= "dni życia: "+ dayLife + "\n";
+        result = getWaterConsumptionForDay(result);
+        result+= "data zasadzenia: " + getDateOfSow() + "\n";
+        result+= "------------------------------------------------------------------------------------------";
         return result;
     }
 }
