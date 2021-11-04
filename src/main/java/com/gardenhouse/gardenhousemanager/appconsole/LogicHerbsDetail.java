@@ -1,10 +1,13 @@
 package com.gardenhouse.gardenhousemanager.appconsole;
 
 import com.gardenhouse.gardenhousemanager.appconsole.database.LogicAppHerbs;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.LogicAppSetKitchenParameters;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKitchenParameters;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.TemperatureInTheKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.database.DataBaseForHerbs;
+import com.gardenhouse.gardenhousemanager.appconsole.user.LogicAppGenerateUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.flowerpot.Material;
 import com.gardenhouse.gardenhousemanager.flowerpot.PotSize;
@@ -15,6 +18,7 @@ import java.util.*;
 import java.util.List;
 
 public class LogicHerbsDetail implements Runnable{
+
     private static final String title = "\n" +
             "\n" +
             " _____   _       __         __              __              __                    ___   ____ ___  ___\n" +
@@ -25,25 +29,25 @@ public class LogicHerbsDetail implements Runnable{
             "                                                                                                     \n" +
             "\n";
     public static Scanner scanner;
-    public User user;
+    private static User user;
     private static final int EXIT = 0;
     private static final int GET_LIST = 1;
     private static final int HERB= 2;
-    private static final int MY_PANEL=3;
-    private static final int DISPLAY=4;
-    private static final int MY_HERB=5;
+    private static final int MY_HERB=3;
+    private static final int SOW_WATER=4;
+
 
     @Override
     public void run() {
         int userChoice = 8;
-
-        String userName = enterToAppForUser();
+        user = enterToAppForUser();
         scanner = new Scanner(System.in);
+
         while (userChoice != 0) {
             do {
                 try {
                     System.out.println(title);
-                    System.out.println("Wybierz: 0 - Wyjście  1 - Lista Ziół  2 - Zasadź zioło  3 - Moje zioła");
+                    System.out.println("Wybierz: \n0 - Wyjście  \n1 - Lista Ziół  \n2 - Zasadź zioło \n3 - Moje zioła \n4 - Pielęgnacja moich ziół");
                     userChoice = scanner.nextInt();
                     switch (userChoice) {
                         case EXIT:
@@ -57,8 +61,7 @@ public class LogicHerbsDetail implements Runnable{
                             break;
                         case GET_LIST:
                             LogicAppHerbs logicAppHerbs = new LogicAppHerbs();
-                            List<HerbDetail> herbDetailList = logicAppHerbs.displayAllHerbsInDataBase();
-                            herbDetailList.forEach(System.out::println);
+                            logicAppHerbs.displayAllHerbsInDataBase();
                             break;
                         case HERB:
                             HerbDetail search = checkInfoAboutHerbsOnDataBase();
@@ -72,18 +75,20 @@ public class LogicHerbsDetail implements Runnable{
                                 System.out.println("Nadaj swojemu ziołu id w postaci liczby");
                                 int idHerb = scanner.nextInt();
                                 scanner.nextLine();
-                                UserKitchenParameters kitchenUser = new UserKitchenParameters();
-                                //Ustawienie parametrów kuchni - Światło
+
+                                //Ustawienie parametrów kuchni
                                 System.out.println("Wprowadzasz zmiany lub ustawiasz pierwszy raz parametry kuchni wpisz TAK \njeżeli masz już ustawione parametry wpisz NIE");
                                 String answerCreateKitchenParameters = scanner.nextLine().toUpperCase();
+                                LogicAppSetKitchenParameters kitchenParameters = new LogicAppSetKitchenParameters(user);
                                 if (answerCreateKitchenParameters.equals("NIE")){
                                     System.out.println("Parametry Twojej kuchni: \n"+ user.getMyKitchen().toString());
                                 }else if (answerCreateKitchenParameters.equals("TAK")){
-                                    firstStepForSetKitchenParametersLight(kitchenUser);
-                                    //Ustawienie parametrów kuchni - Wilgotność
-                                    twoStepForSetKitchenParametersWeatness(kitchenUser);
-                                    printParametersForKitchenOnUser(userName, kitchenUser);
-                                    user.setMyKitchen(kitchenUser);
+                                    firstStepForSetKitchenParametersLight(user,kitchenParameters);
+                                    twoStepForSetKitchenParametersWeatness(user,kitchenParameters);
+                                    threeStepForSetKitchenParametersTemperature(user,kitchenParameters);
+                                    UserKitchenParameters myKitchen = user.getMyKitchen();
+                                    System.out.println(myKitchen);
+                                    scanner.nextLine();
                                 } else {
                                     System.err.println("Błędna odpowiedź! spróbuj ponownie");
                                 }
@@ -106,8 +111,22 @@ public class LogicHerbsDetail implements Runnable{
                                 System.err.println("Błędnie wprowadzone dane. Spróbuj jeszcze raz!");
                             }
                             break;
-                        case MY_PANEL:
-                            extracted(userChoice);
+                        case MY_HERB:
+                            System.out.println("Twoje wszystkie zioła i ich paramatry");
+                            if (user.getMyHerbs()==null){
+                                System.err.println("Nie masz jeszcze żadnych ziół");
+                            }else {
+                                try {
+                                    Map<String, HerbDetail> myHerbs = user.getMyHerbs();
+                                    Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
+                                    for (Map.Entry<String, HerbDetail> next : entries) {
+                                        System.out.println("Twoja nazwa rośliny: "+ next.getKey());
+                                        System.out.println(next.getValue().toStringSowHerb());
+                                    }
+                                } catch (NullPointerException e){
+                                    e.printStackTrace();
+                                }
+                            }
                             break;
                         default:
                             System.err.println("Opcja wybrana jest błedna. Dostepne 0 1 2");
@@ -117,62 +136,26 @@ public class LogicHerbsDetail implements Runnable{
                     e.printStackTrace();
                     System.err.println("Podano dane w nieprawidłowej postaci");
                 }
-
                scanner.nextLine();
             } while (userChoice != 0);
         }
     }
 
-    private void extracted(int userChoice) {
-        System.out.println("Dane użytkownika: \n" + user.getName() + "\n" + user.getMyKitchen());
-        System.out.println("4 - Wyświetl moją liste ziół \n5 - Moje Zioła / Podlewanie / Sianie / Sadzenie / Parametry ziół");
 
-        switch (userChoice){
 
-            case DISPLAY:
-                System.out.println("Twoje wszystkie zioła i ich paramatry");
-                if (user.getMyHerbs()==null){
-                    System.err.println("Nie masz jeszcze żadnych ziół");
-                }else {
-                    try {
-                        Map<String, HerbDetail> myHerbs = user.getMyHerbs();
-                        Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
-                        for (Map.Entry<String, HerbDetail> next : entries) {
-                            System.out.println("Twoja nazwa rośliny: "+ next.getKey());
-                            System.out.println(next.getValue().toStringSowHerb());
-                        }
-                    } catch (NullPointerException e){
-                        e.printStackTrace();
-                    }
-                }
-                break;
-            case MY_HERB:
-                System.err.println("Implementacja!");
-                break;
-            default:
-                System.err.println("Opcja wybrana jest błedna. Dostepne 4 i 5");
-                break;
-        }
 
-    }
-
-    private String enterToAppForUser() {
+    private User enterToAppForUser() {
         // TODO: 03.11.2021 Baza użytkowników!!! Walidacja
+        LogicAppGenerateUser generateUser = new LogicAppGenerateUser();
         System.out.println("Rozpoczynasz korzystanie z programu. Masz już swoje konto? \nWpisz swoje imię");
         scanner = new Scanner(System.in);
         String userName = scanner.nextLine();
-        user = new User(userName);
+        user = generateUser.createNewUser(userName);
         System.out.println("witaj w programie <<<<<<<<<<<" + user.getName() + ">>>>>>>>>>>>>>>>>>");
-        return userName;
+        return user;
     }
 
-    private void printParametersForKitchenOnUser(String userName, UserKitchenParameters kitchenUser) {
-        System.out.println("Parametry kuchni " + userName + " - >\n"
-                + kitchenUser.getLight().getDescription() + "\n" + kitchenUser.getWetness().getDescription());
-        scanner.nextLine();
-    }
-
-    private void firstStepForSetKitchenParametersLight(UserKitchenParameters kitchenUser) {
+    private static void firstStepForSetKitchenParametersLight(User user,LogicAppSetKitchenParameters kitchenParameters) {
         System.out.println("Zaczynamy ustawiać warunki w Twojej kuchni niezbedne do prawidłowego wzrostu ziół \n " +
                 " ( 1 krok )Jakiego rodzaju masz oświetlenie w kuchni? (0,1 lub 2)");
         LightForKitchen[] lightForKitchens = LightForKitchen.values();
@@ -184,28 +167,40 @@ public class LogicHerbsDetail implements Runnable{
         LightForKitchen[] kitchenLight = LightForKitchen.values();
         for (LightForKitchen lightForKitchen : kitchenLight) {
             if (setLight==lightForKitchen.ordinal()){
-                kitchenUser.setLight(lightForKitchen);
+                kitchenParameters.setLight(user,lightForKitchen);
             }
         }
     }
-
-    private void twoStepForSetKitchenParametersWeatness(UserKitchenParameters kitchenUser) {
+    private void threeStepForSetKitchenParametersTemperature(User user, LogicAppSetKitchenParameters kitchenParameters) {
+        System.out.println("( 3 krok ) Spróbuj określić przybliżoną temperaturę jaka panuje w Twojej kuchni? ");
+        System.out.println("0 - Bardzo mała temperatura \n1 - Temperatura średnia \n2 - Temperatura wysoka");
+        int userWetnessChoice = scanner.nextInt();
+        TemperatureInTheKitchen[] temperature = TemperatureInTheKitchen.values();
+        for (TemperatureInTheKitchen temperatureInTheKitchen : temperature) {
+            if (userWetnessChoice == temperatureInTheKitchen.ordinal()) {
+                kitchenParameters.setTemperature(user,temperatureInTheKitchen);
+            }
+        }
+    }
+    private void twoStepForSetKitchenParametersWeatness(User user,LogicAppSetKitchenParameters kitchenParameters) {
         System.out.println("( 2 krok ) Spróbuj określić przybliżoną wartość wilgotności jaka panuje w Twojej kuchni? ");
         System.out.println("0 - Bardzo mała wilgotność, suche powietrze \n1 - Wilgotność optymalna \n2 - Wysoka wilgotność, szybkie pojawianie się pleśni w pomieszczeniu)");
         int userWetnessChoice = scanner.nextInt();
         WetnessForKitchen[] wetnessForKitchens = WetnessForKitchen.values();
         for (WetnessForKitchen wetnessForKitchen : wetnessForKitchens) {
             if (userWetnessChoice == wetnessForKitchen.ordinal()) {
-                kitchenUser.setWetness(wetnessForKitchen);
+                kitchenParameters.setWetness(user,wetnessForKitchen);
             }
         }
     }
+
+
 
     private HerbDetail checkInfoAboutHerbsOnDataBase() {
 
         List<HerbDetail> herbDetails1 = getHerbDetails();
         for (HerbDetail herbDetail : herbDetails1) {
-            System.out.println(herbDetail.toString());
+            System.out.println(herbDetail.getName());
         }
         scanner = new Scanner(System.in);
         System.out.println("Wybierz zioło z listy, które chcesz zasiać. Każde zioło ma swoje preferencje hodowlane. Zastanów się czy Twoje pomieszczenie (balkon, kuchnia ..)spełniają określone wymogi.");

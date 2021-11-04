@@ -17,4 +17,12 @@ public enum TemperatureInTheKitchen {
         this.intervalMin = intervalMin;
         this.intervalMax = intervalMax;
     }
+
+    public int getIntervalMin() {
+        return intervalMin;
+    }
+
+    public int getIntervalMax() {
+        return intervalMax;
+    }
 }

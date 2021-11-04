@@ -4,10 +4,15 @@ import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 
 import java.util.List;
 
+/**
+ * @author kamillodzinski
+ * Klasa tylko wyświetla listę ziół z bazy
+ */
 public class LogicAppHerbs {
     private final DataBaseForHerbs dataBaseForHerbs = new DataBaseForHerbs();
 
-    public List<HerbDetail> displayAllHerbsInDataBase (){
-        return dataBaseForHerbs.allHerbs();
+    public void displayAllHerbsInDataBase (){
+        List<HerbDetail> herbDetailList = dataBaseForHerbs.allHerbs();
+        herbDetailList.forEach(System.out::println);
     }
 }
