@@ -1,11 +1,11 @@
 package com.gardenhouse.gardenhousemanager.appconsole;
 
-import com.gardenhouse.gardenhousemanager.appconsole.control.LightForKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.control.UserKitchenParameters;
-import com.gardenhouse.gardenhousemanager.appconsole.control.WetnessForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.database.LogicAppHerbs;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKitchenParameters;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.database.DataBaseForHerbs;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
-import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
 import com.gardenhouse.gardenhousemanager.flowerpot.Material;
 import com.gardenhouse.gardenhousemanager.flowerpot.PotSize;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
@@ -29,7 +29,9 @@ public class LogicHerbsDetail implements Runnable{
     private static final int EXIT = 0;
     private static final int GET_LIST = 1;
     private static final int HERB= 2;
-    private static final int MY_HERB=3;
+    private static final int MY_PANEL=3;
+    private static final int DISPLAY=4;
+    private static final int MY_HERB=5;
 
     @Override
     public void run() {
@@ -49,17 +51,18 @@ public class LogicHerbsDetail implements Runnable{
                                 System.out.println("Do zo ba! Byku! Wróć kiedys jeszcze");
                                 scanner.close();
                             }catch (IllegalStateException e){
-                                System.err.println("Wyśjce z programu");
+                                System.err.println("Wyjście z programu");
                             }
 
                             break;
                         case GET_LIST:
-                            List<HerbDetail> herbDetails = getHerbDetails();
-                            herbDetails.forEach(System.out::println);
+                            LogicAppHerbs logicAppHerbs = new LogicAppHerbs();
+                            List<HerbDetail> herbDetailList = logicAppHerbs.displayAllHerbsInDataBase();
+                            herbDetailList.forEach(System.out::println);
                             break;
                         case HERB:
                             HerbDetail search = checkInfoAboutHerbsOnDataBase();
-                            System.out.println("Chcesz spróbować zasiać  ** "+ search.getName() +" **? TAK lub NIE");
+                            System.out.println("Chcesz dodać ** "+ search.getName() +" ** do Twojej listy ziół? TAK lub NIE");
                             String answer = scanner.nextLine().toUpperCase();
                             if (answer.equals("NIE")){
                                 System.out.println("Może następnym razem sie zdecydujesz : ) ");
@@ -89,7 +92,7 @@ public class LogicHerbsDetail implements Runnable{
                                 String userAnswer = scanner.nextLine().toUpperCase();
                                 if (userAnswer.equals("TAK")) {
                                     search.sow(idHerb, search);
-                                    //Pierwsze podlanie rosliny, tworzenie doniczki!todo Implementacja
+                                    //Pierwsze podlanie rośliny, tworzenie doniczki!todo Implementacja
                                     search.setPot(new HerbDetail.FlowerPot(PotSize.MEDIUM, Color.BLUE, Material.PLASTIC,search));
                                     user.addMyHerb(nameUserHerb, search);
                                     //podlewanie wartościami nie modyfikowalnymi
@@ -103,24 +106,8 @@ public class LogicHerbsDetail implements Runnable{
                                 System.err.println("Błędnie wprowadzone dane. Spróbuj jeszcze raz!");
                             }
                             break;
-                        case MY_HERB:
-                            System.out.println("Dane użytkownika: \n" + user.getName() + "\n" + user.getMyKitchen());
-                            System.out.println("Twoje wszystkie zioła i ich paramatry");
-                                if (user.getMyHerbs()==null){
-                                    System.err.println("Nie masz jeszcze żadnych ziół");
-                                    break;
-                                }else {
-                                    try {
-                                        Map<String, HerbDetail> myHerbs = user.getMyHerbs();
-                                        Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
-                                        for (Map.Entry<String, HerbDetail> next : entries) {
-                                            System.out.println("Twoja nazwa rośliny: "+ next.getKey());
-                                            System.out.println(next.getValue().toStringSowHerb());
-                                        }
-                                    } catch (NullPointerException e){
-                                        e.printStackTrace();
-                                    }
-                                }
+                        case MY_PANEL:
+                            extracted(userChoice);
                             break;
                         default:
                             System.err.println("Opcja wybrana jest błedna. Dostepne 0 1 2");
@@ -134,6 +121,39 @@ public class LogicHerbsDetail implements Runnable{
                scanner.nextLine();
             } while (userChoice != 0);
         }
+    }
+
+    private void extracted(int userChoice) {
+        System.out.println("Dane użytkownika: \n" + user.getName() + "\n" + user.getMyKitchen());
+        System.out.println("4 - Wyświetl moją liste ziół \n5 - Moje Zioła / Podlewanie / Sianie / Sadzenie / Parametry ziół");
+
+        switch (userChoice){
+
+            case DISPLAY:
+                System.out.println("Twoje wszystkie zioła i ich paramatry");
+                if (user.getMyHerbs()==null){
+                    System.err.println("Nie masz jeszcze żadnych ziół");
+                }else {
+                    try {
+                        Map<String, HerbDetail> myHerbs = user.getMyHerbs();
+                        Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
+                        for (Map.Entry<String, HerbDetail> next : entries) {
+                            System.out.println("Twoja nazwa rośliny: "+ next.getKey());
+                            System.out.println(next.getValue().toStringSowHerb());
+                        }
+                    } catch (NullPointerException e){
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case MY_HERB:
+                System.err.println("Implementacja!");
+                break;
+            default:
+                System.err.println("Opcja wybrana jest błedna. Dostepne 4 i 5");
+                break;
+        }
+
     }
 
     private String enterToAppForUser() {

@@ -1,5 +1,7 @@
-package com.gardenhouse.gardenhousemanager.appconsole.control;
+package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters;
 
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

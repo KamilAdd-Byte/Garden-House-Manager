@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.appconsole.control;
+package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control;
 
 import lombok.Getter;
 

@@ -1,6 +1,6 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user;
 
-import com.gardenhouse.gardenhousemanager.appconsole.control.UserKitchenParameters;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKitchenParameters;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 
 import java.util.HashMap;

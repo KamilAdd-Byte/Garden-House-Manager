@@ -91,9 +91,6 @@ public class HerbDetail extends Plant implements SowHerb {
     @Enumerated(EnumType.STRING)
     private Light light;
 
-    @Enumerated(EnumType.STRING)
-    private Wetness wetness;
-
     @Size(min = 5,max = 200)
     private String description;
 
@@ -115,7 +112,6 @@ public class HerbDetail extends Plant implements SowHerb {
      * @param dayLife gdy 'growthUp=true' dni życia naliczaja się
      * @param waterConsumptionPerDay przybliżona wartość spozywania wody przez dane zioło w skali dnia
      * @param light przybliżona wartość nasłonecznienia dla prawidłowego rozwoju zioła
-     * @param wetness przybliżona wartość poziomu wilgotności dla prawidłowego rozwoju zioła
      * @param description opis zioła
      * @param minTemperature min temperatura dla prawidłowego wzrostu zioła
      * @param maxTemperature max temperatura dla prawidłowego wzrostu zioła
@@ -123,13 +119,12 @@ public class HerbDetail extends Plant implements SowHerb {
      * @param monthToSow preferowany miesiąc zasiania zioła
      */
     public HerbDetail(String name, String image, int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
-                      Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp,
+                      String description, double minTemperature, double maxTemperature,boolean growthUp,
                       String monthToSow) {
         super(name, image);
         this.dayLife = dayLife;
         this.waterConsumptionPerDay = waterConsumptionPerDay;
         this.light = light;
-        this.wetness = wetness;
         this.description = description;
         this.minTemperature = minTemperature;
         this.maxTemperature = maxTemperature;
@@ -145,7 +140,6 @@ public class HerbDetail extends Plant implements SowHerb {
      * @param dayLife gdy growthUp=true dni życia naliczaja się
      * @param waterConsumptionPerDay przybliżona wartość spozywania wody przez dane zioło w skali dnia
      * @param light przybliżona wartość nasłonecznienia dla prawidłowego rozwoju zioła
-     * @param wetness przybliżona wartość poziomu wilgotności dla prawidłowego rozwoju zioła
      * @param description opis zioła
      * @param minTemperature min temperatura dla prawidłowego wzrostu zioła
      * @param maxTemperature max temperatura dla prawidłowego wzrostu zioła
@@ -154,13 +148,12 @@ public class HerbDetail extends Plant implements SowHerb {
      * @param pot parametry doniczki, w której zasiane jest zioło
      */
     public HerbDetail(String name, String image, int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
-                       Wetness wetness, String description, double minTemperature, double maxTemperature,boolean growthUp,
+                      String description, double minTemperature, double maxTemperature,boolean growthUp,
                       String monthToSow,FlowerPot pot) {
         super(name, image);
         this.dayLife = dayLife;
         this.waterConsumptionPerDay = waterConsumptionPerDay;
         this.light = light;
-        this.wetness = wetness;
         this.description = description;
         this.minTemperature = minTemperature;
         this.maxTemperature = maxTemperature;
@@ -189,10 +182,6 @@ public class HerbDetail extends Plant implements SowHerb {
     public void setDateOfSow(Date dateOfSow) {
         this.dateOfSow = dateOfSow;
     }
-
-
-
-
 
     @Override
     public void sow(int id,HerbDetail herb) {
@@ -226,7 +215,6 @@ public class HerbDetail extends Plant implements SowHerb {
     @Override
     public String toString() {
         String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
-        result+= "stan nawodnienia: " + water;
         result = getWaterConsumptionForDay(result);
         return result;
     }
@@ -235,7 +223,6 @@ public class HerbDetail extends Plant implements SowHerb {
         result+= "zapotrzebowanie dzienne na wodę: "+ waterConsumptionPerDay.scope + " litra dziennie"+ "\n";
         result+= "stan nawodnienia: " + water + "\n";
         result+= "preferowane światło: "+ light.getDescription() + "\n";
-        result+= "wilgotność MIN i MAX: "+ wetness.minWetness + " min " + wetness.maxWetness+ " max "+"\n";
         result+= "opis: "+ description + "\n";
         result+= "minimalna temperatura dla: " + getName() + " " + minTemperature + "\n";
         result+= "maksymalna temperatura dla: " + getName() + " " + maxTemperature + "\n";
