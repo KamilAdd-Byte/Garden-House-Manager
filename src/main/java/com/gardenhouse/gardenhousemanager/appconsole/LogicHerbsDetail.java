@@ -93,19 +93,13 @@ public class LogicHerbsDetail implements Runnable{
                                     System.err.println("Błędna odpowiedź! spróbuj ponownie");
                                 }
 
-                                System.out.println("Czy na pewno chcesz zasadzić zioło? TAK (Sadzimy zioło) lub NIE (Dodajemy do listy, będziesz mógł/mogła zasadzić później)");
+                                System.out.println("Czy na pewno chcesz dodać zioło do swojego panelu? TAK (Dodajemy zioło) lub NIE (Anulowanie operacji)");
                                 String userAnswer = scanner.nextLine().toUpperCase();
                                 if (userAnswer.equals("TAK")) {
-                                    search.sow(idHerb, search);
-                                    //Pierwsze podlanie rośliny, tworzenie doniczki!todo Implementacja
-                                    search.setPot(new HerbDetail.FlowerPot(PotSize.MEDIUM, Color.BLUE, Material.PLASTIC,search));
                                     user.addMyHerb(nameUserHerb, search);
-                                    //podlewanie wartościami nie modyfikowalnymi
-                                    search.water(search,50);
-                                    System.out.println("Właśnie zasadziłeś zioło: " + search.toStringSowHerb());
+                                    System.out.println("Właśnie dodałeś zioło: \n" + search.toStringSowHerb());
                                 } else if (userAnswer.equals("NIE")) {
-                                    user.addMyHerb(nameUserHerb, search);
-                                    System.out.println("Rozumiem! Zioło zostało dodane do Twojego panelu. Możesz rozpocząć hodowle w dowolnym momencie. Wciśnij enter");
+                                    System.out.println("Rozumiem! Zioło nie zostało dodane do Twojego panelu. Pozostały tylko ustawienia parametrów w kuchni.");
                                 }
                             } else {
                                 System.err.println("Błędnie wprowadzone dane. Spróbuj jeszcze raz!");
@@ -195,21 +189,23 @@ public class LogicHerbsDetail implements Runnable{
     }
 
 
-
+    /**
+     * @return Herb on data base
+     */
     private HerbDetail checkInfoAboutHerbsOnDataBase() {
-
-        List<HerbDetail> herbDetails1 = getHerbDetails();
-        for (HerbDetail herbDetail : herbDetails1) {
+        List<HerbDetail> herbDetails = getHerbDetails();
+        for (HerbDetail herbDetail : herbDetails) {
             System.out.println(herbDetail.getName());
         }
         scanner = new Scanner(System.in);
         System.out.println("Wybierz zioło z listy, które chcesz zasiać. Każde zioło ma swoje preferencje hodowlane. Zastanów się czy Twoje pomieszczenie (balkon, kuchnia ..)spełniają określone wymogi.");
         String nameHerb = scanner.nextLine().toUpperCase();
-        DataBaseForHerbs ls = new DataBaseForHerbs();
-        HerbDetail search = ls.search(nameHerb);
+        LogicAppHerbs logicAppHerbs = new LogicAppHerbs();
+        HerbDetail herbDetail = logicAppHerbs.search(nameHerb);
         System.out.println("Preferowane warunki hodowlane dla tego zioła" + "\n");
-        System.out.println(search.toString());
-        return search;
+        System.out.println(herbDetail.toString());
+        return herbDetail;
+
     }
 
     private List<HerbDetail> getHerbDetails() {

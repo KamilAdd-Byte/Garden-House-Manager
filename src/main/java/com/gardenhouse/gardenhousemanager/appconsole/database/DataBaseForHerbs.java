@@ -37,7 +37,7 @@ public class DataBaseForHerbs implements List<HerbDetail> {
         herbDetails.add(new HerbDetail("TYMIANEK","https://img.shmbk.pl/rimgsph/1102383_f6256a52-656a-49e4-8b4d-4466c1537b41_crop_1250_750_zdjecie.jpg",
                 0, WaterConsumption.LITTLE, Light.HARD, " Wykorzystuje się go do potraw kuchni francuskiej oraz śródziemnomorskiej. Idealnie pasuje do mięsnych potraw (w szczególności z jagnięciną), potrawek na bazie strączków, a także do serów (zwłaszcza kozich), jajecznych przekąsek i kanapek.",
                 10,15,false,"Przełom Maj - Czerwiec"));
-        herbDetails.add(new HerbDetail("MIĘTA","https://histografy.pl/wp-content/uploads/2020/09/mieta-pieprzowa.jpg",
+        herbDetails.add(new HerbDetail("MIETA","https://histografy.pl/wp-content/uploads/2020/09/mieta-pieprzowa.jpg",
                 0, WaterConsumption.MEDIUM, Light.MEDIUM, "Lekka, orzeźwiająca i soczyście zielona mięta sprawdzi się zarówno do dań słodkich, jak i wytrawnych. Doskonale pasuje do zimnych napojów i " +
                 "drinków z dodatkiem cytryny lub limonki (np. lemoniady czy mojito), a także do sałatek owocowych czy warzywnych.", 18,23,false,"Przełom Maj - Czerwiec"));
         herbDetails.add(new HerbDetail("SZCZYPIOREK","https://www.diki.pl/images-common/words400/chives.jpg",
@@ -76,17 +76,6 @@ public class DataBaseForHerbs implements List<HerbDetail> {
         // TODO: 31.10.2021
         return null;
     }
-
-    public HerbDetail search(String name){
-        List<HerbDetail> herbDetails = allHerbs();
-        for (HerbDetail herbDetail : herbDetails) {
-            if (herbDetail.getName().contains(name)){
-                return herbDetail;
-            }
-        }
-        return null;
-    }
-
 
     @Override
     public boolean add(HerbDetail herbDetail) {
