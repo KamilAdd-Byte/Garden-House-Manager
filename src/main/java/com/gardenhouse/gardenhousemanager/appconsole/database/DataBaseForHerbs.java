@@ -27,8 +27,8 @@ public class DataBaseForHerbs implements List<HerbDetail> {
             herbDetails = new ArrayList<>();
         }
         herbDetails.add(new HerbDetail("BAZYLIA","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
-                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Porządne zioło",
-                22.5,25.5,false,"Kwiecień"));
+                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Jako roślina użytkowa i lecznicza. Surowcem przyprawowym jest ziele bazylii,używane w stanie świeżym lub suszonym. Liście bazylii dodaje sie do sałatek, sosów, twarogu, zapiekanek, zup (szczególnie pomidorowej), potraw miesnych i ryb.",
+                22.5,25.5,false,"Lipiec, początek sierpnia"));
         herbDetails.add(new HerbDetail("LIŚĆ LAUROWY","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
                 0, WaterConsumption.LITTLE, Light.LITTLE, "Liść laurowy wraz z zielem angielskim tworzy duet, który jest niezbędny do przygotowywania dań na ciepło – zup, sosów czy gulaszy. Najczęściej decydujemy się na gotową suszoną postać przyprawy dostępną na sklepowych półkach. " +
                 "Liście laurowe możemy również uprawiać na parapecie..Świeże liście laurowe – obrywa się na bieżąco (zimą mniej), " +

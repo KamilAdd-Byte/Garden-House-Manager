@@ -74,6 +74,7 @@ public class LogicHerbsDetail implements Runnable{
                                 String nameUserHerb = scanner.nextLine();
                                 System.out.println("Nadaj swojemu ziołu id w postaci liczby");
                                 int idHerb = scanner.nextInt();
+                                search.setIdHerb(idHerb);
                                 scanner.nextLine();
 
                                 //Ustawienie parametrów kuchni
@@ -111,16 +112,14 @@ public class LogicHerbsDetail implements Runnable{
                                 System.err.println("Nie masz jeszcze żadnych ziół");
                             }else {
                                 try {
-                                    Map<String, HerbDetail> myHerbs = user.getMyHerbs();
-                                    Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
-                                    for (Map.Entry<String, HerbDetail> next : entries) {
-                                        System.out.println("Twoja nazwa rośliny: "+ next.getKey());
-                                        System.out.println(next.getValue().toStringSowHerb());
-                                    }
+                                    getHerbsForUser();
                                 } catch (NullPointerException e){
                                     e.printStackTrace();
                                 }
                             }
+                            break;
+                        case SOW_WATER:
+                            getHerbsForUserByName();
                             break;
                         default:
                             System.err.println("Opcja wybrana jest błedna. Dostepne 0 1 2");
@@ -135,7 +134,32 @@ public class LogicHerbsDetail implements Runnable{
         }
     }
 
+    private void getHerbsForUserByName() {
+        System.out.println("_________________________________________________");
+        System.out.println("Lista Twoich ziół:");
+        System.out.println("_________________________________________________");
+        Map<String, HerbDetail> myHerbs = user.getMyHerbs();
+        Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
+        for (Map.Entry<String, HerbDetail> entryHerbs : entries) {
+            System.out.println(entryHerbs.getKey() + " id: " +entryHerbs.getValue().getIdHerb());
+        }
+        System.out.println("Wpisz nazwę swojej rośliny, którą chcesz wyświetlić");
+        String herbsByName = scanner.nextLine();
+        for (Map.Entry<String, HerbDetail> entry : entries) {
+            if (entry.getKey().contains(herbsByName)){
+                System.out.println(entry.getValue());
+            }
+        }
+    }
 
+    private void getHerbsForUser() {
+        Map<String, HerbDetail> myHerbs = user.getMyHerbs();
+        Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
+        for (Map.Entry<String, HerbDetail> next : entries) {
+            System.out.println("Twoja nazwa rośliny: "+ next.getKey());
+            System.out.println(next.getValue().toStringSowHerb());
+        }
+    }
 
 
     private User enterToAppForUser() {
