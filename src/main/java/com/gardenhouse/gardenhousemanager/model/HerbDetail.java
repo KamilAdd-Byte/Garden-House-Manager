@@ -75,6 +75,29 @@ public class HerbDetail extends Plant implements SowHerb {
         public void setHerb(HerbDetail herb) {
             this.herb = herb;
         }
+
+        /**
+         * @param size set size enum for flowerpot
+         * @param color set color awt for flowerpot (optional)
+         * @param material set material enum for flowerpot
+         * @return new flowerpot
+         */
+        public FlowerPot createNewPot(PotSize size,Color color,Material material,HerbDetail herb){
+            setPotSize(size);
+            setColor(color);
+            setMaterial(material);
+            return new FlowerPot(size,color,material,herb);
+        }
+
+        @Override
+        public String toString() {
+            return "FlowerPot{" +
+                    "potSize=" + potSize +
+                    ", color=" + color +
+                    ", material=" + material +
+                    ", herb=" + herb +
+                    '}';
+        }
     }
 
     @Id
@@ -184,10 +207,10 @@ public class HerbDetail extends Plant implements SowHerb {
     }
 
     @Override
-    public void sow(int id,HerbDetail herb) {
-        herb.setGrowthUp(true);
-        herb.setDateOfSow(new Date());
-        herb.setIdHerb(id);
+    public void sow(FlowerPot pot) {
+        setGrowthUp(true);
+        setDateOfSow(new Date());
+        setPot(pot);
     }
 
     @Override

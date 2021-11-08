@@ -4,6 +4,7 @@ import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKi
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,6 +14,7 @@ public class User {
     private String name;
     private Map<String, HerbDetail> myHerbs;
     private UserKitchenParameters myKitchen;
+    private List<HerbDetail.FlowerPot> myFlowerPots;
 
 
     public User(String name) {
@@ -43,6 +45,14 @@ public class User {
         this.myKitchen = myKitchen;
     }
 
+    public List<HerbDetail.FlowerPot> getMyFlowerPots() {
+        return myFlowerPots;
+    }
+
+    public void setMyFlowerPots(List<HerbDetail.FlowerPot> myFlowerPots) {
+        this.myFlowerPots = myFlowerPots;
+    }
+
     public void addMyHerb(String idHerb, HerbDetail herb){
         if (myHerbs==null){
             myHerbs = new HashMap<>();
@@ -53,6 +63,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "Użytkownik: " + name + "\n" + myKitchen.toString();
+        return "Użytkownik: " + name + "\n" + myKitchen.toString() + "\n" + myFlowerPots;
     }
 }

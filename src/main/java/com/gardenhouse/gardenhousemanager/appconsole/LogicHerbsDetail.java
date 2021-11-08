@@ -32,9 +32,10 @@ public class LogicHerbsDetail implements Runnable{
     private static User user;
     private static final int EXIT = 0;
     private static final int GET_LIST = 1;
-    private static final int HERB= 2;
+    private static final int ADD_HERB_TO_USER_LIST= 2;
     private static final int MY_HERB=3;
     private static final int SOW_WATER=4;
+    private static final int CREATE_FLOWERPOT=5;
 
 
     @Override
@@ -63,7 +64,7 @@ public class LogicHerbsDetail implements Runnable{
                             LogicAppHerbs logicAppHerbs = new LogicAppHerbs();
                             logicAppHerbs.displayAllHerbsInDataBase();
                             break;
-                        case HERB:
+                        case ADD_HERB_TO_USER_LIST:
                             HerbDetail search = checkInfoAboutHerbsOnDataBase();
                             System.out.println("Chcesz dodać ** "+ search.getName() +" ** do Twojej listy ziół? TAK lub NIE");
                             String answer = scanner.nextLine().toUpperCase();
@@ -121,6 +122,9 @@ public class LogicHerbsDetail implements Runnable{
                         case SOW_WATER:
                             getHerbsForUserByName();
                             break;
+                        case CREATE_FLOWERPOT:
+                            createFlowerPotByUser();
+                            break;
                         default:
                             System.err.println("Opcja wybrana jest błedna. Dostepne 0 1 2");
                     }
@@ -132,6 +136,19 @@ public class LogicHerbsDetail implements Runnable{
                scanner.nextLine();
             } while (userChoice != 0);
         }
+    }
+
+    private void createFlowerPotByUser() {
+        System.out.println("Utwórz obiekt doniczki, w której zasadzisz zioło z panelu");
+
+        System.out.println("Rozmiar doniczki \n " +
+                " ( 1 krok )Wybierz rozmiar? (0,1 lub 2)");
+        PotSize[] values = PotSize.values();
+        for (PotSize potSize : values) {
+            System.out.println(potSize.getMl() + "ml; opcja: " + potSize.ordinal());
+        }
+        int size = scanner.nextInt();
+        // TODO: 08.11.2021 Implementations FlowerPot! 
     }
 
     private void getHerbsForUserByName() {
@@ -148,6 +165,9 @@ public class LogicHerbsDetail implements Runnable{
         for (Map.Entry<String, HerbDetail> entry : entries) {
             if (entry.getKey().contains(herbsByName)){
                 System.out.println(entry.getValue());
+                var herbToSow = entry.getValue();
+            }else {
+                System.out.println("Nie znaleziono po nazwie");
             }
         }
     }
