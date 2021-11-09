@@ -89,6 +89,9 @@ public class HerbDetail extends Plant implements SowHerb {
             return new FlowerPot(size,color,material,herb);
         }
 
+        public FlowerPot() {
+        }
+
         @Override
         public String toString() {
             return "FlowerPot{" +
@@ -128,6 +131,11 @@ public class HerbDetail extends Plant implements SowHerb {
     private Date dateOfSow;
 
     private FlowerPot pot;
+
+    // Instance for FlowerPot
+    public FlowerPot instance(){
+        return new FlowerPot();
+    }
 
     /**It's constructor for no sow herbs
      * @param name nazwa zioła

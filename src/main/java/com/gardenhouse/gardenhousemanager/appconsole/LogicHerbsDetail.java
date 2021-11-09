@@ -12,7 +12,6 @@ import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.flowerpot.Material;
 import com.gardenhouse.gardenhousemanager.flowerpot.PotSize;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
-
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -48,7 +47,7 @@ public class LogicHerbsDetail implements Runnable{
             do {
                 try {
                     System.out.println(title);
-                    System.out.println("Wybierz: \n0 - Wyjście  \n1 - Lista Ziół  \n2 - Zasadź zioło \n3 - Moje zioła \n4 - Pielęgnacja moich ziół");
+                    System.out.println("Wybierz: \n0 - Wyjście  \n1 - Lista Ziół  \n2 - Dodaj zioło do panelu\n3 - Moje zioła \n4 - Pielęgnacja moich ziół");
                     userChoice = scanner.nextInt();
                     switch (userChoice) {
                         case EXIT:
@@ -142,19 +141,20 @@ public class LogicHerbsDetail implements Runnable{
         System.out.println("Utwórz obiekt doniczki, w której zasadzisz zioło z panelu");
 
         System.out.println("Rozmiar doniczki \n " +
-                " ( 1 krok )Wybierz rozmiar? (0,1 lub 2)");
+                " ( 1 krok )Wybierz rozmiar? (0,1,2,3 lub 4)");
         PotSize[] values = PotSize.values();
         for (PotSize potSize : values) {
             System.out.println(potSize.getMl() + "ml; opcja: " + potSize.ordinal());
         }
         int size = scanner.nextInt();
-        // TODO: 08.11.2021 Implementations FlowerPot! 
+
     }
 
     private void getHerbsForUserByName() {
         System.out.println("_________________________________________________");
         System.out.println("Lista Twoich ziół:");
         System.out.println("_________________________________________________");
+        scanner.nextLine();
         Map<String, HerbDetail> myHerbs = user.getMyHerbs();
         Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
         for (Map.Entry<String, HerbDetail> entryHerbs : entries) {
@@ -164,12 +164,27 @@ public class LogicHerbsDetail implements Runnable{
         String herbsByName = scanner.nextLine();
         for (Map.Entry<String, HerbDetail> entry : entries) {
             if (entry.getKey().contains(herbsByName)){
-                System.out.println(entry.getValue());
-                var herbToSow = entry.getValue();
+                System.out.println(entry.getValue().toStringSowHerb());
+                System.out.println("Chcesz zasadzić lub podlać? PODLEJ  ZASADZ");
+                String answer = scanner.nextLine().toUpperCase();
+                if (answer.equals("ZASADZ")){
+                    sowUserHerbs(entry);
+                }else if (answer.equals("PODLEJ")){
+                    // TODO: 09.11.2021  
+                }else {
+                    // TODO: 09.11.2021  
+                }
             }else {
                 System.out.println("Nie znaleziono po nazwie");
             }
         }
+    }
+
+    private void sowUserHerbs(Map.Entry<String, HerbDetail> entry) {
+        HerbDetail value = entry.getValue();
+        System.out.println( "Obiekt do zasadzenia" + value);
+        HerbDetail.FlowerPot flowerPot = value.instance();
+        // TODO: 09.11.2021 Tworzenie doniczki i przypisanie jej do zioła! 
     }
 
     private void getHerbsForUser() {
