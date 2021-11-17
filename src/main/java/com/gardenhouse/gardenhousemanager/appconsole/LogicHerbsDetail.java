@@ -7,9 +7,12 @@ import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKi
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.TemperatureInTheKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.database.DataBaseForHerbs;
+import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicAppGenerateUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.basicwelcome.WelcomeInApp;
+import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserMenu;
+import com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop.UserSwitchApp;
 import com.gardenhouse.gardenhousemanager.flowerpot.PotSize;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 import java.util.*;
@@ -27,7 +30,7 @@ public class LogicHerbsDetail implements Runnable{
     @Override
     public void run() {
         int userChoice = 8;
-        user = enterToAppForUser();
+        loggedUserOnApp();
         scanner = new Scanner(System.in);
 
         while (userChoice != 0) {
@@ -120,6 +123,20 @@ public class LogicHerbsDetail implements Runnable{
         }
     }
 
+    private User loggedUserOnApp() {
+        user = new User();
+        UserSwitchApp userSwitchApp = new UserSwitchApp();
+        LogicAppGenerateUser generateUser = new LogicAppGenerateUser();
+        UserMenu userMenu = new UserMenu();
+        System.out.println("Rozpoczynasz korzystanie z programu. Masz już swoje konto?\n\n");
+        System.out.println(userMenu.displayTitle() + userMenu.getBasicUserOptions());
+        scanner = new Scanner(System.in);
+        System.out.printf("Twój wybór ");
+        int choice = scanner.nextInt();
+        userSwitchApp.mainLoop(choice);
+        return user;
+    }
+
     private void createFlowerPotByUser() {
         System.out.println("Utwórz obiekt doniczki, w której zasadzisz zioło z panelu");
 
@@ -179,17 +196,6 @@ public class LogicHerbsDetail implements Runnable{
         }
     }
 
-
-    private User enterToAppForUser() {
-        // TODO: 03.11.2021 Baza użytkowników!!! Walidacja
-        LogicAppGenerateUser generateUser = new LogicAppGenerateUser();
-        System.out.println("Rozpoczynasz korzystanie z programu. Masz już swoje konto? \nWpisz swoje imię");
-        scanner = new Scanner(System.in);
-        String userName = scanner.nextLine();
-        user = generateUser.createNewUser(userName);
-        System.out.println("witaj w programie <<<<<<<<<<<" + user.getName() + ">>>>>>>>>>>>>>>>>>");
-        return user;
-    }
 
     private static void firstStepForSetKitchenParametersLight(User user,LogicAppSetKitchenParameters kitchenParameters) {
         System.out.println("Zaczynamy ustawiać warunki w Twojej kuchni niezbedne do prawidłowego wzrostu ziół \n " +

@@ -16,9 +16,18 @@ public class User {
     private UserKitchenParameters myKitchen;
     private List<HerbDetail.FlowerPot> myFlowerPots;
 
+    public User() {
+    }
 
     public User(String name) {
         this.name = name;
+    }
+
+    public User(String name, Map<String, HerbDetail> myHerbs, UserKitchenParameters myKitchen, List<HerbDetail.FlowerPot> myFlowerPots) {
+        this.name = name;
+        this.myHerbs = myHerbs;
+        this.myKitchen = myKitchen;
+        this.myFlowerPots = myFlowerPots;
     }
 
     public String getName() {
