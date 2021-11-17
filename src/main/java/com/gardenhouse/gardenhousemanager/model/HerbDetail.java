@@ -89,6 +89,9 @@ public class HerbDetail extends Plant implements SowHerb {
             return new FlowerPot(size,color,material,herb);
         }
 
+        public FlowerPot() {
+        }
+
         @Override
         public String toString() {
             return "FlowerPot{" +
@@ -128,6 +131,11 @@ public class HerbDetail extends Plant implements SowHerb {
     private Date dateOfSow;
 
     private FlowerPot pot;
+
+    // Instance for FlowerPot
+    public FlowerPot instance(){
+        return new FlowerPot();
+    }
 
     /**It's constructor for no sow herbs
      * @param name nazwa zioła
@@ -237,7 +245,7 @@ public class HerbDetail extends Plant implements SowHerb {
 
     @Override
     public String toString() {
-        String result = "** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
+        String result = "\n\n** "+getName() + " ** "+ " zdjęcie: " + getImage() + "\n";
         result = getWaterConsumptionForDay(result);
         return result;
     }
@@ -259,7 +267,7 @@ public class HerbDetail extends Plant implements SowHerb {
         result+= "id zioła: "+ idHerb + "\n";
         result+= "dni życia: "+ dayLife + "\n";
         result = getWaterConsumptionForDay(result);
-        result+= "data zasadzenia: " + getDateOfSow() + "\n";
+        result+= "data zasadzenia: " + getDateOfSow() + "\n\n\n";
         result+= "------------------------------------------------------------------------------------------";
         return result;
     }

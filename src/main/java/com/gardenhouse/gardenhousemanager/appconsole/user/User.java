@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Użytkownik aplikacji. Posiada swoja mapę zasianych ziół.
+/** USER Add-Update-Remove-Login-
+ * This class it's a new users create and has all data. User has list herbs which he wants to sow.
  */
 public class User {
     private String name;
@@ -16,9 +16,18 @@ public class User {
     private UserKitchenParameters myKitchen;
     private List<HerbDetail.FlowerPot> myFlowerPots;
 
+    public User() {
+    }
 
     public User(String name) {
         this.name = name;
+    }
+
+    public User(String name, Map<String, HerbDetail> myHerbs, UserKitchenParameters myKitchen, List<HerbDetail.FlowerPot> myFlowerPots) {
+        this.name = name;
+        this.myHerbs = myHerbs;
+        this.myKitchen = myKitchen;
+        this.myFlowerPots = myFlowerPots;
     }
 
     public String getName() {
@@ -64,5 +73,9 @@ public class User {
     @Override
     public String toString() {
         return "Użytkownik: " + name + "\n" + myKitchen.toString() + "\n" + myFlowerPots;
+    }
+
+    public String loggedDisplay(){
+        return "Konto: " + name;
     }
 }
