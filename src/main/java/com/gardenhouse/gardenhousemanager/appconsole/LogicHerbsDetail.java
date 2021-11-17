@@ -21,7 +21,7 @@ import java.util.List;
 public class LogicHerbsDetail implements Runnable{
 
     public static Scanner scanner;
-    private static User user;
+    private static UserLogged user;
     private static final int EXIT = 0;
     private static final int GET_LIST = 1;
     private static final int ADD_HERB_TO_USER_LIST= 2;
@@ -41,6 +41,7 @@ public class LogicHerbsDetail implements Runnable{
                     String basicMenu = WelcomeInApp.displayBasicMenu();
                     System.out.println(basicMenu);
                     userChoice = scanner.nextInt();
+                    scanner.nextLine();
                     switch (userChoice) {
                         case EXIT:
                             try {
@@ -123,10 +124,9 @@ public class LogicHerbsDetail implements Runnable{
         }
     }
 
-    private User loggedUserOnApp() {
-        user = new User();
+    private UserLogged loggedUserOnApp() {
+        user = new UserLogged();
         UserSwitchApp userSwitchApp = new UserSwitchApp();
-        LogicAppGenerateUser generateUser = new LogicAppGenerateUser();
         UserMenu userMenu = new UserMenu();
         System.out.println("Rozpoczynasz korzystanie z programu. Masz już swoje konto?\n\n");
         System.out.println(userMenu.displayTitle() + userMenu.getBasicUserOptions());
@@ -134,6 +134,8 @@ public class LogicHerbsDetail implements Runnable{
         System.out.printf("Twój wybór ");
         int choice = scanner.nextInt();
         userSwitchApp.mainLoop(choice);
+        UserLogged newLoggedUser = UserSwitchApp.getNewLoggedUser();
+        System.out.println(newLoggedUser.loggedDisplay());
         return user;
     }
 

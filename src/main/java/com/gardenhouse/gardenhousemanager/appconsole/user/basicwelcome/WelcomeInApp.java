@@ -1,6 +1,8 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user.basicwelcome;
 
+import com.gardenhouse.gardenhousemanager.appconsole.LogicHerbsDetail;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
+import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 
 /**
  * This class it's generate title, version and description on user view in console.
@@ -20,6 +22,7 @@ public class WelcomeInApp {
     private static final String description = "Miejsce na opis funkcjonalności!!\n\n";
     private static final String titleBasicMenu = "°°°°°°° MENU °°°°°°°\n";
     private static final String basicMenu = "Wybierz: \n0 - Wyjście  \n1 - Lista Ziół  \n2 - Dodaj zioło do panelu\n3 - Moje zioła \n";
+    private static UserLogged userLogged;
 
     private WelcomeInApp() {
     }
@@ -28,7 +31,7 @@ public class WelcomeInApp {
         return title + version + description;
     }
     public static String displayBasicMenu(){
-        return titleBasicMenu + basicMenu;
+        return titleBasicMenu + basicMenu +"\n";
     }
 
     /**
@@ -36,6 +39,13 @@ public class WelcomeInApp {
      * @return writing welcome a username.
      */
     public static String welcomeUser(User user){
+        return "Witaj w aplikacji " + user.getName().toUpperCase();
+    }
+    /**
+     * @param user to pass exists user
+     * @return writing welcome a username.
+     */
+    public static String welcomeLoggedUser(UserLogged user){
         return "Witaj w aplikacji " + user.getName().toUpperCase();
     }
 }

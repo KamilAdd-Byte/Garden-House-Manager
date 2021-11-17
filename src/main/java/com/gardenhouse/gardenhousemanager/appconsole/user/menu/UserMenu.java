@@ -13,6 +13,7 @@ public class UserMenu extends UserLogged {
         return basicUserOptions;
     }
 
+
     public String getTitle() {
         return title;
     }

@@ -1,6 +1,7 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop;
 
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
+import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicAppGenerateUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserMenu;
 
@@ -12,11 +13,14 @@ public class UserSwitchApp extends UserMenu {
     private static final int DEFAULT_USER = 3;
     private static final Scanner scanner = new Scanner(System.in);
     private int userOptions;
+    private static UserLogged newLoggedUser;
 
     public void mainLoop(int userOptions) {
             switch (userOptions) {
                 case REGISTRY_USER:
                     LogicAppGenerateUser generateUser = new LogicAppGenerateUser();
+                    newLoggedUser = generateUser.createNewLoggedUser();
+                    setNewLoggedUser(newLoggedUser);
                     break;
                 case LOG_IN_USER:
                     generateUser = new LogicAppGenerateUser();
@@ -30,5 +34,13 @@ public class UserSwitchApp extends UserMenu {
                 default:
                     System.out.println("Podano niewłasciwą opcje \n" + getBasicUserOptions());
             }
+    }
+
+    public static UserLogged getNewLoggedUser() {
+        return newLoggedUser;
+    }
+
+    public static void setNewLoggedUser(UserLogged newLoggedUser) {
+        UserSwitchApp.newLoggedUser = newLoggedUser;
     }
 }

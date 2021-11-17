@@ -74,4 +74,8 @@ public class User {
     public String toString() {
         return "Użytkownik: " + name + "\n" + myKitchen.toString() + "\n" + myFlowerPots;
     }
+
+    public String loggedDisplay(){
+        return "Konto: " + name;
+    }
 }

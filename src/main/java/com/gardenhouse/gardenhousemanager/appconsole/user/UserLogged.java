@@ -95,4 +95,9 @@ public class UserLogged extends User {
                 "\n parametry kuchni= " + getMyKitchen() +
                 "\n lista moich ziół= " + getMyHerbs();
     }
+
+    @Override
+    public String loggedDisplay(){
+        return "Konto: " + login;
+    }
 }

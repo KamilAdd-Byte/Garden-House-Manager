@@ -6,6 +6,7 @@ import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * @author kamil sulejewski
@@ -15,6 +16,7 @@ public class LogicAppGenerateUser {
     private User user;
     private UserLogged userLogged;
     private List<UserLogged> allUser;
+    private static Scanner scanner;
 
     public LogicAppGenerateUser() { }
 
@@ -37,12 +39,16 @@ public class LogicAppGenerateUser {
     }
 
     /** This method is used for create new logged user
-     * @param name of user
-     * @param login of user
-     * @param password of user
      * @return new logged user
      */
-    public UserLogged createNewLoggedUser(String name,String login, String password){
+    public UserLogged createNewLoggedUser(){
+        scanner = new Scanner(System.in);
+        System.out.println("Podaj imię");
+        String name = scanner.nextLine();
+        System.out.println("Podaj login");
+        String login = scanner.nextLine();
+        System.out.println("Podaj hasło");
+        String password = scanner.nextLine();
         if (userLogged==null){
             userLogged = new UserLogged();
         }
