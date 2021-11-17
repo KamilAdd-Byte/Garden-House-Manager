@@ -1,4 +1,6 @@
-package com.gardenhouse.gardenhousemanager.appconsole.user;
+package com.gardenhouse.gardenhousemanager.appconsole.user.logic;
+
+import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
