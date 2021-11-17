@@ -3,10 +3,7 @@ package com.gardenhouse.gardenhousemanager.appconsole.user.logic;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author kamil sulejewski
@@ -62,6 +59,21 @@ public class LogicAppGenerateUser {
         return userLogged;
     }
 
+    public UserLogged login(String login,String password){
+        if (allUser==null){
+            allUser = new ArrayList<>();
+        }
+        Iterator<UserLogged> iterator = allUser.iterator();
+        while (iterator.hasNext()){
+            if (login.contains(userLogged.getLogin()) && password.contains(userLogged.getPassword())){
+                System.out.println("Znaleziono usera!");
+                return userLogged;
+            }else {
+                System.err.println("Błąd");
+            }
+        }
+        return userLogged;
+    }
     public User getUser() {
         return user;
     }

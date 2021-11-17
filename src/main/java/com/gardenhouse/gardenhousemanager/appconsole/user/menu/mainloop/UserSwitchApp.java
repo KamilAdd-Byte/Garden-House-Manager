@@ -16,14 +16,18 @@ public class UserSwitchApp extends UserMenu {
     private static UserLogged newLoggedUser;
 
     public void mainLoop(int userOptions) {
+        LogicAppGenerateUser generateUser = new LogicAppGenerateUser();
             switch (userOptions) {
                 case REGISTRY_USER:
-                    LogicAppGenerateUser generateUser = new LogicAppGenerateUser();
                     newLoggedUser = generateUser.createNewLoggedUser();
                     setNewLoggedUser(newLoggedUser);
                     break;
                 case LOG_IN_USER:
-                    generateUser = new LogicAppGenerateUser();
+                    System.out.println("Podaj login ");
+                    String login = scanner.nextLine();
+                    System.out.println("Podaj hasło ");
+                    String password = scanner.nextLine();
+                    generateUser.login(login,password);
                     break;
                 case DEFAULT_USER:
                     System.out.println("Podaj imię ");

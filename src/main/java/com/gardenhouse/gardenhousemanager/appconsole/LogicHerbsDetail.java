@@ -26,6 +26,8 @@ public class LogicHerbsDetail implements Runnable{
     private static final int GET_LIST = 1;
     private static final int ADD_HERB_TO_USER_LIST= 2;
     private static final int MY_HERB=3;
+    private static final int LOGIN=4;
+
 
     @Override
     public void run() {
@@ -36,9 +38,10 @@ public class LogicHerbsDetail implements Runnable{
         while (userChoice != 0) {
             do {
                 try {
-                    String displayMenu = WelcomeInApp.displayTitleAndVersionApp();
-                    System.out.println(displayMenu);
-                    String basicMenu = WelcomeInApp.displayBasicMenu();
+                    WelcomeInApp welcome = new WelcomeInApp(user);
+                    String basicTitle = welcome.displayTitleAndVersionApp();
+                    System.out.println(basicTitle);
+                    String basicMenu = welcome.displayBasicMenu();
                     System.out.println(basicMenu);
                     userChoice = scanner.nextInt();
                     scanner.nextLine();
@@ -111,6 +114,9 @@ public class LogicHerbsDetail implements Runnable{
                                 }
                             }
                             break;
+                        case LOGIN:
+                            loggedUserOnApp();
+                            break;
                         default:
                             System.err.println("Opcja wybrana jest błędna. Dostępne 0 1 2");
                     }
@@ -125,7 +131,6 @@ public class LogicHerbsDetail implements Runnable{
     }
 
     private UserLogged loggedUserOnApp() {
-        user = new UserLogged();
         UserSwitchApp userSwitchApp = new UserSwitchApp();
         UserMenu userMenu = new UserMenu();
         System.out.println("Rozpoczynasz korzystanie z programu. Masz już swoje konto?\n\n");
@@ -134,8 +139,9 @@ public class LogicHerbsDetail implements Runnable{
         System.out.printf("Twój wybór ");
         int choice = scanner.nextInt();
         userSwitchApp.mainLoop(choice);
-        UserLogged newLoggedUser = UserSwitchApp.getNewLoggedUser();
-        System.out.println(newLoggedUser.loggedDisplay());
+        user = UserSwitchApp.getNewLoggedUser();
+        System.out.println(user.loggedDisplay());
+        scanner.nextLine();
         return user;
     }
 
