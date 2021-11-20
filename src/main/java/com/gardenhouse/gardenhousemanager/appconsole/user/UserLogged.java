@@ -2,7 +2,6 @@ package com.gardenhouse.gardenhousemanager.appconsole.user;
 
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKitchenParameters;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
-
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +17,7 @@ public class UserLogged extends User {
         this.password = password;
     }
     public UserLogged(String name, Map<String, HerbDetail> myHerbs, UserKitchenParameters myKitchen,
-                       List<HerbDetail.FlowerPot> myFlowerPots, String login, String password) {
+                       List<HerbDetail> myFlowerPots, String login, String password) {
         super(name, myHerbs, myKitchen, myFlowerPots);
         this.login = login;
         this.password = password;
@@ -71,12 +70,12 @@ public class UserLogged extends User {
     }
 
     @Override
-    public List<HerbDetail.FlowerPot> getMyFlowerPots() {
+    public List<HerbDetail> getMyFlowerPots() {
         return super.getMyFlowerPots();
     }
 
     @Override
-    public void setMyFlowerPots(List<HerbDetail.FlowerPot> myFlowerPots) {
+    public void setMyFlowerPots(List<HerbDetail> myFlowerPots) {
         super.setMyFlowerPots(myFlowerPots);
     }
 

@@ -191,7 +191,7 @@ public class LogicHerbsDetail implements Runnable{
     private void sowUserHerbs(Map.Entry<String, HerbDetail> entry) {
         HerbDetail value = entry.getValue();
         System.out.println( "Obiekt do zasadzenia" + value);
-        HerbDetail.FlowerPot flowerPot = value.instance();
+
         // TODO: 09.11.2021 Tworzenie doniczki i przypisanie jej do zioła! 
     }
 

@@ -2,8 +2,6 @@ package com.gardenhouse.gardenhousemanager.appconsole.database;
 
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
-
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -24,7 +22,6 @@ public class LogicAppHerbs {
         herbDetail.setGrowthUp(false);
         herbDetail.setDescription("No find");
         herbDetail.setWaterConsumptionPerDay(WaterConsumption.LITTLE);
-        herbDetail.setPot(null);
 
     }
 

@@ -2,7 +2,6 @@ package com.gardenhouse.gardenhousemanager.appconsole.user;
 
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKitchenParameters;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,7 @@ public class User {
     private String name;
     private Map<String, HerbDetail> myHerbs;
     private UserKitchenParameters myKitchen;
-    private List<HerbDetail.FlowerPot> myFlowerPots;
+    private List<HerbDetail> myFlowerPots;
 
     public User() {
     }
@@ -23,7 +22,7 @@ public class User {
         this.name = name;
     }
 
-    public User(String name, Map<String, HerbDetail> myHerbs, UserKitchenParameters myKitchen, List<HerbDetail.FlowerPot> myFlowerPots) {
+    public User(String name, Map<String, HerbDetail> myHerbs, UserKitchenParameters myKitchen, List<HerbDetail> myFlowerPots) {
         this.name = name;
         this.myHerbs = myHerbs;
         this.myKitchen = myKitchen;
@@ -54,11 +53,11 @@ public class User {
         this.myKitchen = myKitchen;
     }
 
-    public List<HerbDetail.FlowerPot> getMyFlowerPots() {
+    public List<HerbDetail> getMyFlowerPots() {
         return myFlowerPots;
     }
 
-    public void setMyFlowerPots(List<HerbDetail.FlowerPot> myFlowerPots) {
+    public void setMyFlowerPots(List<HerbDetail> myFlowerPots) {
         this.myFlowerPots = myFlowerPots;
     }
 
