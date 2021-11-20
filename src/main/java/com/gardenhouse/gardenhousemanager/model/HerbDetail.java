@@ -2,12 +2,9 @@ package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
-import com.gardenhouse.gardenhousemanager.control.Wetness;
-import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
 import com.gardenhouse.gardenhousemanager.flowerpot.Material;
 import com.gardenhouse.gardenhousemanager.flowerpot.PotSize;
-import com.gardenhouse.gardenhousemanager.flowerpot.sow.SowHerb;
-import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
+import com.gardenhouse.gardenhousemanager.flowerpot.sow.ActionHerb;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +21,7 @@ import java.util.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class HerbDetail extends Plant implements SowHerb {
+public class HerbDetail extends Plant implements ActionHerb {
 
     public static class FlowerPot {
         private PotSize potSize;
