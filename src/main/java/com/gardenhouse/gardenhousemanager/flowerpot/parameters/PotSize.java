@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.flowerpot;
+package com.gardenhouse.gardenhousemanager.flowerpot.parameters;
 
 public enum PotSize {
     EXTRA_SMALL(10,10, 10),

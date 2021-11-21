@@ -1,5 +1,7 @@
 package com.gardenhouse.gardenhousemanager.flowerpot;
 
+import com.gardenhouse.gardenhousemanager.flowerpot.parameters.Material;
+import com.gardenhouse.gardenhousemanager.flowerpot.parameters.PotSize;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.ActionHerb;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 import lombok.Getter;
@@ -92,16 +94,17 @@ public class FlowerPot implements ActionHerb {
 
     @Override
     public void sow(HerbDetail pot) {
-
+        // TODO: 20.11.2021 Implementation this method. Create class logic switch and structure
     }
 
     @Override
     public void water(HerbDetail herb, double waterMl) {
-
+      // TODO: 20.11.2021 Implementation this method.
     }
 
     @Override
     public int getDayOfLife(HerbDetail herb) {
+        // TODO: 20.11.2021 Implementation this method.
         return 0;
     }
 }

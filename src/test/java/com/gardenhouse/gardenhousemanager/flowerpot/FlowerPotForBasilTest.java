@@ -2,6 +2,8 @@ package com.gardenhouse.gardenhousemanager.flowerpot;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
+import com.gardenhouse.gardenhousemanager.flowerpot.parameters.Material;
+import com.gardenhouse.gardenhousemanager.flowerpot.parameters.PotSize;
 import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
 import com.gardenhouse.gardenhousemanager.model.Basil;
 import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
@@ -9,7 +11,6 @@ import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.awt.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class FlowerPotForBasilTest {

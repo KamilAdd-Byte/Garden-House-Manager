@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.flowerpot;
+package com.gardenhouse.gardenhousemanager.flowerpot.parameters;
 
 /**
  * Type of soil for plants - 'Typ ziemi dla roślin'.

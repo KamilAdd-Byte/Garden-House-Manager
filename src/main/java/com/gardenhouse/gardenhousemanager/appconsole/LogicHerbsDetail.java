@@ -8,12 +8,11 @@ import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.contro
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.database.DataBaseForHerbs;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
-import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicAppGenerateUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.basicwelcome.WelcomeInApp;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop.UserSwitchApp;
-import com.gardenhouse.gardenhousemanager.flowerpot.PotSize;
+import com.gardenhouse.gardenhousemanager.flowerpot.parameters.PotSize;
 import com.gardenhouse.gardenhousemanager.model.HerbDetail;
 import java.util.*;
 import java.util.List;

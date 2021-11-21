@@ -2,8 +2,6 @@ package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
-import com.gardenhouse.gardenhousemanager.flowerpot.Material;
-import com.gardenhouse.gardenhousemanager.flowerpot.PotSize;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.ActionHerb;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
