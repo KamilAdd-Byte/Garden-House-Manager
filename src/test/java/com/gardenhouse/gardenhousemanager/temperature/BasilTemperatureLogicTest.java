@@ -3,7 +3,7 @@ package com.gardenhouse.gardenhousemanager.temperature;
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
-import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
+import com.gardenhouse.gardenhousemanager.control.daylife.LiveHerbState;
 import com.gardenhouse.gardenhousemanager.model.Basil;
 import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class BasilTemperatureLogicTest {
 

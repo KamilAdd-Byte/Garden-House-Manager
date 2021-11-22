@@ -1,8 +1,10 @@
 package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control;
 
+import com.gardenhouse.gardenhousemanager.model.HerbDto;
+
 /**
  * This enum set temperature in the user kitchen.
- * @see com.gardenhouse.gardenhousemanager.model.HerbDetail min and max temperature
+ * @see HerbDto min and max temperature
  */
 public enum TemperatureInTheKitchen {
     LOW(15,17),

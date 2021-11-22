@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.live;
+package com.gardenhouse.gardenhousemanager.control.daylife;
 
 public enum LiveHerbState {
     PREPARATION("Zioło w stanie przygotowania do zasadzenia"),

@@ -1,5 +1,7 @@
 package com.gardenhouse.gardenhousemanager.flowerpot;
 
+import com.gardenhouse.gardenhousemanager.flowerpot.parameters.Material;
+import com.gardenhouse.gardenhousemanager.flowerpot.parameters.PotSize;
 import com.gardenhouse.gardenhousemanager.model.Basil;
 import com.gardenhouse.gardenhousemanager.waterplants.WaterPlantsLogic;
 import lombok.NoArgsConstructor;
@@ -16,7 +18,7 @@ public class FlowerPotForBasil extends FlowerPot {
     private PrimerForPlants primer;
     private WaterPlantsLogic waterPlantsLogic;
 
-    public FlowerPotForBasil(Basil basil,PotSize potSize, Color color, Material material, PrimerForPlants primer) {
+    public FlowerPotForBasil(Basil basil, PotSize potSize, Color color, Material material, PrimerForPlants primer) {
         super(potSize, color, material);
         this.primer = primer;
         this.basil = basil;

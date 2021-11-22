@@ -1,4 +1,6 @@
-package com.gardenhouse.gardenhousemanager.flowerpot;
+package com.gardenhouse.gardenhousemanager.flowerpot.parameters;
+
+import lombok.ToString;
 
 /**
  * Type of soil for plants - 'Typ ziemi dla roślin'.
@@ -14,5 +16,9 @@ public enum KindOfSoil {
 
     KindOfSoil(String description) {
         this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
