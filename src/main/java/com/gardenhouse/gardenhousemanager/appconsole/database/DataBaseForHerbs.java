@@ -33,19 +33,19 @@ public class DataBaseForHerbs implements List<HerbDto> {
                 0, WaterConsumption.LITTLE, Light.LITTLE, "Liść laurowy wraz z zielem angielskim tworzy duet, który jest niezbędny do przygotowywania dań na ciepło – zup, sosów czy gulaszy. Najczęściej decydujemy się na gotową suszoną postać przyprawy dostępną na sklepowych półkach. " +
                 "Liście laurowe możemy również uprawiać na parapecie..Świeże liście laurowe – obrywa się na bieżąco (zimą mniej), " +
                 "w miarę potrzeb. Najbardziej aromatyczne są młode liście.",
-                20,25,"Marzec,Kwiecień"));
+                18,22,"Marzec,Kwiecień"));
         herbsDtos.add(new HerbDto("TYMIANEK","https://img.shmbk.pl/rimgsph/1102383_f6256a52-656a-49e4-8b4d-4466c1537b41_crop_1250_750_zdjecie.jpg",
                 0, WaterConsumption.LITTLE, Light.HARD, " Wykorzystuje się go do potraw kuchni francuskiej oraz śródziemnomorskiej. Idealnie pasuje do mięsnych potraw (w szczególności z jagnięciną), potrawek na bazie strączków, a także do serów (zwłaszcza kozich), jajecznych przekąsek i kanapek.",
-                10,15,"Przełom Maj - Czerwiec"));
+                15,23,"Przełom Maj - Czerwiec"));
         herbsDtos.add(new HerbDto("MIETA","https://histografy.pl/wp-content/uploads/2020/09/mieta-pieprzowa.jpg",
                 0, WaterConsumption.MEDIUM, Light.MEDIUM, "Lekka, orzeźwiająca i soczyście zielona mięta sprawdzi się zarówno do dań słodkich, jak i wytrawnych. Doskonale pasuje do zimnych napojów i " +
                 "drinków z dodatkiem cytryny lub limonki (np. lemoniady czy mojito), a także do sałatek owocowych czy warzywnych.", 18,23,"Przełom Maj - Czerwiec"));
         herbsDtos.add(new HerbDto("SZCZYPIOREK","https://www.diki.pl/images-common/words400/chives.jpg",
                 0, WaterConsumption.MEDIUM, Light.MEDIUM, "Długie łodygi szczypiorku przypominające zielone rurki idealnie współgrają z jajecznymi potrawami, nadając im ostrości i świeżego aromatu. Świetnie pasują również do sałatek, mięsnych " +
                 "dań czy potraw zapiekanych w piekarniku, a także jako dekoracyjne wykończenie przekąsek (np. kanapek czy przystawek).", 20,25,"Przełom Marzec - Kwiecień"));
-        herbsDtos.add(new HerbDto("KOCI MIETKA","https://www.diki.pl/images-common/words400/chives.jpg",
-                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Długie łodygi szczypiorku przypominające zielone rurki idealnie współgrają z jajecznymi potrawami, nadając im ostrości i świeżego aromatu. Świetnie pasują również do sałatek, mięsnych " +
-                "dań czy potraw zapiekanych w piekarniku, a także jako dekoracyjne wykończenie przekąsek (np. kanapek czy przystawek).", 20,23,"Przełom Marzec - Kwiecień"));
+        herbsDtos.add(new HerbDto("KOCI MIETKA","https://lh3.googleusercontent.com/proxy/H0STCef8hJtlrUOaQ61ueUgp3tIRZ6o6jvNhMatV3TrugrW-2VzCSoBjSdmNkUcLiFEdcwhJNJc70gGLOTSg76ODQ0MX0uoVjhh3nkYfjGi_",
+                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Kocimiętkę można wykorzystywać do urozmaicania rabat w ogrodach naturalistycznych, wiejskich i śródziemnomorskich. Warto ją również uprawiać w pobliżu altan, na tarasie i balkonie, gdyż odstrasza niektóre owady (np.: muchy i komary!). " +
+                "To ponadto znana roślina miododajna i przyciąga pożyteczną faunę. Kocimiętka to również znane zioło – wykazuje działania bakteriobójcze, moczopędnie, przeciwzapalnie i relaksujące.", 20,23,"Przełom Maj - Czerwiec"));
         return herbsDtos;
     }
 
