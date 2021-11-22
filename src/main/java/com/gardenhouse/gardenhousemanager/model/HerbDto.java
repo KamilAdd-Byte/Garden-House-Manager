@@ -82,7 +82,7 @@ public class HerbDto extends Plant implements ActionHerb {
         this.dateOfSow = new Date();
     }
 
-    /**It's constructor for herb to sows
+    /**It's constructor for herb to view
      * @param name nazwa zioła
      * @param image miejsce na zdjęcie dla zioła
      * @param waterConsumptionPerDay przybliżona wartość spozywania wody przez dane zioło w skali dnia
@@ -92,10 +92,9 @@ public class HerbDto extends Plant implements ActionHerb {
      * @param maxTemperature max temperatura dla prawidłowego wzrostu zioła
      * @param monthToSow preferowany miesiąc zasiania zioła
      */
-    public HerbDto(String name, String image, int idHerb, WaterConsumption waterConsumptionPerDay, Light light, String description,
+    public HerbDto(String name, String image,  WaterConsumption waterConsumptionPerDay, Light light, String description,
                     double minTemperature, double maxTemperature, MonthOfSow monthToSow) {
         super(name, image);
-        this.idHerb = idHerb;
         this.waterConsumptionPerDay = waterConsumptionPerDay;
         this.light = light;
         this.description = description;

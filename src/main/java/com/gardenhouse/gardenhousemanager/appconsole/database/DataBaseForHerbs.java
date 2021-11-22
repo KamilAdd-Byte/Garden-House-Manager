@@ -28,25 +28,28 @@ public class DataBaseForHerbs implements List<HerbDto> {
             herbsDtos = new ArrayList<>();
         }
         herbsDtos.add(new HerbDto("BAZYLIA","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
-                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Jako roślina użytkowa i lecznicza. Surowcem przyprawowym jest ziele bazylii,używane w stanie świeżym lub suszonym. Liście bazylii dodaje sie do sałatek, sosów, twarogu, zapiekanek, zup (szczególnie pomidorowej), potraw miesnych i ryb.",
+                WaterConsumption.MEDIUM, Light.MEDIUM, "Jako roślina użytkowa i lecznicza. Surowcem przyprawowym jest ziele bazylii,używane w stanie świeżym lub suszonym. Liście bazylii dodaje sie do sałatek, sosów, twarogu, zapiekanek, zup (szczególnie pomidorowej), potraw miesnych i ryb.",
                 22.5,25.5,MonthOfSow.JULY));
         herbsDtos.add(new HerbDto("LIŚĆ LAUROWY","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
-                0, WaterConsumption.LITTLE, Light.LITTLE, "Liść laurowy wraz z zielem angielskim tworzy duet, który jest niezbędny do przygotowywania dań na ciepło – zup, sosów czy gulaszy. Najczęściej decydujemy się na gotową suszoną postać przyprawy dostępną na sklepowych półkach. " +
+                WaterConsumption.LITTLE, Light.LITTLE, "Liść laurowy wraz z zielem angielskim tworzy duet, który jest niezbędny do przygotowywania dań na ciepło – zup, sosów czy gulaszy. Najczęściej decydujemy się na gotową suszoną postać przyprawy dostępną na sklepowych półkach. " +
                 "Liście laurowe możemy również uprawiać na parapecie..Świeże liście laurowe – obrywa się na bieżąco (zimą mniej), " +
                 "w miarę potrzeb. Najbardziej aromatyczne są młode liście.",
                 18,22,MonthOfSow.MARCH));
         herbsDtos.add(new HerbDto("TYMIANEK","https://img.shmbk.pl/rimgsph/1102383_f6256a52-656a-49e4-8b4d-4466c1537b41_crop_1250_750_zdjecie.jpg",
-                0, WaterConsumption.LITTLE, Light.HARD, " Wykorzystuje się go do potraw kuchni francuskiej oraz śródziemnomorskiej. Idealnie pasuje do mięsnych potraw (w szczególności z jagnięciną), potrawek na bazie strączków, a także do serów (zwłaszcza kozich), jajecznych przekąsek i kanapek.",
+                WaterConsumption.LITTLE, Light.HARD, " Wykorzystuje się go do potraw kuchni francuskiej oraz śródziemnomorskiej. Idealnie pasuje do mięsnych potraw (w szczególności z jagnięciną), potrawek na bazie strączków, a także do serów (zwłaszcza kozich), jajecznych przekąsek i kanapek.",
                 15,23,MonthOfSow.MAY));
         herbsDtos.add(new HerbDto("MIETA","https://histografy.pl/wp-content/uploads/2020/09/mieta-pieprzowa.jpg",
-                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Lekka, orzeźwiająca i soczyście zielona mięta sprawdzi się zarówno do dań słodkich, jak i wytrawnych. Doskonale pasuje do zimnych napojów i " +
+                WaterConsumption.MEDIUM, Light.MEDIUM, "Lekka, orzeźwiająca i soczyście zielona mięta sprawdzi się zarówno do dań słodkich, jak i wytrawnych. Doskonale pasuje do zimnych napojów i " +
                 "drinków z dodatkiem cytryny lub limonki (np. lemoniady czy mojito), a także do sałatek owocowych czy warzywnych.", 18,23,MonthOfSow.MAY));
         herbsDtos.add(new HerbDto("SZCZYPIOREK","https://www.diki.pl/images-common/words400/chives.jpg",
-                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Długie łodygi szczypiorku przypominające zielone rurki idealnie współgrają z jajecznymi potrawami, nadając im ostrości i świeżego aromatu. Świetnie pasują również do sałatek, mięsnych " +
+                WaterConsumption.MEDIUM, Light.MEDIUM, "Długie łodygi szczypiorku przypominające zielone rurki idealnie współgrają z jajecznymi potrawami, nadając im ostrości i świeżego aromatu. Świetnie pasują również do sałatek, mięsnych " +
                 "dań czy potraw zapiekanych w piekarniku, a także jako dekoracyjne wykończenie przekąsek (np. kanapek czy przystawek).", 20,25, MonthOfSow.APRIL));
         herbsDtos.add(new HerbDto("KOCI MIETKA","https://lh3.googleusercontent.com/proxy/H0STCef8hJtlrUOaQ61ueUgp3tIRZ6o6jvNhMatV3TrugrW-2VzCSoBjSdmNkUcLiFEdcwhJNJc70gGLOTSg76ODQ0MX0uoVjhh3nkYfjGi_",
-                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Kocimiętkę można wykorzystywać do urozmaicania rabat w ogrodach naturalistycznych, wiejskich i śródziemnomorskich. Warto ją również uprawiać w pobliżu altan, na tarasie i balkonie, gdyż odstrasza niektóre owady (np.: muchy i komary!). " +
+                WaterConsumption.MEDIUM, Light.MEDIUM, "Kocimiętkę można wykorzystywać do urozmaicania rabat w ogrodach naturalistycznych, wiejskich i śródziemnomorskich. Warto ją również uprawiać w pobliżu altan, na tarasie i balkonie, gdyż odstrasza niektóre owady (np.: muchy i komary!). " +
                 "To ponadto znana roślina miododajna i przyciąga pożyteczną faunę. Kocimiętka to również znane zioło – wykazuje działania bakteriobójcze, moczopędnie, przeciwzapalnie i relaksujące.", 20,23,MonthOfSow.MAY));
+        herbsDtos.add(new HerbDto("KLOSOWIEC POMARSZCZONY","https://zielonyogrodek.pl/i/images/4/1/7/d2FjPTc3MHgx_src_88417-Kosowiec-agastache-fot.-Martin-Rupprechter---Pixabay.jpg",
+                WaterConsumption.BIG, Light.HARD, "Kłosowiec pomarszczony (Agastache rugosa) nazywany też miętą koreańską. W krajach azjatyckich roślina wykorzystywana jest także jako przyprawa kulinarna (świeża lub suszona). Świeże liście można dodawać do napojów, sałatek i deserów. " +
+                "Kłosowiec uznawany jest też za roślinę leczniczą, wykazującą min. działanie przeciwgorączkowe i przeciwbiegunkowe. Liście mają delikatny, anyżowo-miętowy aromat.", 20,23,MonthOfSow.JUNE));
         return herbsDtos;
     }
 
