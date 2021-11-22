@@ -3,6 +3,7 @@ package com.gardenhouse.gardenhousemanager.model;
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.daylife.Condition;
+import com.gardenhouse.gardenhousemanager.control.monthandday.MonthOfSow;
 import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.ActionHerb;
 import lombok.Getter;
@@ -44,7 +45,7 @@ public class HerbDto extends Plant implements ActionHerb {
 
     private boolean growthUp;
 
-    private String monthToSow;
+    private MonthOfSow monthToSow;
 
     private Date dateOfSow;
 
@@ -68,7 +69,7 @@ public class HerbDto extends Plant implements ActionHerb {
      */
     public HerbDto(String name, String image, Condition conditionHerb,int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
                    String description, double minTemperature, double maxTemperature, boolean growthUp,
-                   String monthToSow,FlowerPot pot) {
+                   MonthOfSow monthToSow,FlowerPot pot) {
         super(name, image);
         this.dayLife = dayLife;
         this.waterConsumptionPerDay = waterConsumptionPerDay;
@@ -92,7 +93,7 @@ public class HerbDto extends Plant implements ActionHerb {
      * @param monthToSow preferowany miesiąc zasiania zioła
      */
     public HerbDto(String name, String image, int idHerb, WaterConsumption waterConsumptionPerDay, Light light, String description,
-                    double minTemperature, double maxTemperature, String monthToSow) {
+                    double minTemperature, double maxTemperature, MonthOfSow monthToSow) {
         super(name, image);
         this.idHerb = idHerb;
         this.waterConsumptionPerDay = waterConsumptionPerDay;
@@ -107,11 +108,11 @@ public class HerbDto extends Plant implements ActionHerb {
         super(name, image);
     }
 
-    public String getMonthToSow() {
+    public MonthOfSow getMonthToSow() {
         return monthToSow;
     }
 
-    public void setMonthToSow(String monthToSow) {
+    public void setMonthToSow(MonthOfSow monthToSow) {
         this.monthToSow = monthToSow;
     }
 
@@ -141,7 +142,7 @@ public class HerbDto extends Plant implements ActionHerb {
         result += "opis: " + description + "\n";
         result += "minimalna temperatura dla: " + getName() + " " + minTemperature + "\n";
         result += "maksymalna temperatura dla: " + getName() + " " + maxTemperature + "\n";
-        result += "preferowany miesiąc wysiewu: " + monthToSow + "\n";
+        result += "preferowany miesiąc wysiewu: " + monthToSow.getDescribe() + "\n";
         return result;
     }
 

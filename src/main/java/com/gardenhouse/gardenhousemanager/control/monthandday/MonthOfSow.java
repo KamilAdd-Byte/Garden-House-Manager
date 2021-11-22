@@ -23,4 +23,8 @@ public enum MonthOfSow {
         this.describe = describe;
         this.month = month;
     }
+
+    public String getDescribe() {
+        return describe;
+    }
 }
