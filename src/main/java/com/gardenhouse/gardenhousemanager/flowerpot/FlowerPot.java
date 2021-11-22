@@ -1,9 +1,10 @@
 package com.gardenhouse.gardenhousemanager.flowerpot;
 
+import com.gardenhouse.gardenhousemanager.control.daylife.Condition;
 import com.gardenhouse.gardenhousemanager.flowerpot.parameters.Material;
 import com.gardenhouse.gardenhousemanager.flowerpot.parameters.PotSize;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.ActionHerb;
-import com.gardenhouse.gardenhousemanager.model.HerbDetail;
+import com.gardenhouse.gardenhousemanager.model.HerbDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -72,16 +73,16 @@ public class FlowerPot implements ActionHerb {
     private PotSize potSize;
     private Color color;
     private Material material;
-    private HerbDetail herb;
+    private HerbDto herb;
 
-    public FlowerPot(PotSize potSize, Color color, Material material,HerbDetail herb) {
+    public FlowerPot(PotSize potSize, Color color, Material material, HerbDto herb) {
         this.potSize = potSize;
         this.color = color;
         this.material = material;
         this.herb = herb;
     }
 
-    public FlowerPot(PotSize potSize, Material material,HerbDetail herb) {
+    public FlowerPot(PotSize potSize, Material material, HerbDto herb) {
         this.potSize = potSize;
         this.material = material;
         this.herb = herb;
@@ -93,18 +94,23 @@ public class FlowerPot implements ActionHerb {
     }
 
     @Override
-    public void sow(HerbDetail pot) {
+    public void sow(HerbDto pot) {
         // TODO: 20.11.2021 Implementation this method. Create class logic switch and structure
     }
 
     @Override
-    public void water(HerbDetail herb, double waterMl) {
+    public void water(HerbDto herb, double waterMl) {
       // TODO: 20.11.2021 Implementation this method.
     }
 
     @Override
-    public int getDayOfLife(HerbDetail herb) {
+    public int getDayOfLife(HerbDto herb) {
         // TODO: 20.11.2021 Implementation this method.
         return 0;
+    }
+
+    @Override
+    public void conditionDisplay(Condition condition, HerbDto herb, FlowerPot pot) {
+        // TODO: 22.11.2021 !! 
     }
 }

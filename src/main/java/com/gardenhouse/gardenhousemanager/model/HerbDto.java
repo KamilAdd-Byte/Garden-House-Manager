@@ -2,6 +2,8 @@ package com.gardenhouse.gardenhousemanager.model;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
+import com.gardenhouse.gardenhousemanager.control.daylife.Condition;
+import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.ActionHerb;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,7 @@ import java.util.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class HerbDetail extends Plant implements ActionHerb {
+public class HerbDto extends Plant implements ActionHerb {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +48,10 @@ public class HerbDetail extends Plant implements ActionHerb {
 
     private Date dateOfSow;
 
+    private Condition conditionHerb;
+
+    private FlowerPot pot;
+
     /**It's constructor for SOW herbs
      * @param name nazwa zioła
      * @param image miejsce na zdjęcie dla zioła
@@ -57,10 +63,12 @@ public class HerbDetail extends Plant implements ActionHerb {
      * @param maxTemperature max temperatura dla prawidłowego wzrostu zioła
      * @param growthUp wartość tru, gdy zasiejemy zioło
      * @param monthToSow preferowany miesiąc zasiania zioła
+     * @param conditionHerb kondycja rosliny przedstawiona na skali 1 do 4
+     * @param pot reprezentacja doniczki, naczynia w którym rośnie nasza roślina
      */
-    public HerbDetail(String name, String image, int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
-                      String description, double minTemperature, double maxTemperature,boolean growthUp,
-                      String monthToSow) {
+    public HerbDto(String name, String image, Condition conditionHerb,int dayLife, WaterConsumption waterConsumptionPerDay, Light light,
+                   String description, double minTemperature, double maxTemperature, boolean growthUp,
+                   String monthToSow,FlowerPot pot) {
         super(name, image);
         this.dayLife = dayLife;
         this.waterConsumptionPerDay = waterConsumptionPerDay;
@@ -73,7 +81,19 @@ public class HerbDetail extends Plant implements ActionHerb {
         this.dateOfSow = new Date();
     }
 
-    public HerbDetail(String name, String image) {
+    public HerbDto(String name, String image, int idHerb, WaterConsumption waterConsumptionPerDay, Light light, String description,
+                    double minTemperature, double maxTemperature, String monthToSow) {
+        super(name, image);
+        this.idHerb = idHerb;
+        this.waterConsumptionPerDay = waterConsumptionPerDay;
+        this.light = light;
+        this.description = description;
+        this.minTemperature = minTemperature;
+        this.maxTemperature = maxTemperature;
+        this.monthToSow = monthToSow;
+    }
+
+    public HerbDto(String name, String image) {
         super(name, image);
     }
 
@@ -128,17 +148,22 @@ public class HerbDetail extends Plant implements ActionHerb {
     }
 
     @Override
-    public void sow(HerbDetail pot) {
+    public void sow(HerbDto pot) {
 
     }
 
     @Override
-    public void water(HerbDetail herb, double waterMl) {
+    public void water(HerbDto herb, double waterMl) {
 
     }
 
     @Override
-    public int getDayOfLife(HerbDetail herb) {
+    public int getDayOfLife(HerbDto herb) {
         return 0;
+    }
+
+    @Override
+    public void conditionDisplay(Condition condition, HerbDto herb, FlowerPot pot) {
+
     }
 }

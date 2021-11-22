@@ -13,7 +13,8 @@ import com.gardenhouse.gardenhousemanager.appconsole.user.basicwelcome.WelcomeIn
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop.UserSwitchApp;
 import com.gardenhouse.gardenhousemanager.flowerpot.parameters.PotSize;
-import com.gardenhouse.gardenhousemanager.model.HerbDetail;
+import com.gardenhouse.gardenhousemanager.model.HerbDto;
+
 import java.util.*;
 import java.util.List;
 
@@ -59,7 +60,7 @@ public class LogicHerbsDetail implements Runnable{
                             logicAppHerbs.displayAllHerbsInDataBase();
                             break;
                         case ADD_HERB_TO_USER_LIST:
-                            HerbDetail search = checkInfoAboutHerbsOnDataBase();
+                            HerbDto search = checkInfoAboutHerbsOnDataBase();
                             System.out.println("Chcesz dodać ** "+ search.getName() +" ** do Twojej listy ziół? TAK lub NIE");
                             String answer = scanner.nextLine().toUpperCase();
                             if (answer.equals("NIE")){
@@ -162,14 +163,14 @@ public class LogicHerbsDetail implements Runnable{
         System.out.println("Lista Twoich ziół:");
         System.out.println("_________________________________________________");
         scanner.nextLine();
-        Map<String, HerbDetail> myHerbs = user.getMyHerbs();
-        Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
-        for (Map.Entry<String, HerbDetail> entryHerbs : entries) {
+        Map<String, HerbDto> myHerbs = user.getMyHerbs();
+        Set<Map.Entry<String, HerbDto>> entries = myHerbs.entrySet();
+        for (Map.Entry<String, HerbDto> entryHerbs : entries) {
             System.out.println(entryHerbs.getKey() + " id: " +entryHerbs.getValue().getIdHerb());
         }
         System.out.println("Wpisz nazwę swojej rośliny, którą chcesz wyświetlić");
         String herbsByName = scanner.nextLine();
-        for (Map.Entry<String, HerbDetail> entry : entries) {
+        for (Map.Entry<String, HerbDto> entry : entries) {
             if (entry.getKey().contains(herbsByName)){
                 System.out.println(entry.getValue().toStringSowHerb());
                 System.out.println("Chcesz zasadzić lub podlać? PODLEJ  ZASADZ");
@@ -187,17 +188,17 @@ public class LogicHerbsDetail implements Runnable{
         }
     }
 
-    private void sowUserHerbs(Map.Entry<String, HerbDetail> entry) {
-        HerbDetail value = entry.getValue();
+    private void sowUserHerbs(Map.Entry<String, HerbDto> entry) {
+        HerbDto value = entry.getValue();
         System.out.println( "Obiekt do zasadzenia" + value);
 
         // TODO: 09.11.2021 Tworzenie doniczki i przypisanie jej do zioła! 
     }
 
     private void getHerbsForUser() {
-        Map<String, HerbDetail> myHerbs = user.getMyHerbs();
-        Set<Map.Entry<String, HerbDetail>> entries = myHerbs.entrySet();
-        for (Map.Entry<String, HerbDetail> next : entries) {
+        Map<String, HerbDto> myHerbs = user.getMyHerbs();
+        Set<Map.Entry<String, HerbDto>> entries = myHerbs.entrySet();
+        for (Map.Entry<String, HerbDto> next : entries) {
             System.out.println("Twoja nazwa rośliny: "+ next.getKey());
             System.out.println(next.getValue().toStringSowHerb());
         }
@@ -247,23 +248,23 @@ public class LogicHerbsDetail implements Runnable{
     /**
      * @return Herb on data base
      */
-    private HerbDetail checkInfoAboutHerbsOnDataBase() {
-        List<HerbDetail> herbDetails = getHerbDetails();
-        for (HerbDetail herbDetail : herbDetails) {
-            System.out.println(herbDetail.getName());
+    private HerbDto checkInfoAboutHerbsOnDataBase() {
+        List<HerbDto> herbDtos = getHerbDetails();
+        for (HerbDto herbDto : herbDtos) {
+            System.out.println(herbDto.getName());
         }
         scanner = new Scanner(System.in);
         System.out.println("Wybierz zioło z listy, które chcesz zasiać. Każde zioło ma swoje preferencje hodowlane. Zastanów się czy Twoje pomieszczenie (balkon, kuchnia ..)spełniają określone wymogi.");
         String nameHerb = scanner.nextLine().toUpperCase();
         LogicAppHerbs logicAppHerbs = new LogicAppHerbs();
-        HerbDetail herbDetail = logicAppHerbs.search(nameHerb);
+        HerbDto herbDto = logicAppHerbs.search(nameHerb);
         System.out.println("Preferowane warunki hodowlane dla tego zioła" + "\n");
-        System.out.println(herbDetail.toString());
-        return herbDetail;
+        System.out.println(herbDto.toString());
+        return herbDto;
 
     }
 
-    private List<HerbDetail> getHerbDetails() {
+    private List<HerbDto> getHerbDetails() {
         DataBaseForHerbs dataBaseForHerbs = new DataBaseForHerbs();
         return dataBaseForHerbs.allHerbs();
     }

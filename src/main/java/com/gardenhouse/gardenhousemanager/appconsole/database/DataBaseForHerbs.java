@@ -2,7 +2,7 @@ package com.gardenhouse.gardenhousemanager.appconsole.database;
 
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
-import com.gardenhouse.gardenhousemanager.model.HerbDetail;
+import com.gardenhouse.gardenhousemanager.model.HerbDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,52 +18,55 @@ import java.util.*;
 @Setter
 @ToString
 @NoArgsConstructor
-public class DataBaseForHerbs implements List<HerbDetail> {
+public class DataBaseForHerbs implements List<HerbDto> {
 
-    private List<HerbDetail> herbDetails;
+    private List<HerbDto> herbsDtos;
 
-    public List<HerbDetail> allHerbs(){
-        if (herbDetails==null){
-            herbDetails = new ArrayList<>();
+    public List<HerbDto> allHerbs(){
+        if (herbsDtos ==null){
+            herbsDtos = new ArrayList<>();
         }
-        herbDetails.add(new HerbDetail("BAZYLIA","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
+        herbsDtos.add(new HerbDto("BAZYLIA","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
                 0, WaterConsumption.MEDIUM, Light.MEDIUM, "Jako roślina użytkowa i lecznicza. Surowcem przyprawowym jest ziele bazylii,używane w stanie świeżym lub suszonym. Liście bazylii dodaje sie do sałatek, sosów, twarogu, zapiekanek, zup (szczególnie pomidorowej), potraw miesnych i ryb.",
-                22.5,25.5,false,"Lipiec, początek sierpnia"));
-        herbDetails.add(new HerbDetail("LIŚĆ LAUROWY","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
+                22.5,25.5,"Lipiec, początek sierpnia"));
+        herbsDtos.add(new HerbDto("LIŚĆ LAUROWY","https://st.depositphotos.com/1000141/2653/i/600/depositphotos_26536615-stock-photo-basil-leaves-in-closeup.jpg",
                 0, WaterConsumption.LITTLE, Light.LITTLE, "Liść laurowy wraz z zielem angielskim tworzy duet, który jest niezbędny do przygotowywania dań na ciepło – zup, sosów czy gulaszy. Najczęściej decydujemy się na gotową suszoną postać przyprawy dostępną na sklepowych półkach. " +
                 "Liście laurowe możemy również uprawiać na parapecie..Świeże liście laurowe – obrywa się na bieżąco (zimą mniej), " +
                 "w miarę potrzeb. Najbardziej aromatyczne są młode liście.",
-                20,25,false,"Marzec,Kwiecień"));
-        herbDetails.add(new HerbDetail("TYMIANEK","https://img.shmbk.pl/rimgsph/1102383_f6256a52-656a-49e4-8b4d-4466c1537b41_crop_1250_750_zdjecie.jpg",
+                20,25,"Marzec,Kwiecień"));
+        herbsDtos.add(new HerbDto("TYMIANEK","https://img.shmbk.pl/rimgsph/1102383_f6256a52-656a-49e4-8b4d-4466c1537b41_crop_1250_750_zdjecie.jpg",
                 0, WaterConsumption.LITTLE, Light.HARD, " Wykorzystuje się go do potraw kuchni francuskiej oraz śródziemnomorskiej. Idealnie pasuje do mięsnych potraw (w szczególności z jagnięciną), potrawek na bazie strączków, a także do serów (zwłaszcza kozich), jajecznych przekąsek i kanapek.",
-                10,15,false,"Przełom Maj - Czerwiec"));
-        herbDetails.add(new HerbDetail("MIETA","https://histografy.pl/wp-content/uploads/2020/09/mieta-pieprzowa.jpg",
+                10,15,"Przełom Maj - Czerwiec"));
+        herbsDtos.add(new HerbDto("MIETA","https://histografy.pl/wp-content/uploads/2020/09/mieta-pieprzowa.jpg",
                 0, WaterConsumption.MEDIUM, Light.MEDIUM, "Lekka, orzeźwiająca i soczyście zielona mięta sprawdzi się zarówno do dań słodkich, jak i wytrawnych. Doskonale pasuje do zimnych napojów i " +
-                "drinków z dodatkiem cytryny lub limonki (np. lemoniady czy mojito), a także do sałatek owocowych czy warzywnych.", 18,23,false,"Przełom Maj - Czerwiec"));
-        herbDetails.add(new HerbDetail("SZCZYPIOREK","https://www.diki.pl/images-common/words400/chives.jpg",
+                "drinków z dodatkiem cytryny lub limonki (np. lemoniady czy mojito), a także do sałatek owocowych czy warzywnych.", 18,23,"Przełom Maj - Czerwiec"));
+        herbsDtos.add(new HerbDto("SZCZYPIOREK","https://www.diki.pl/images-common/words400/chives.jpg",
                 0, WaterConsumption.MEDIUM, Light.MEDIUM, "Długie łodygi szczypiorku przypominające zielone rurki idealnie współgrają z jajecznymi potrawami, nadając im ostrości i świeżego aromatu. Świetnie pasują również do sałatek, mięsnych " +
-                "dań czy potraw zapiekanych w piekarniku, a także jako dekoracyjne wykończenie przekąsek (np. kanapek czy przystawek).", 20,25,false,"Przełom Marzec - Kwiecień"));
-        return herbDetails;
+                "dań czy potraw zapiekanych w piekarniku, a także jako dekoracyjne wykończenie przekąsek (np. kanapek czy przystawek).", 20,25,"Przełom Marzec - Kwiecień"));
+        herbsDtos.add(new HerbDto("KOCI MIETKA","https://www.diki.pl/images-common/words400/chives.jpg",
+                0, WaterConsumption.MEDIUM, Light.MEDIUM, "Długie łodygi szczypiorku przypominające zielone rurki idealnie współgrają z jajecznymi potrawami, nadając im ostrości i świeżego aromatu. Świetnie pasują również do sałatek, mięsnych " +
+                "dań czy potraw zapiekanych w piekarniku, a także jako dekoracyjne wykończenie przekąsek (np. kanapek czy przystawek).", 20,23,"Przełom Marzec - Kwiecień"));
+        return herbsDtos;
     }
 
     @Override
     public int size() {
-        return this.herbDetails.size();
+        return this.herbsDtos.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return this.herbDetails.isEmpty();
+        return this.herbsDtos.isEmpty();
     }
 
     @Override
     public boolean contains(Object o) {
-        return this.herbDetails.contains(o);
+        return this.herbsDtos.contains(o);
     }
 
     @Override
-    public Iterator<HerbDetail> iterator() {
-        return this.herbDetails.iterator();
+    public Iterator<HerbDto> iterator() {
+        return this.herbsDtos.iterator();
     }
 
     @Override
@@ -78,12 +81,12 @@ public class DataBaseForHerbs implements List<HerbDetail> {
     }
 
     @Override
-    public boolean add(HerbDetail herbDetail) {
-        if (herbDetails==null){
-            herbDetails = new ArrayList<>();
+    public boolean add(HerbDto herbDto) {
+        if (herbsDtos ==null){
+            herbsDtos = new ArrayList<>();
         }
-        if (herbDetail!=null){
-            return this.herbDetails.add(herbDetail);
+        if (herbDto !=null){
+            return this.herbsDtos.add(herbDto);
         }else {
             log.info("Nie udało sie dodać zioło do bazy");
         }
@@ -92,7 +95,7 @@ public class DataBaseForHerbs implements List<HerbDetail> {
 
     @Override
     public boolean remove(Object o) {
-        return this.herbDetails.remove(o);
+        return this.herbsDtos.remove(o);
     }
 
     @Override
@@ -101,12 +104,12 @@ public class DataBaseForHerbs implements List<HerbDetail> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends HerbDetail> collection) {
-        return this.herbDetails.addAll(collection);
+    public boolean addAll(Collection<? extends HerbDto> collection) {
+        return this.herbsDtos.addAll(collection);
     }
 
     @Override
-    public boolean addAll(int i, Collection<? extends HerbDetail> collection) {
+    public boolean addAll(int i, Collection<? extends HerbDto> collection) {
         return false;
     }
 
@@ -122,42 +125,42 @@ public class DataBaseForHerbs implements List<HerbDetail> {
 
     @Override
     public void clear() {
-        this.herbDetails.clear();
+        this.herbsDtos.clear();
     }
 
     @Override
     public boolean equals(Object o) {
-        return this.herbDetails.equals(o);
+        return this.herbsDtos.equals(o);
     }
 
     @Override
     public int hashCode() {
-        return this.herbDetails.hashCode();
+        return this.herbsDtos.hashCode();
     }
 
     @Override
-    public HerbDetail get(int i) {
-        return this.herbDetails.get(i);
+    public HerbDto get(int i) {
+        return this.herbsDtos.get(i);
     }
 
     @Override
-    public HerbDetail set(int i, HerbDetail herbDetail) {
-        return this.herbDetails.set(i,herbDetail);
+    public HerbDto set(int i, HerbDto herbDto) {
+        return this.herbsDtos.set(i, herbDto);
     }
 
     @Override
-    public void add(int i, HerbDetail herbDetail) {
-        this.herbDetails.add(i,herbDetail);
+    public void add(int i, HerbDto herbDto) {
+        this.herbsDtos.add(i, herbDto);
     }
 
     @Override
-    public HerbDetail remove(int i) {
-        return this.herbDetails.remove(i);
+    public HerbDto remove(int i) {
+        return this.herbsDtos.remove(i);
     }
 
     @Override
     public int indexOf(Object o) {
-        return herbDetails.indexOf(o);
+        return herbsDtos.indexOf(o);
     }
 
     @Override
@@ -166,17 +169,17 @@ public class DataBaseForHerbs implements List<HerbDetail> {
     }
 
     @Override
-    public ListIterator<HerbDetail> listIterator() {
-        return this.herbDetails.listIterator();
+    public ListIterator<HerbDto> listIterator() {
+        return this.herbsDtos.listIterator();
     }
 
     @Override
-    public ListIterator<HerbDetail> listIterator(int i) {
-        return this.herbDetails.listIterator(i);
+    public ListIterator<HerbDto> listIterator(int i) {
+        return this.herbsDtos.listIterator(i);
     }
 
     @Override
-    public List<HerbDetail> subList(int i, int i1) {
-        return this.herbDetails.subList(i, i1);
+    public List<HerbDto> subList(int i, int i1) {
+        return this.herbsDtos.subList(i, i1);
     }
 }

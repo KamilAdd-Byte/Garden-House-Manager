@@ -3,7 +3,7 @@ package com.gardenhouse.gardenhousemanager.waterplants;
 import com.gardenhouse.gardenhousemanager.control.Light;
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.Wetness;
-import com.gardenhouse.gardenhousemanager.live.LiveHerbState;
+import com.gardenhouse.gardenhousemanager.control.daylife.LiveHerbState;
 import com.gardenhouse.gardenhousemanager.model.Basil;
 import com.gardenhouse.gardenhousemanager.planting.MethodOfPlanting;
 import com.gardenhouse.gardenhousemanager.temperature.BasilTemperature;

@@ -1,7 +1,8 @@
 package com.gardenhouse.gardenhousemanager.appconsole.database;
 
 import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
-import com.gardenhouse.gardenhousemanager.model.HerbDetail;
+import com.gardenhouse.gardenhousemanager.model.HerbDto;
+
 import java.util.List;
 
 /**
@@ -12,31 +13,31 @@ public class LogicAppHerbs {
     private final DataBaseForHerbs dataBaseForHerbs = new DataBaseForHerbs();
 
     public void displayAllHerbsInDataBase() {
-        List<HerbDetail> herbDetailList = dataBaseForHerbs.allHerbs();
-        herbDetailList.forEach(System.out::println);
+        List<HerbDto> herbDtoList = dataBaseForHerbs.allHerbs();
+        herbDtoList.forEach(System.out::println);
     }
 
-    public void setDefaultParameters(HerbDetail herbDetail) {
-        herbDetail.setDayLife(0);
-        herbDetail.setName("Default");
-        herbDetail.setGrowthUp(false);
-        herbDetail.setDescription("No find");
-        herbDetail.setWaterConsumptionPerDay(WaterConsumption.LITTLE);
+    public void setDefaultParameters(HerbDto herbDto) {
+        herbDto.setDayLife(0);
+        herbDto.setName("Default");
+        herbDto.setGrowthUp(false);
+        herbDto.setDescription("No find");
+        herbDto.setWaterConsumptionPerDay(WaterConsumption.LITTLE);
 
     }
 
-    public HerbDetail search(String name) {
-        List<HerbDetail> herbDetails = dataBaseForHerbs.allHerbs();
+    public HerbDto search(String name) {
+        List<HerbDto> herbDtos = dataBaseForHerbs.allHerbs();
         try {
-            for (HerbDetail herbDetail : herbDetails) {
-                if (herbDetail.getName().contains(name)) {
-                    return herbDetail;
+            for (HerbDto herbDto : herbDtos) {
+                if (herbDto.getName().contains(name)) {
+                    return herbDto;
                 }
             }
         }catch (NullPointerException e){
             e.printStackTrace();
         }
         System.out.println("Nie znaleziono: ** " + name + " ** poniżej pierwsze z listy zioło:");
-        return herbDetails.get(0);
+        return herbDtos.get(0);
     }
 }
