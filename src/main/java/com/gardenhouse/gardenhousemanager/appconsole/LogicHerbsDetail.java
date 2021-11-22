@@ -1,6 +1,8 @@
 package com.gardenhouse.gardenhousemanager.appconsole;
 
 import com.gardenhouse.gardenhousemanager.appconsole.database.LogicAppHerbs;
+import com.gardenhouse.gardenhousemanager.appconsole.user.panel.UserPanel;
+import com.gardenhouse.gardenhousemanager.appconsole.menu.mainloop.PanelUserSwitchApp;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.LogicAppSetKitchenParameters;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKitchenParameters;
@@ -27,11 +29,12 @@ public class LogicHerbsDetail implements Runnable{
     private static final int ADD_HERB_TO_USER_LIST= 2;
     private static final int MY_HERB=3;
     private static final int LOGIN=4;
+    private static final int PANEL=5;
 
 
     @Override
     public void run() {
-        int userChoice = 8;
+        int userChoice = 9;
         loggedUserOnApp();
         scanner = new Scanner(System.in);
 
@@ -74,6 +77,7 @@ public class LogicHerbsDetail implements Runnable{
                                 scanner.nextLine();
 
                                 //Ustawienie parametrów kuchni
+                                // TODO: 22.11.2021 Rozdzielić i dodać do Panelu!!
                                 System.out.println("Wprowadzasz zmiany lub ustawiasz pierwszy raz parametry kuchni wpisz TAK \njeżeli masz już ustawione parametry wpisz NIE");
                                 String answerCreateKitchenParameters = scanner.nextLine().toUpperCase();
                                 LogicAppSetKitchenParameters kitchenParameters = new LogicAppSetKitchenParameters(user);
@@ -117,6 +121,9 @@ public class LogicHerbsDetail implements Runnable{
                         case LOGIN:
                             loggedUserOnApp();
                             break;
+                        case PANEL:
+                            panelUserStart(user);
+                            break;
                         default:
                             System.err.println("Opcja wybrana jest błędna. Dostępne 0 1 2");
                     }
@@ -125,16 +132,23 @@ public class LogicHerbsDetail implements Runnable{
                     e.printStackTrace();
                     System.err.println("Podano dane w nieprawidłowej postaci");
                 }
-               scanner.nextLine();
             } while (userChoice != 0);
         }
+    }
+
+    private void panelUserStart(UserLogged user) {
+        PanelUserSwitchApp panel = new PanelUserSwitchApp();
+        UserPanel userPanel = new UserPanel(user.getName());
+        System.out.println(panel.title()+ "\n"+ panel.menuOptions());
+        int choice = scanner.nextInt();
+        panel.mainLoop(choice,user);
     }
 
     private UserLogged loggedUserOnApp() {
         UserSwitchApp userSwitchApp = new UserSwitchApp();
         UserMenu userMenu = new UserMenu();
         System.out.println("Rozpoczynasz korzystanie z programu. Masz już swoje konto?\n\n");
-        System.out.println(userMenu.displayTitle() + userMenu.getBasicUserOptions());
+        System.out.println(userMenu.title() + userMenu.menuOptions());
         scanner = new Scanner(System.in);
         System.out.printf("Twój wybór ");
         int choice = scanner.nextInt();
@@ -159,33 +173,8 @@ public class LogicHerbsDetail implements Runnable{
     }
 
     private void getHerbsForUserByName() {
-        System.out.println("_________________________________________________");
-        System.out.println("Lista Twoich ziół:");
-        System.out.println("_________________________________________________");
-        scanner.nextLine();
-        Map<String, HerbDto> myHerbs = user.getMyHerbs();
-        Set<Map.Entry<String, HerbDto>> entries = myHerbs.entrySet();
-        for (Map.Entry<String, HerbDto> entryHerbs : entries) {
-            System.out.println(entryHerbs.getKey() + " id: " +entryHerbs.getValue().getIdHerb());
-        }
-        System.out.println("Wpisz nazwę swojej rośliny, którą chcesz wyświetlić");
-        String herbsByName = scanner.nextLine();
-        for (Map.Entry<String, HerbDto> entry : entries) {
-            if (entry.getKey().contains(herbsByName)){
-                System.out.println(entry.getValue().toStringSowHerb());
-                System.out.println("Chcesz zasadzić lub podlać? PODLEJ  ZASADZ");
-                String answer = scanner.nextLine().toUpperCase();
-                if (answer.equals("ZASADZ")){
-                    sowUserHerbs(entry);
-                }else if (answer.equals("PODLEJ")){
-                    // TODO: 09.11.2021  
-                }else {
-                    // TODO: 09.11.2021  
-                }
-            }else {
-                System.out.println("Nie znaleziono po nazwie");
-            }
-        }
+        UserPanel panel = new UserPanel();
+        panel.getHerbsForUser(user);
     }
 
     private void sowUserHerbs(Map.Entry<String, HerbDto> entry) {

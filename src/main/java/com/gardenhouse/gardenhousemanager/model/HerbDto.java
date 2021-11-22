@@ -5,6 +5,7 @@ import com.gardenhouse.gardenhousemanager.control.WaterConsumption;
 import com.gardenhouse.gardenhousemanager.control.daylife.Condition;
 import com.gardenhouse.gardenhousemanager.control.monthandday.MonthOfSow;
 import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
+import com.gardenhouse.gardenhousemanager.flowerpot.parameters.KindOfSoil;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.ActionHerb;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -53,6 +54,8 @@ public class HerbDto extends Plant implements ActionHerb {
 
     private FlowerPot pot;
 
+    private KindOfSoil[] kindOfSoil;
+
     /**It's constructor for herb to sows
      * @param name nazwa zioła
      * @param image miejsce na zdjęcie dla zioła
@@ -93,7 +96,7 @@ public class HerbDto extends Plant implements ActionHerb {
      * @param monthToSow preferowany miesiąc zasiania zioła
      */
     public HerbDto(String name, String image,  WaterConsumption waterConsumptionPerDay, Light light, String description,
-                    double minTemperature, double maxTemperature, MonthOfSow monthToSow) {
+                    double minTemperature, double maxTemperature, MonthOfSow monthToSow,KindOfSoil[] kindOfSoil) {
         super(name, image);
         this.waterConsumptionPerDay = waterConsumptionPerDay;
         this.light = light;
@@ -101,6 +104,7 @@ public class HerbDto extends Plant implements ActionHerb {
         this.minTemperature = minTemperature;
         this.maxTemperature = maxTemperature;
         this.monthToSow = monthToSow;
+        this.kindOfSoil = kindOfSoil;
     }
 
     public HerbDto(String name, String image) {
@@ -142,6 +146,7 @@ public class HerbDto extends Plant implements ActionHerb {
         result += "minimalna temperatura dla: " + getName() + " " + minTemperature + "\n";
         result += "maksymalna temperatura dla: " + getName() + " " + maxTemperature + "\n";
         result += "preferowany miesiąc wysiewu: " + monthToSow.getDescribe() + "\n";
+        result += "preferowana ziemia do wysiewu: " + Arrays.toString(kindOfSoil) + "\n";
         return result;
     }
 

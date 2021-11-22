@@ -7,6 +7,9 @@ import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserMenu;
 
 import java.util.Scanner;
 
+/**
+ * Klasa ze switch
+ */
 public class UserSwitchApp extends UserMenu {
     private static final int REGISTRY_USER = 1;
     private static final int LOG_IN_USER = 2;
@@ -21,6 +24,7 @@ public class UserSwitchApp extends UserMenu {
                 case REGISTRY_USER:
                     newLoggedUser = generateUser.createNewLoggedUser();
                     setNewLoggedUser(newLoggedUser);
+                    newLoggedUser.loggedDisplay();
                     break;
                 case LOG_IN_USER:
                     System.out.println("Podaj login ");
@@ -36,7 +40,7 @@ public class UserSwitchApp extends UserMenu {
                     System.out.println(user.getName() + " Heloo Default");
                     break;
                 default:
-                    System.out.println("Podano niewłasciwą opcje \n" + getBasicUserOptions());
+                    System.out.println("Podano niewłasciwą opcje \n" );
             }
     }
 

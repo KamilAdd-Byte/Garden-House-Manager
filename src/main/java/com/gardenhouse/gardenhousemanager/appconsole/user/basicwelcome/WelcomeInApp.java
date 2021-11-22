@@ -20,7 +20,7 @@ public class WelcomeInApp {
     private static final String version = "Garden Home Management v1.0 \nConsole version\n@Kamil Sulejewski °r 2021\n\n";
     private static final String description = "Miejsce na opis funkcjonalności!!\n\n";
     private static final String titleBasicMenu = "°°°°°°°°°°°°°°°° MENU °°°°°°°°°°°°°°°\n";
-    private static final String basicMenu = "Wybierz: \n0 - Wyjście  \n1 - Lista Ziół  \n2 - Dodaj zioło do panelu\n3 - Moje zioła \n4 - Logowanie";
+    private static final String basicMenu = "Wybierz: \n0 - Wyjście  \n1 - Lista Ziół  \n2 - Dodaj zioło do panelu\n3 - Moje zioła \n4 - Logowanie\n5 - Panel";
     private UserLogged user;
 
     public WelcomeInApp(UserLogged user) {
