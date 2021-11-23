@@ -14,18 +14,32 @@ public class WelcomeInApp implements Menu {
     private static final String description = "Miejsce na opis funkcjonalności!!\n\n";
     private static final String titleBasicMenu = "°°°°°°°°°°°°°°°° MENU °°°°°°°°°°°°°°°\n";
 
-    private UserLogged user;
+    private UserLogged userLogged;
+    private User user;
 
     public WelcomeInApp(UserLogged user) {
         this.user = user;
     }
-    public WelcomeInApp() {
+
+    public WelcomeInApp(User user) {
+        this.user = user;
     }
-    public UserLogged getUser() {
+
+    public WelcomeInApp() { }
+
+    public UserLogged getUserLogged() {
+        return userLogged;
+    }
+
+    public void setUserLogged(UserLogged userLogged) {
+        this.userLogged = userLogged;
+    }
+
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserLogged user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -33,26 +47,26 @@ public class WelcomeInApp implements Menu {
         return title() + version + description;
     }
     public String displayBasicMenu(){
-        return titleBasicMenu + displayAccount() + "\n"+ menuOptions() +"\n";
+        return titleBasicMenu + "\n"+ menuOptions() +"\n";
     }
 
-    public String displayAccount(){
-        String result = "          konto: " + getUser().getLogin()+"\n";
-        result += "-------------------------------------";
-        return result;
+    public void displayAccount(){
+        System.out.println("konto: " + userLogged);
     }
+
     /**
-     * @param user to pass exists user
+     * @param user to pass exists user3
      * @return writing welcome a username.
      */
     public static String welcomeUser(User user){
         return "Witaj w aplikacji " + user.getName().toUpperCase();
     }
+
     /**
      * @param user to pass exists user
      * @return writing welcome a username.
      */
-    public static String welcomeLoggedUser(UserLogged user){
+    public String welcomeLoggedUser(UserLogged user){
         return "Witaj w aplikacji " + user.getName().toUpperCase();
     }
 

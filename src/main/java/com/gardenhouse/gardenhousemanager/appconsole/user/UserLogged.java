@@ -52,7 +52,6 @@ public class UserLogged extends User {
                 "\n lista moich ziół= " + getMyHerbs();
     }
 
-    // TODO: 22.11.2021 Create logged function. Save to file a new user and search on this file by name.
     @Override
     public String loggedDisplay(){
         return "\n\nWitaj " + getName() + " konto: " + login;

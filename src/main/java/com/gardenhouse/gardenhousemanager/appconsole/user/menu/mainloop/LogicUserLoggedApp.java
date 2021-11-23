@@ -3,19 +3,19 @@ package com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicAppGenerateUser;
-import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserMenu;
+import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserLoggedMenu;
 
 import java.util.Scanner;
 
 /**
- * Klasa ze switch
+ * Klasa rejestrująca nowego użytkownika
  */
-public class UserSwitchApp extends UserMenu {
+public class LogicUserLoggedApp extends UserLoggedMenu {
+
     private static final int REGISTRY_USER = 1;
     private static final int LOG_IN_USER = 2;
     private static final int DEFAULT_USER = 3;
     private static final Scanner scanner = new Scanner(System.in);
-    private int userOptions;
     private static UserLogged newLoggedUser;
 
     public void mainLoop(int userOptions) {
@@ -49,6 +49,6 @@ public class UserSwitchApp extends UserMenu {
     }
 
     public static void setNewLoggedUser(UserLogged newLoggedUser) {
-        UserSwitchApp.newLoggedUser = newLoggedUser;
+        LogicUserLoggedApp.newLoggedUser = newLoggedUser;
     }
 }
