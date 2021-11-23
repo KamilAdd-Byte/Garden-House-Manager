@@ -2,7 +2,7 @@ package com.gardenhouse.gardenhousemanager.appconsole;
 
 public class App {
     public static void main(String[] args) {
-        LogicHerbsDetail detail = new LogicHerbsDetail();
+        LogicApp detail = new LogicApp();
         detail.run();
     }
 }

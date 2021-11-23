@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.*;
 
 /**
- * Class for console app.
+ * Klasa z podanymi konkretnymi ziołami w liście.
  */
 @Slf4j
 @Getter
