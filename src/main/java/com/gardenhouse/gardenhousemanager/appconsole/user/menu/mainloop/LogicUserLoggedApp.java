@@ -2,7 +2,7 @@ package com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop;
 
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
-import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicAppGenerateUser;
+import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicAppGenerateAndSaveUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserLoggedMenu;
 
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class LogicUserLoggedApp extends UserLoggedMenu {
     private static UserLogged newLoggedUser;
 
     public void mainLoop(int userOptions) {
-        LogicAppGenerateUser generateUser = new LogicAppGenerateUser();
+        LogicAppGenerateAndSaveUser generateUser = new LogicAppGenerateAndSaveUser();
             switch (userOptions) {
                 case REGISTRY_USER:
                     newLoggedUser = generateUser.createNewLoggedUser();
@@ -27,11 +27,7 @@ public class LogicUserLoggedApp extends UserLoggedMenu {
                     newLoggedUser.loggedDisplay();
                     break;
                 case LOG_IN_USER:
-                    System.out.println("Podaj login ");
-                    String login = scanner.nextLine();
-                    System.out.println("Podaj hasło ");
-                    String password = scanner.nextLine();
-                    generateUser.login(login,password);
+                    // TODO: 23.11.2021  
                     break;
                 case DEFAULT_USER:
                     System.out.println("Podaj imię ");
