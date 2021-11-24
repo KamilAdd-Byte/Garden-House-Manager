@@ -5,11 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-public class DbConnector {
-    private static final Logger logger = Logger.getLogger(DbConnector.class.getName());
+/**
+ * Klasa odpowiedzialana za połączenie do bazy danych H2
+ * @see com.gardenhouse.gardenhousemanager.appconsole.App wywołanie metody connect().
+ */
+public class DBConnector {
+    private static final Logger logger = Logger.getLogger(DBConnector.class.getName());
     private static final String URL = "jdbc:h2:file:./herbs";
 
-    private DbConnector() {
+    private DBConnector() {
     }
 
     public static Connection connect (){
