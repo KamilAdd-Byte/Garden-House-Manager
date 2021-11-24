@@ -1,22 +1,27 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user.logic;
 
+import com.gardenhouse.gardenhousemanager.appconsole.database.DBConnector;
+import com.gardenhouse.gardenhousemanager.appconsole.database.table.DBCreateTableUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
-
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.nio.file.Path;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 /**
  * @author kamil sulejewski
- * Klasa tworząca Usera i zapisywania go do prywatnej listy api
+ * Klasa tworząca Usera i zapisywania go do bazy danych H2 w pliku
+ * @see DBConnector łączenie z bazą H2
+ * @see DBCreateTableUser tworzenie tabeli użytkownika
  */
 public class LogicAppGenerateAndSaveUser {
     private User user;
-    private UserLogged userLogged;
+    private static UserLogged userLogged;
     private static File file;
     private static Scanner scanner;
 
@@ -42,7 +47,7 @@ public class LogicAppGenerateAndSaveUser {
     }
 
     /**
-     * This method is used for create new logged user
+     * This method is used for create new logged user and save his on data base
      * @return new logged user
      */
     public UserLogged createNewLoggedUser() {
@@ -59,9 +64,49 @@ public class LogicAppGenerateAndSaveUser {
         userLogged.setName(name);
         userLogged.setLogin(login);
         userLogged.setPassword(password);
-        addUserToFile(userLogged);
+
+        addedUserToDB(userLogged);//zapisanie do bazy
+
         return userLogged;
     }
+
+    public ResultSet searchUserByLogin(String login){
+        ResultSet result = null;
+        scanner = new Scanner(System.in);
+        System.out.println("Podaj login");
+        login = scanner.nextLine();
+        Connection connect = DBConnector.connect();
+        try {
+            Statement statement = connect.createStatement();
+            String sql = "select * from USER where login = "+"'"+login+"'";
+            result = statement.executeQuery(sql);
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    /**
+     * @param userLogged logged user which fields write for user in createNewLoggedUser() method.
+     */
+    private void addedUserToDB(UserLogged userLogged) {
+        String password = userLogged.getPassword();
+        String name = userLogged.getName();
+        String login = userLogged.getLogin();
+        try {
+            Connection connect = DBConnector.connect();
+            DBCreateTableUser.createUserTable(connect);
+            Statement statement = connect.createStatement();
+            String sql = "insert into USER(name,login,password)" + "values('"+name+"','"+login+"','"+password +"')";
+            statement.executeUpdate(sql);
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private static File createNewFile(){
         file = new File("users");

@@ -5,6 +5,7 @@ import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicAppGenerateAndSaveUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserLoggedMenu;
 
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 /**
@@ -27,7 +28,10 @@ public class LogicUserLoggedApp extends UserLoggedMenu {
                     newLoggedUser.loggedDisplay();
                     break;
                 case LOG_IN_USER:
-                    // TODO: 23.11.2021  
+                    System.out.println("Podaj login");
+                    String login = scanner.nextLine();
+                    ResultSet resultSet = generateUser.searchUserByLogin(login);
+                    System.out.println(resultSet);
                     break;
                 case DEFAULT_USER:
                     System.out.println("Podaj imię ");

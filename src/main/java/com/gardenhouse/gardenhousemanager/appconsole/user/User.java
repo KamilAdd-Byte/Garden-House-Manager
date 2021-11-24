@@ -12,6 +12,7 @@ import java.util.Map;
  * This class it's a new users create and has all data. User has list herbs which he wants to sow.
  */
 public class User {
+    private Integer id;
     private String name;
     private Map<String, HerbDto> myHerbs;
     private UserKitchenParameters myKitchen;
