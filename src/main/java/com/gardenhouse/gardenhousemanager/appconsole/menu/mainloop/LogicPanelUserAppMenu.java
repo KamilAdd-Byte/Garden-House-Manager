@@ -1,11 +1,13 @@
 package com.gardenhouse.gardenhousemanager.appconsole.menu.mainloop;
 
 import com.gardenhouse.gardenhousemanager.appconsole.LogicApp;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.action.impl.SetKitchenParametersImpl;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user.UserKitchenMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserLoggedMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.panel.UserPanelMenu;
-
 import java.util.Scanner;
+
 /**
  * Klasa obsługująca PANEL użytkownika, który jest zalogowany
  */
@@ -18,37 +20,42 @@ public class LogicPanelUserAppMenu extends UserPanelMenu {
     private static final int DELETE_HERB = 5;
     private static final int BACK = 6;
     private static final Scanner scanner = new Scanner(System.in);
-    private static UserLoggedMenu menu = new UserLoggedMenu();
-    private UserLogged userLogged;
+    private static UserKitchenMenu menu = new UserKitchenMenu();
+    private UserLogged user;
 
     public LogicPanelUserAppMenu() {
     }
 
-    public LogicPanelUserAppMenu(UserLogged userLogged) {
-        this.userLogged = userLogged;
+    public LogicPanelUserAppMenu(UserLogged user) {
+        this.user = user;
     }
 
-    public static UserLoggedMenu getMenu() {
+    public static UserKitchenMenu getMenu() {
         return menu;
     }
 
-    private static void setMenu(UserLoggedMenu menu) {
+    private static void setMenu(UserKitchenMenu menu) {
         LogicPanelUserAppMenu.menu = menu;
     }
 
-    public void mainLoop(int userOptions, UserLogged userLogged) {
-        scanner.nextLine();
+    public void mainLoop(int userOptions, UserLogged user) {
+
         while (userOptions != 6) {
             System.out.println(menu.title());
             System.out.println(menu.menuOptions());
             userOptions = scanner.nextInt();
+            scanner.nextLine();
             switch (userOptions) {
                 case SETTING_FOR_KITCHEN:
-                    // TODO: 12.12.2021  
-                    System.out.println("impl");
+                    SetKitchenParametersImpl kitchenParameters = new SetKitchenParametersImpl(user);
+                    System.out.println("Ustawianie parametrów kuchni");
+                    kitchenParameters.firstStepForSetKitchenParametersLight(user);
+                    kitchenParameters.twoStepForSetKitchenParametersWetness(user);
+                    kitchenParameters.threeStepForSetKitchenParametersTemperature(user);
+                    kitchenParameters.displayParameters(user);
                     break;
                 case ADD_HERB_TO_PANEL:
-                    // TODO: 12.12.2021  
+                    // TODO: 12.12.2021
                     System.out.println("impl");
                     break;
                 case VIEW_ALL_HERBS:

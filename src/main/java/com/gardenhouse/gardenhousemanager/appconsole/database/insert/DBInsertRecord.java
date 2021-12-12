@@ -1,6 +1,6 @@
 package com.gardenhouse.gardenhousemanager.appconsole.database.insert;
 
-import com.gardenhouse.gardenhousemanager.appconsole.database.DBConnector;
+import com.gardenhouse.gardenhousemanager.appconsole.database.connect.DBConnector;
 import java.sql.*;
 
 public class DBInsertRecord {

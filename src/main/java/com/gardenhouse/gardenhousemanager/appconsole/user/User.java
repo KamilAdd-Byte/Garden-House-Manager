@@ -1,6 +1,6 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user;
 
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.UserKitchenParameters;
+import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user.UserKitchenParameters;
 import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
 import com.gardenhouse.gardenhousemanager.model.HerbDto;
 

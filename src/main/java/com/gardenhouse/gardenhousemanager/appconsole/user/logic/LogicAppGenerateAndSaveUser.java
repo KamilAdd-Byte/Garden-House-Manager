@@ -1,6 +1,6 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user.logic;
 
-import com.gardenhouse.gardenhousemanager.appconsole.database.DBConnector;
+import com.gardenhouse.gardenhousemanager.appconsole.database.connect.DBConnector;
 import com.gardenhouse.gardenhousemanager.appconsole.database.table.DBCreateTableUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;

@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.logging.Logger;
 
 /**
- *
+ * Create USER table
  */
 public class DBCreateTableUser {
     private static  final Logger logger = Logger.getLogger(DBCreateTableUser.class.getName());

@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.appconsole.database;
+package com.gardenhouse.gardenhousemanager.appconsole.database.connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
