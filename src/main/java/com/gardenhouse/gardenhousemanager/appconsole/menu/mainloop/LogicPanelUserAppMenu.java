@@ -44,8 +44,11 @@ public class LogicPanelUserAppMenu extends UserPanelMenu {
             userOptions = scanner.nextInt();
             switch (userOptions) {
                 case SETTING_FOR_KITCHEN:
+                    // TODO: 12.12.2021  
+                    System.out.println("impl");
                     break;
                 case ADD_HERB_TO_PANEL:
+                    // TODO: 12.12.2021  
                     System.out.println("impl");
                     break;
                 case VIEW_ALL_HERBS:

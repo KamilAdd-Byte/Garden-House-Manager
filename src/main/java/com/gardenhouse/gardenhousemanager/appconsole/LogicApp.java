@@ -98,7 +98,7 @@ public class LogicApp implements Runnable{
         System.out.printf("Twój wybór ");
         int choice = scanner.nextInt();
         logicLoggedUserApp.mainLoop(choice);
-        user = LogicUserLoggedApp.getNewLoggedUser();
+        user = LogicUserLoggedApp.createNewLoggedUser();
         System.out.println(user.loggedDisplay());
         scanner.nextLine();
         return user;

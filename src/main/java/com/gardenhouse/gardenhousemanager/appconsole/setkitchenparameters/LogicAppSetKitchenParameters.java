@@ -3,28 +3,28 @@ package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.TemperatureInTheKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.user.User;
+import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 
 public class LogicAppSetKitchenParameters {
     private UserKitchenParameters userKitchenParameters;
-    private User user;
+    private UserLogged user;
 
-    public LogicAppSetKitchenParameters(User user) {
+    public LogicAppSetKitchenParameters(UserLogged user) {
         this.user=user;
         userKitchenParameters = new UserKitchenParameters();
     }
 
-    public UserKitchenParameters setLight(User user, LightForKitchen lightForKitchen){
+    public UserKitchenParameters setLight(UserLogged user, LightForKitchen lightForKitchen){
         userKitchenParameters.setLight(lightForKitchen);
         user.setMyKitchen(userKitchenParameters);
         return userKitchenParameters;
     }
-    public UserKitchenParameters setTemperature(User user,TemperatureInTheKitchen temperature){
+    public UserKitchenParameters setTemperature(UserLogged user,TemperatureInTheKitchen temperature){
         userKitchenParameters.setTemperature(temperature);
         user.setMyKitchen(userKitchenParameters);
         return userKitchenParameters;
     }
-    public UserKitchenParameters setWetness(User user,WetnessForKitchen wetness){
+    public UserKitchenParameters setWetness(UserLogged user,WetnessForKitchen wetness){
         userKitchenParameters.setWetness(wetness);
         user.setMyKitchen(userKitchenParameters);
         return userKitchenParameters;
@@ -34,7 +34,7 @@ public class LogicAppSetKitchenParameters {
         return userKitchenParameters;
     }
 
-    public String displayParameters(User user){
+    public static String displayParameters(UserLogged user){
        return  "Parametry kuchni: " + "\n" +
                 "oświetlenie: " + user.getMyKitchen().getLight() + "\n" +
                 "wilgotność: " + user.getMyKitchen().getWetness() + "\n" +
