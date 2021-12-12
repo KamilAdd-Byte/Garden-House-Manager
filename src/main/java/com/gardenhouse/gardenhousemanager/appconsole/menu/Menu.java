@@ -5,6 +5,13 @@ package com.gardenhouse.gardenhousemanager.appconsole.menu;
  * w innych klasach obsługujących użytkownika.
  */
 public interface Menu {
+    /**
+     * @return title menu
+     */
     String title();
+
+    /**
+     * @return menu options
+     */
     String menuOptions();
 }

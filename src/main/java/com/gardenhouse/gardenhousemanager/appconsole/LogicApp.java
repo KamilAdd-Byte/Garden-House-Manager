@@ -1,23 +1,12 @@
 package com.gardenhouse.gardenhousemanager.appconsole;
 
 import com.gardenhouse.gardenhousemanager.appconsole.database.LogicAppHerbs;
-import com.gardenhouse.gardenhousemanager.appconsole.user.panel.UserPanelMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.menu.mainloop.LogicPanelUserAppMenu;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.LogicAppSetKitchenParameters;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.TemperatureInTheKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.database.DataBaseForHerbs;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
-import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.basicwelcome.WelcomeInApp;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserLoggedMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop.LogicUserLoggedApp;
-import com.gardenhouse.gardenhousemanager.flowerpot.parameters.PotSize;
-import com.gardenhouse.gardenhousemanager.model.HerbDto;
-
 import java.util.*;
-import java.util.List;
 
 /**
  * Jest to główna klasa, która obsługuje podstawowe funkcje aplikacji.
@@ -27,17 +16,16 @@ import java.util.List;
  */
 public class LogicApp implements Runnable{
 
-    public static Scanner scanner;
+    public static final Scanner scanner = new Scanner(System.in);
     private static UserLogged user;
     private static final int EXIT = 0;
     private static final int GET_LIST = 1;
     private static final int SPECIFICATION_HERBS = 2;
     private static final int PANEL=3;
-
+    private static int userChoice;
     @Override
     public void run() {
         int userChoice = 9;
-        scanner = new Scanner(System.in);
         while (userChoice != 0) {
             do {
                 try {
@@ -66,9 +54,9 @@ public class LogicApp implements Runnable{
                         case PANEL:
                             loggedUserOnApp();
                             WelcomeInApp loggedWelcome = new WelcomeInApp(user);
-                            String s = loggedWelcome.welcomeLoggedUser(user);
-                            System.out.println(s);
-                            panelUserStart(user);
+                            loggedWelcome.welcomeLoggedUser(user);
+                            scanner.nextLine();
+                            panelUserStart(userChoice,user);
                             break;
                         default:
                             System.err.println("Opcja wybrana jest błędna. Dostępne 0 1 2");
@@ -82,11 +70,11 @@ public class LogicApp implements Runnable{
         }
     }
 
-    private void panelUserStart(UserLogged user) {
+    private void panelUserStart(int userChoices,UserLogged user) {
         LogicPanelUserAppMenu panel = new LogicPanelUserAppMenu(user);
         System.out.println(panel.title() + "\n"+ panel.menuOptions());
-        int choice = scanner.nextInt();
-        panel.mainLoop(choice,user);
+        userChoice = scanner.nextInt();
+        panel.mainLoop(userChoice,user);
     }
 
     private UserLogged loggedUserOnApp() {
@@ -94,11 +82,10 @@ public class LogicApp implements Runnable{
         UserLoggedMenu userLoggedMenu = new UserLoggedMenu();
         System.out.println("Rozpoczynasz korzystanie z programu. Masz już swoje konto?\n\n");
         System.out.println(userLoggedMenu.title() + userLoggedMenu.menuOptions());
-        scanner = new Scanner(System.in);
         System.out.printf("Twój wybór ");
         int choice = scanner.nextInt();
         logicLoggedUserApp.mainLoop(choice);
-        user = LogicUserLoggedApp.getNewLoggedUser();
+        user = LogicUserLoggedApp.createNewLoggedUser();
         System.out.println(user.loggedDisplay());
         scanner.nextLine();
         return user;

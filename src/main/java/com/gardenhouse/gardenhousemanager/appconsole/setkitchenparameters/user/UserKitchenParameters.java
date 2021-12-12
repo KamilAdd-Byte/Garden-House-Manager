@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters;
+package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user;
 
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.TemperatureInTheKitchen;
@@ -21,8 +21,8 @@ public class UserKitchenParameters {
 
     public UserKitchenParameters() { }
 
-    @Override
-    public String toString() {
+
+    public String displayAllParameters() {
         return "Parametry kuchni: " + "\n" +
                 "oświetlenie: " + light.getDescription() + "\n" +
                 "wilgotność: " + wetness.getDescription() + "\n" +

@@ -1,6 +1,6 @@
 package com.gardenhouse.gardenhousemanager.appconsole;
 
-import com.gardenhouse.gardenhousemanager.appconsole.database.DBConnector;
+import com.gardenhouse.gardenhousemanager.appconsole.database.connect.DBConnector;
 import com.gardenhouse.gardenhousemanager.appconsole.database.table.DBCreateTableUser;
 
 import java.sql.Connection;

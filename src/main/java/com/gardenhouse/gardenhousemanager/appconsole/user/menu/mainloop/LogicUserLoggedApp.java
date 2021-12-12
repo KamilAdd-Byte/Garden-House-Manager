@@ -44,7 +44,7 @@ public class LogicUserLoggedApp extends UserLoggedMenu {
             }
     }
 
-    public static UserLogged getNewLoggedUser() {
+    public static UserLogged createNewLoggedUser() {
         return newLoggedUser;
     }
 
