@@ -3,10 +3,17 @@ package com.gardenhouse.gardenhousemanager.appconsole.user;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user.UserKitchenParameters;
 import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
 import com.gardenhouse.gardenhousemanager.model.HerbDto;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 import java.util.Map;
 
 public class UserLogged extends User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String login;
     private String password;
 
@@ -39,6 +46,14 @@ public class UserLogged extends User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override
