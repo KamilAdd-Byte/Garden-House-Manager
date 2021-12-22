@@ -1,11 +1,10 @@
-package com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop;
+package com.gardenhouse.gardenhousemanager.appconsole.user.logic;
 
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
-import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicAppGenerateAndSaveUser;
+import com.gardenhouse.gardenhousemanager.appconsole.user.service.impl.UserServiceImpl;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserLoggedMenu;
 
-import java.sql.ResultSet;
 import java.util.Scanner;
 
 /**
@@ -20,7 +19,7 @@ public class LogicUserLoggedApp extends UserLoggedMenu {
     private static UserLogged newLoggedUser;
 
     public void mainLoop(int userOptions) {
-        LogicAppGenerateAndSaveUser generateUser = new LogicAppGenerateAndSaveUser();
+        UserServiceImpl generateUser = new UserServiceImpl();
             switch (userOptions) {
                 case REGISTRY_USER:
                     newLoggedUser = generateUser.createNewLoggedUser();
@@ -30,7 +29,7 @@ public class LogicUserLoggedApp extends UserLoggedMenu {
                 case LOG_IN_USER:
                     System.out.println("Podaj login");
                     String login = scanner.nextLine();
-                    ResultSet resultSet = generateUser.searchUserByLogin(login);
+                    UserLogged resultSet = generateUser.searchUserByLogin(login);
                     System.out.println(resultSet);
                     break;
                 case DEFAULT_USER:

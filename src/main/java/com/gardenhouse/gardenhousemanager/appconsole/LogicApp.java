@@ -5,7 +5,7 @@ import com.gardenhouse.gardenhousemanager.appconsole.menu.mainloop.LogicPanelUse
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import com.gardenhouse.gardenhousemanager.appconsole.user.basicwelcome.WelcomeInApp;
 import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserLoggedMenu;
-import com.gardenhouse.gardenhousemanager.appconsole.user.menu.mainloop.LogicUserLoggedApp;
+import com.gardenhouse.gardenhousemanager.appconsole.user.logic.LogicUserLoggedApp;
 import java.util.*;
 
 /**

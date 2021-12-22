@@ -1,9 +1,12 @@
-package com.gardenhouse.gardenhousemanager.appconsole.user.logic;
+package com.gardenhouse.gardenhousemanager.appconsole.user.service.impl;
 
 import com.gardenhouse.gardenhousemanager.appconsole.database.connect.DBConnector;
 import com.gardenhouse.gardenhousemanager.appconsole.database.table.DBCreateTableUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
+import com.gardenhouse.gardenhousemanager.appconsole.user.service.DisplayQuestion;
+import com.gardenhouse.gardenhousemanager.appconsole.user.service.UserService;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -19,20 +22,19 @@ import java.util.*;
  * @see DBConnector łączenie z bazą H2
  * @see DBCreateTableUser tworzenie tabeli użytkownika
  */
-public class LogicAppGenerateAndSaveUser {
+public class UserServiceImpl implements UserService, DisplayQuestion {
     private User user;
-    private static UserLogged userLogged;
-    private static File file;
-    private static Scanner scanner;
+    private UserLogged userLogged;
+    private Scanner scanner;
 
-    public LogicAppGenerateAndSaveUser() {
+    public UserServiceImpl() {
     }
 
     /**
      * This is constructor for logged user
      * @param userLogged logged user in app database
      */
-    public LogicAppGenerateAndSaveUser(UserLogged userLogged) {
+    public UserServiceImpl(UserLogged userLogged) {
         this.userLogged = userLogged;
 
     }
@@ -46,45 +48,76 @@ public class LogicAppGenerateAndSaveUser {
         return this.user;
     }
 
+
     /**
      * This method is used for create new logged user and save his on data base
      * @return new logged user
      */
+    @Override
     public UserLogged createNewLoggedUser() {
-        scanner = new Scanner(System.in);
-        System.out.println("Podaj imię");
-        String name = scanner.nextLine();
-        System.out.println("Podaj login");
-        String login = scanner.nextLine();
-        System.out.println("Podaj hasło");
-        String password = scanner.nextLine();
         if (userLogged == null) {
             userLogged = new UserLogged();
         }
-        userLogged.setName(name);
-        userLogged.setLogin(login);
-        userLogged.setPassword(password);
+        scanner = new Scanner(System.in);
+
+        setUserName();
+        setUserLogin();
+        setUserPassword();
 
         addedUserToDB(userLogged);//zapisanie do bazy
 
         return userLogged;
     }
 
-    public ResultSet searchUserByLogin(String login){
-        ResultSet result = null;
+    private void setUserPassword() {
+        System.out.println(displayQuestionForPassword());
+        String password = scanner.nextLine();
+        userLogged.setPassword(password);
+    }
+
+    private void setUserLogin() {
+        System.out.println(displayQuestionForLogin());
+        String login = scanner.nextLine();
+        userLogged.setLogin(login);
+    }
+
+    private void setUserName() {
+        System.out.println(displayQuestionForName());
+        String name = scanner.nextLine();
+        if (name!=null){
+            userLogged.setName(name);
+        }
+    }
+
+    @Override
+    public UserLogged searchUserByLogin(String login){
+        UserLogged result = null;
         scanner = new Scanner(System.in);
-        System.out.println("Podaj login");
-        login = scanner.nextLine();
+        System.out.println(displayQuestionForLogin());
+        String resultLogin = scanner.nextLine();
+        login = resultLogin;
         Connection connect = DBConnector.connect();
         try {
             Statement statement = connect.createStatement();
             String sql = "select * from USER where login = "+"'"+login+"'";
-            result = statement.executeQuery(sql);
+            result = (UserLogged) statement.executeQuery(sql);
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         return result;
+    }
+
+    @Override
+    public UserLogged removeUserByLogin(String login) {
+        return null;
     }
 
 
@@ -95,8 +128,8 @@ public class LogicAppGenerateAndSaveUser {
         String password = userLogged.getPassword();
         String name = userLogged.getName();
         String login = userLogged.getLogin();
+        Connection connect = DBConnector.connect();
         try {
-            Connection connect = DBConnector.connect();
             DBCreateTableUser.createUserTable(connect);
             Statement statement = connect.createStatement();
             String sql = "insert into USER(name,login,password)" + "values('"+name+"','"+login+"','"+password +"')";
@@ -104,24 +137,27 @@ public class LogicAppGenerateAndSaveUser {
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-
-    private static File createNewFile(){
-        file = new File("users");
-        return file;
+    @Override
+    public String displayQuestionForName() {
+        return "Podaj imię";
     }
 
-    private void addUserToFile(UserLogged user){
-        userLogged = user;
-        File usersFile = createNewFile();
-        try {
-            PrintWriter writer = new PrintWriter(usersFile);
-            writer.println(userLogged.getLogin() +";"+ userLogged.getName() +";" + userLogged.getPassword());
-            writer.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public String displayQuestionForLogin() {
+        return "Podaj login";
+    }
+
+    @Override
+    public String displayQuestionForPassword() {
+        return "Podaj hasło";
     }
 }
