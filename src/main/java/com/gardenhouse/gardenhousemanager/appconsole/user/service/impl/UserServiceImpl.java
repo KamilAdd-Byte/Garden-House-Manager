@@ -104,7 +104,14 @@ public class UserServiceImpl implements UserService, DisplayQuestion {
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         return result;
     }
 

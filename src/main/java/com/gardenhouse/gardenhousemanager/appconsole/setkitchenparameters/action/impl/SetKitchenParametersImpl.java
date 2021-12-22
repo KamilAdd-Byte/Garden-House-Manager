@@ -100,7 +100,7 @@ public class SetKitchenParametersImpl implements SetKitchenParameters {
      */
     @Override
     public UserKitchenParameters getUserKitchenParameters() {
-        return userKitchenParameters;
+        return this.userKitchenParameters;
     }
 
     /**

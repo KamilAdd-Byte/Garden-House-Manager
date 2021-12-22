@@ -34,17 +34,11 @@ public class LogicPanelUserAppMenu extends UserPanelMenu {
         return menu;
     }
 
-    private static void setMenu(UserKitchenMenu menu) {
-        LogicPanelUserAppMenu.menu = menu;
-    }
 
     public void mainLoop(int userOptions, UserLogged user) {
 
         while (userOptions != 6) {
-            System.out.println(menu.title());
-            System.out.println(menu.menuOptions());
             userOptions = scanner.nextInt();
-            scanner.nextLine();
             switch (userOptions) {
                 case SETTING_FOR_KITCHEN:
                     SetKitchenParametersImpl kitchenParameters = new SetKitchenParametersImpl(user);
