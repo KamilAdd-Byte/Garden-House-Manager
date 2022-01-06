@@ -41,6 +41,7 @@ public class LogicPanelUserAppMenu extends UserPanelMenu {
     public void mainLoop(int userOptions, UserLogged user) {
 
         while (userOptions != 6) {
+            System.out.println("\n"+"Twój panel"+"\n"+menuOptions());
             userOptions = scanner.nextInt();
             switch (userOptions) {
                 case SETTING_FOR_KITCHEN:
@@ -49,6 +50,8 @@ public class LogicPanelUserAppMenu extends UserPanelMenu {
                     kitchenParameters.firstStepForSetKitchenParametersLight(user);
                     kitchenParameters.twoStepForSetKitchenParametersWetness(user);
                     kitchenParameters.threeStepForSetKitchenParametersTemperature(user);
+                    //display parameters user kitchen
+                    System.out.println(kitchenParameters.displayParameters(user));
                     break;
                 case ADD_HERB_TO_PANEL:
                     // TODO: 12.12.2021

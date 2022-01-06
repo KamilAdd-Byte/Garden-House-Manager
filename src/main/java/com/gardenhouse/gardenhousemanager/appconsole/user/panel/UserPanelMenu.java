@@ -1,10 +1,12 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user.panel;
 
 import com.gardenhouse.gardenhousemanager.appconsole.menu.Menu;
+import lombok.Getter;
 
 /**
  * Klasa wyświetlająca tytuł i menu dla zalogowanych użytkowników
  */
+@Getter
 public class UserPanelMenu implements Menu {
 
     public UserPanelMenu() { }
