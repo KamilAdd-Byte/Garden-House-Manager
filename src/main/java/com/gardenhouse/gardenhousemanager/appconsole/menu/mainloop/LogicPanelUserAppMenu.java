@@ -4,13 +4,16 @@ import com.gardenhouse.gardenhousemanager.appconsole.LogicApp;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.action.impl.SetKitchenParametersImpl;
 import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user.UserKitchenMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
-import com.gardenhouse.gardenhousemanager.appconsole.user.menu.UserLoggedMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.panel.UserPanelMenu;
+import lombok.Getter;
+import lombok.Setter;
 import java.util.Scanner;
 
 /**
  * Klasa obsługująca PANEL użytkownika, który jest zalogowany
  */
+@Getter
+@Setter
 public class LogicPanelUserAppMenu extends UserPanelMenu {
 
     private static final int SETTING_FOR_KITCHEN = 1;
@@ -46,7 +49,6 @@ public class LogicPanelUserAppMenu extends UserPanelMenu {
                     kitchenParameters.firstStepForSetKitchenParametersLight(user);
                     kitchenParameters.twoStepForSetKitchenParametersWetness(user);
                     kitchenParameters.threeStepForSetKitchenParametersTemperature(user);
-                    kitchenParameters.displayParameters(user);
                     break;
                 case ADD_HERB_TO_PANEL:
                     // TODO: 12.12.2021

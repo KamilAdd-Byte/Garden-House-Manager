@@ -1,5 +1,6 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user.logic;
 
+import com.gardenhouse.gardenhousemanager.appconsole.menu.mainloop.LogicPanelUserAppMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import com.gardenhouse.gardenhousemanager.appconsole.user.service.impl.UserServiceImpl;
@@ -16,6 +17,7 @@ public class LogicUserLoggedApp extends UserLoggedMenu {
     private static final int LOG_IN_USER = 2;
     private static final int DEFAULT_USER = 3;
     private static final Scanner scanner = new Scanner(System.in);
+    private static final LogicPanelUserAppMenu logicPanelUserAppMenu = new LogicPanelUserAppMenu();
     private static UserLogged newLoggedUser;
 
     public void mainLoop(int userOptions) {
@@ -25,11 +27,14 @@ public class LogicUserLoggedApp extends UserLoggedMenu {
                     newLoggedUser = generateUser.createNewLoggedUser();
                     setNewLoggedUser(newLoggedUser);
                     newLoggedUser.loggedDisplay();
+                    logicPanelUserAppMenu.setUser(newLoggedUser);
                     break;
                 case LOG_IN_USER:
                     System.out.println("Podaj login");
                     String login = scanner.nextLine();
                     UserLogged resultSet = generateUser.searchUserByLogin(login);
+                    // set user for PANEL
+                    logicPanelUserAppMenu.setUser(resultSet);
                     System.out.println(resultSet);
                     break;
                 case DEFAULT_USER:
