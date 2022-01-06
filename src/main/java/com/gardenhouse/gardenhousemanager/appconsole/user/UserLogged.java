@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UserLogged extends User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
