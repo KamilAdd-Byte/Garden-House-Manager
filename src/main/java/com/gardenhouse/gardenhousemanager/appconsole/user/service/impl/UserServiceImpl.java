@@ -1,6 +1,7 @@
 package com.gardenhouse.gardenhousemanager.appconsole.user.service.impl;
 
 import com.gardenhouse.gardenhousemanager.appconsole.database.connect.DBConnector;
+import com.gardenhouse.gardenhousemanager.appconsole.database.insert.DBInsertRecord;
 import com.gardenhouse.gardenhousemanager.appconsole.database.table.DBCreateTableUser;
 import com.gardenhouse.gardenhousemanager.appconsole.user.User;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
@@ -18,9 +19,10 @@ import java.util.*;
 
 /**
  * @author kamil sulejewski
- * Klasa tworząca Usera i zapisywania go do bazy danych H2 w pliku
+ * Klasa odpowiedzialna za tworzenie nowego użutkownika i zapisywania go do bazy danych H2 w pliku
  * @see DBConnector łączenie z bazą H2
  * @see DBCreateTableUser tworzenie tabeli użytkownika
+ * @see DBInsertRecord dodawanie użytkownika do bazy
  */
 public class UserServiceImpl implements UserService, DisplayQuestion {
     private User user;
@@ -94,13 +96,15 @@ public class UserServiceImpl implements UserService, DisplayQuestion {
         UserLogged result = null;
         scanner = new Scanner(System.in);
         System.out.println(displayQuestionForLogin());
-        String resultLogin = scanner.nextLine();
-        login = resultLogin;
+        login = scanner.nextLine();
         Connection connect = DBConnector.connect();
         try {
             Statement statement = connect.createStatement();
             String sql = "select * from USER where login = "+"'"+login+"'";
-            result = (UserLogged) statement.executeQuery(sql);
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            result = (UserLogged) resultSet;
+            System.out.println("znaleziono " + resultSet);
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -122,28 +126,10 @@ public class UserServiceImpl implements UserService, DisplayQuestion {
 
 
     /**
-     * @param userLogged logged user which fields write for user in createNewLoggedUser() method.
+     * @param user new create user which fields write by user in createNewLoggedUser() method.
      */
-    private void addedUserToDB(UserLogged userLogged) {
-        String password = userLogged.getPassword();
-        String name = userLogged.getName();
-        String login = userLogged.getLogin();
-        Connection connect = DBConnector.connect();
-        try {
-            DBCreateTableUser.createUserTable(connect);
-            Statement statement = connect.createStatement();
-            String sql = "insert into USER(name,login,password)" + "values('"+name+"','"+login+"','"+password +"')";
-            statement.executeUpdate(sql);
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                connect.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+    private void addedUserToDB(UserLogged user) {
+        DBInsertRecord.insertUser(user);
     }
 
     @Override
