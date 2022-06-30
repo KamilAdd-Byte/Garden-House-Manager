@@ -1,17 +1,19 @@
 package com.gardenhouse.gardenhousemanager.appconsole.menu;
 
 /**
- * Interface z metoda title i menuOptions do zaimplementowania
- * w innych klasach obsługujących użytkownika.
+ * @author kamil.sulejewski
+
+ * Main interface for a manu option
  */
 public interface Menu {
+
     /**
-     * @return title menu
+     * @return Title menu
      */
     String title();
 
     /**
-     * @return menu options
+     * @return all Menu options
      */
     String menuOptions();
 }

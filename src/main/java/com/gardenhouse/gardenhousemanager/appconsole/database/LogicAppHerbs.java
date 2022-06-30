@@ -6,8 +6,9 @@ import com.gardenhouse.gardenhousemanager.model.HerbDto;
 import java.util.List;
 
 /**
- * @author kamillodzinski
- * Klasa tylko wyświetla listę ziół z bazy
+ * @author Kamil Sulejewski
+ *
+ * Consol panel - display all herbs
  */
 public class LogicAppHerbs {
     private final DataBaseForHerbs dataBaseForHerbs = new DataBaseForHerbs();

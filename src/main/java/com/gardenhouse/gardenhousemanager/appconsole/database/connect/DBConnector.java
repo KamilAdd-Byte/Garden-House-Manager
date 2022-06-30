@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 /**
- * Klasa odpowiedzialana za połączenie do bazy danych H2
- * @see com.gardenhouse.gardenhousemanager.appconsole.App wywołanie metody connect().
+ * @author Kamil Sulejewski
+
+ * Connection to H2 database.
+ * @see com.gardenhouse.gardenhousemanager.appconsole.App calling the connect() method.
  */
 public class DBConnector {
     private static final Logger logger = Logger.getLogger(DBConnector.class.getName());

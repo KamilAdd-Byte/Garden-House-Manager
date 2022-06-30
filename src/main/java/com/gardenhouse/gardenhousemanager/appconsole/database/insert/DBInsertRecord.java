@@ -7,7 +7,7 @@ import java.sql.*;
 
 /**
  * @author Kamil Sulejewski
- * Klasa odpowiedzialna za dodawanie nowego użytkownika do bazy aplikacji
+ * Class responsible for adding a new user to the application database
  * @see com.gardenhouse.gardenhousemanager.appconsole.user.service.impl.UserServiceImpl
  */
 public class DBInsertRecord {

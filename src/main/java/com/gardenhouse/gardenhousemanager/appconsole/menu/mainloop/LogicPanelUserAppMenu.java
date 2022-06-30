@@ -1,8 +1,8 @@
 package com.gardenhouse.gardenhousemanager.appconsole.menu.mainloop;
 
 import com.gardenhouse.gardenhousemanager.appconsole.LogicApp;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.action.impl.SetKitchenParametersImpl;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user.UserKitchenMenu;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.action.impl.SetKitchenParametersImpl;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.user.UserKitchenMenu;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import com.gardenhouse.gardenhousemanager.appconsole.user.panel.UserPanelMenu;
 import lombok.Getter;
@@ -10,7 +10,10 @@ import lombok.Setter;
 import java.util.Scanner;
 
 /**
- * Klasa obsługująca PANEL użytkownika, który jest zalogowany
+ * @author kamil.sulejewski
+
+ * Class responsibility for handled the logged-in user.
+ * Control panel.
  */
 @Getter
 @Setter

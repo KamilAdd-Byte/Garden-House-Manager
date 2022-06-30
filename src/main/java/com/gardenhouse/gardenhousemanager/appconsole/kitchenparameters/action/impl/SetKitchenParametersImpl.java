@@ -1,10 +1,10 @@
-package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.action.impl;
+package com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.action.impl;
 
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.action.SetKitchenParameters;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.TemperatureInTheKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user.UserKitchenParameters;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.action.SetKitchenParameters;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.LightForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.TemperatureInTheKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.WetnessForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.user.UserKitchenParameters;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 import java.util.Scanner;
 

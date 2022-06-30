@@ -1,6 +1,4 @@
-package com.gardenhouse.gardenhousemanager.appconsole.database.insert;
-
-import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
+package com.gardenhouse.gardenhousemanager.appconsole.database.search;
 
 import java.sql.Connection;
 import java.sql.Statement;

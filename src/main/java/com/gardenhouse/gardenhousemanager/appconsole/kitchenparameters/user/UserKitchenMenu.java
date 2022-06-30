@@ -1,4 +1,4 @@
-package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user;
+package com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.user;
 
 import com.gardenhouse.gardenhousemanager.appconsole.menu.Menu;
 

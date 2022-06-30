@@ -1,15 +1,15 @@
 package com.gardenhouse.gardenhousemanager.appconsole.database.table;
 
+import lombok.extern.slf4j.Slf4j;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Logger;
 
 /**
- * Create USER table
+ * Create a USER table
  */
+@Slf4j
 public class DBCreateTableUser {
-    private static  final Logger logger = Logger.getLogger(DBCreateTableUser.class.getName());
 
     private DBCreateTableUser() { }
 
@@ -23,10 +23,10 @@ public class DBCreateTableUser {
                     + "password VARCHAR(50), "
                     + "PRIMARY KEY ( id ))";
             statement.executeUpdate(sql);
-            logger.info("Tabela została utworzona");
+            log.info("Tabela została utworzona");
             statement.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

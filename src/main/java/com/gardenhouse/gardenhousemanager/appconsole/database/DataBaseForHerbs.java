@@ -13,16 +13,19 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.*;
 
 /**
- * Klasa z podanymi konkretnymi ziołami w liście.
+ * Simulation data for herbs.
  */
 @Slf4j
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 public class DataBaseForHerbs implements List<HerbDto> {
 
     private List<HerbDto> herbsDtos;
+
+    public DataBaseForHerbs() {
+        this.herbsDtos = allHerbs();
+    }
 
     public List<HerbDto> allHerbs(){
         if (herbsDtos ==null){

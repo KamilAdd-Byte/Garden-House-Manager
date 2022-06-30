@@ -1,9 +1,9 @@
-package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.action;
+package com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.action;
 
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user.UserKitchenParameters;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.TemperatureInTheKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.user.UserKitchenParameters;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.LightForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.TemperatureInTheKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.WetnessForKitchen;
 import com.gardenhouse.gardenhousemanager.appconsole.user.UserLogged;
 
 public interface SetKitchenParameters {

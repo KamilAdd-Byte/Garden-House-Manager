@@ -1,8 +1,8 @@
-package com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.user;
+package com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.user;
 
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.LightForKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.TemperatureInTheKitchen;
-import com.gardenhouse.gardenhousemanager.appconsole.setkitchenparameters.control.WetnessForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.LightForKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.TemperatureInTheKitchen;
+import com.gardenhouse.gardenhousemanager.appconsole.kitchenparameters.control.WetnessForKitchen;
 import lombok.Getter;
 import lombok.Setter;
 
