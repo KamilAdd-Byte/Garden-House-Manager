@@ -10,7 +10,7 @@ import lombok.ToString;
 
 @ToString
 @NoArgsConstructor
-public abstract class Herb extends Plant {
+public class Herb extends Plant {
 
     private Light light;
     private double waterForHerb;

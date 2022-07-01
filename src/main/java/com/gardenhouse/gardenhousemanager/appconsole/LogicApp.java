@@ -45,7 +45,7 @@ public class LogicApp implements Runnable {
                                 System.out.println("Do zo ba! Byku! Wróć kiedys jeszcze");
                                 scanner.close();
                             } catch (IllegalStateException e) {
-                                System.err.println("Wyjście z programu");
+                               log.error(e.getMessage());
                             }
                             break;
                         case GET_LIST:

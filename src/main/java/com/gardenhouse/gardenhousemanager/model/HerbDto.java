@@ -7,6 +7,7 @@ import com.gardenhouse.gardenhousemanager.control.monthandday.MonthOfSow;
 import com.gardenhouse.gardenhousemanager.flowerpot.FlowerPot;
 import com.gardenhouse.gardenhousemanager.flowerpot.parameters.KindOfSoil;
 import com.gardenhouse.gardenhousemanager.flowerpot.sow.ActionHerb;
+import com.gardenhouse.gardenhousemanager.model.vo.Water;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,7 +33,7 @@ public class HerbDto extends Plant implements ActionHerb {
     @Enumerated(EnumType.STRING)
     private WaterConsumption waterConsumptionPerDay;
 
-    private double water;
+    private Water water;
 
     @Enumerated(EnumType.STRING)
     private Light light;

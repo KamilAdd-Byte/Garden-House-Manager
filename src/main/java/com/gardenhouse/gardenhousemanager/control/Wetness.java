@@ -5,8 +5,8 @@ public enum Wetness {
     OPTIMUM(40,60),
     MAXIMUM(70, 90);
 
-    public int minWetness;
-    public int maxWetness;
+    private int minWetness;
+    private int maxWetness;
 
     /**
      * @param minWetness of growth to herb
